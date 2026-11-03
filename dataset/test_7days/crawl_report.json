@@ -1,0 +1,158 @@
+{
+  "crawl_time": "2026-11-03T23:25:16",
+  "source": "中国新闻网",
+  "url_template": "https://www.chinanews.com/scroll-news/{year}/{mmdd}/news.shtml",
+  "date_start": "2025-01-01",
+  "date_end": "2025-01-07",
+  "days_requested": 7,
+  "delay_seconds": 1.2,
+  "concurrency": 1,
+  "summary": {
+    "days_success": 7,
+    "days_not_found": 0,
+    "days_failed": 0,
+    "days_parse_failed": 0,
+    "total_records": 2919
+  },
+  "days": [
+    {
+      "archive_date": "2025-01-01",
+      "url": "https://www.chinanews.com/scroll-news/2025/0101/news.shtml",
+      "status": 200,
+      "bytes": 165940,
+      "records": 393,
+      "result": "ok",
+      "error": "",
+      "items": 472
+    },
+    {
+      "archive_date": "2025-01-02",
+      "url": "https://www.chinanews.com/scroll-news/2025/0102/news.shtml",
+      "status": 200,
+      "bytes": 181310,
+      "records": 478,
+      "result": "ok",
+      "error": "",
+      "items": 574
+    },
+    {
+      "archive_date": "2025-01-03",
+      "url": "https://www.chinanews.com/scroll-news/2025/0103/news.shtml",
+      "status": 200,
+      "bytes": 195589,
+      "records": 531,
+      "result": "ok",
+      "error": "",
+      "items": 638
+    },
+    {
+      "archive_date": "2025-01-04",
+      "url": "https://www.chinanews.com/scroll-news/2025/0104/news.shtml",
+      "status": 200,
+      "bytes": 120411,
+      "records": 226,
+      "result": "ok",
+      "error": "",
+      "items": 272
+    },
+    {
+      "archive_date": "2025-01-05",
+      "url": "https://www.chinanews.com/scroll-news/2025/0105/news.shtml",
+      "status": 200,
+      "bytes": 130839,
+      "records": 251,
+      "result": "ok",
+      "error": "",
+      "items": 302
+    },
+    {
+      "archive_date": "2025-01-06",
+      "url": "https://www.chinanews.com/scroll-news/2025/0106/news.shtml",
+      "status": 200,
+      "bytes": 179766,
+      "records": 442,
+      "result": "ok",
+      "error": "",
+      "items": 531
+    },
+    {
+      "archive_date": "2025-01-07",
+      "url": "https://www.chinanews.com/scroll-news/2025/0107/news.shtml",
+      "status": 200,
+      "bytes": 223702,
+      "records": 598,
+      "result": "ok",
+      "error": "",
+      "items": 718
+    }
+  ],
+  "robots_txt": {
+    "checked": true,
+    "note": "https://www.chinanews.com/robots.txt 仅 Disallow /AboutUs/Staff/、/part/、/iframe/、/test、/ceshi/、/ad/ 等路径，/scroll-news/ 未被禁止。"
+  },
+  "cleaning": {
+    "input_rows": 2919,
+    "dropped_empty_title": 0,
+    "dropped_invalid_url": 0,
+    "dropped_bad_time": 0,
+    "dropped_duplicate_url": 0,
+    "duplicate_title_groups": 48,
+    "dropped_unknown_category": 0,
+    "dropped_non_target_category": 1017,
+    "rows_after_clean": 1854,
+    "rows_delivered": 1854,
+    "cap_per_class": 0
+  },
+  "duplicates": {
+    "raw_rows": 2919,
+    "unique_url": 2919,
+    "duplicate_url_rows": 0,
+    "duplicate_url_rate": 0.0,
+    "same_title_diff_url": 47,
+    "same_title_diff_url_rate": 1.61
+  },
+  "category_statistics": [
+    {
+      "category": "财经",
+      "count": 609,
+      "percentage": 32.85,
+      "target": 2000,
+      "gap_to_target": 1391
+    },
+    {
+      "category": "体育",
+      "count": 87,
+      "percentage": 4.69,
+      "target": 2000,
+      "gap_to_target": 1913
+    },
+    {
+      "category": "文娱",
+      "count": 133,
+      "percentage": 7.17,
+      "target": 2000,
+      "gap_to_target": 1867
+    },
+    {
+      "category": "教育",
+      "count": 13,
+      "percentage": 0.7,
+      "target": 2000,
+      "gap_to_target": 1987
+    },
+    {
+      "category": "社会",
+      "count": 658,
+      "percentage": 35.49,
+      "target": 2000,
+      "gap_to_target": 1342
+    },
+    {
+      "category": "国际",
+      "count": 354,
+      "percentage": 19.09,
+      "target": 2000,
+      "gap_to_target": 1646
+    }
+  ]
+}

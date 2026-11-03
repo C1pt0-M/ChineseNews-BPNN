@@ -1,0 +1,16 @@
+# 统一换行符，避免 Windows/Linux 协作时产生整文件 diff
+* text=auto
+
+*.py      text eol=lf
+*.md      text eol=lf
+*.txt     text eol=lf
+*.json    text eol=lf
+*.yml     text eol=lf
+
+# CSV 保留 CRLF，便于 Excel 直接打开
+*.csv     text eol=crlf
+
+# 二进制
+*.png     binary
+*.jpg     binary
+*.zip     binary
