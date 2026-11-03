@@ -46,6 +46,7 @@ def clean_dataframe(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         for k in ("dropped_empty_title", "dropped_invalid_url", "dropped_bad_time",
                   "dropped_duplicate_url", "dropped_unknown_category",
                   "dropped_non_target_category", "duplicate_title_groups",
+                  "duplicate_title_rows_dropped", "records_in_duplicate_title_groups",
                   "rows_after_clean"):
             stats[k] = 0
         return df, stats
@@ -75,13 +76,19 @@ def clean_dataframe(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     work = work.drop_duplicates(subset=["url"], keep="first")
     stats["dropped_duplicate_url"] = before - len(work)
 
-    # 5) 辅助检查：URL 不同但标题完全相同（仅统计并保留首条）
-    before = len(work)
+    # 5) 辅助检查：URL 不同但规范化标题完全相同（统计后保留首条）
+    #    统计口径必须区分两个概念，历史上二者曾被混为一谈：
+    #      duplicate_title_groups       = 出现 >1 次的唯一标题个数（“组数”）
+    #      duplicate_title_rows_dropped = 实际被删除的记录数（“记录数”，= 涉及记录 - 组数）
     dup_mask = work.duplicated(subset=["title"], keep="first")
-    stats["duplicate_title_groups"] = int(dup_mask.sum())
-    if stats["duplicate_title_groups"]:
-        logger.info("检测到 %d 条标题重复但 URL 不同的记录，保留首条",
-                    stats["duplicate_title_groups"])
+    stats["duplicate_title_rows_dropped"] = int(dup_mask.sum())
+    stats["duplicate_title_groups"] = int(work.loc[dup_mask, "title"].nunique())
+    stats["records_in_duplicate_title_groups"] = int(
+        work["title"].isin(set(work.loc[dup_mask, "title"])).sum())
+    if stats["duplicate_title_rows_dropped"]:
+        logger.info("检测到 %d 组重复标题、%d 条将删除的记录（URL 不同），保留每组首条",
+                    stats["duplicate_title_groups"],
+                    stats["duplicate_title_rows_dropped"])
     work = work[~dup_mask]
 
     # 6) 分类映射：仅保留映射到目标六类的记录

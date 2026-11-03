@@ -74,14 +74,19 @@ def publish_time_stats(df: pd.DataFrame) -> dict:
 
 
 def duplicate_analysis(raw_df: pd.DataFrame) -> dict:
-    """原始数据层面的重复情况。"""
+    """原始数据层面的重复情况。
+
+    注意：标题重复统计先剔除 NaN 标题再判重。若先 ``fillna("")`` 再判重，
+    缺失标题会被当作同一个空字符串，被误计为重复（与缺失值统计顺序问题是同类缺陷）。
+    """
     if raw_df.empty:
         return {"raw_rows": 0, "unique_url": 0, "unique_url_rate": 0.0,
                 "duplicate_url_rows": 0, "same_title_diff_url": 0}
     total = len(raw_df)
     uniq = raw_df["url"].nunique()
     dup_rows = total - uniq
-    dup_title = int(raw_df.duplicated(subset=["title"], keep="first").sum())
+    titles = raw_df["title"].dropna()
+    dup_title = int(titles.duplicated(keep="first").sum())
     return {
         "raw_rows": total,
         "unique_url": int(uniq),
@@ -89,6 +94,7 @@ def duplicate_analysis(raw_df: pd.DataFrame) -> dict:
         "duplicate_url_rate": round(dup_rows / total * 100, 2) if total else 0.0,
         "same_title_diff_url": dup_title,
         "same_title_diff_url_rate": round(dup_title / total * 100, 2) if total else 0.0,
+        "null_title_rows": int(raw_df["title"].isna().sum()),
     }
 
 
@@ -176,6 +182,60 @@ def plot_daily_line(daily: pd.Series, out_path: Path) -> None:
 
 
 # ---------------------------------------------------------------- 报告
+
+def build_caveats(available: dict, raw_label_dist: dict, target: int = 2000) -> list[str]:
+    """生成「已知限制」条目。
+
+    关键点：所有数字都从本次运行的实际统计量推导，不写死。
+    早期版本把「教育类日均不足 5 条、目标 2000 条可能无法达成」直接写死为字符串，
+    导致数据实际已达标（2,704 > 2,000）时报告仍自相矛盾。
+    """
+    caveats: list[str] = []
+
+    # 1) 文娱标签语义：保留目标类名，但必须交代数据来源与语义边界
+    raw_cul = int(raw_label_dist.get("文化", 0))
+    cul_avail = int(available.get("文娱", 0))
+    caveats.append(
+        f"「文娱」沿用课程设定的目标类名，其数据全部来自站点滚动列表的「文化」频道标签"
+        f"（原始 {raw_cul:,} 条，标题去重后可用 {cul_avail:,} 条），映射关系为"
+        "`文化 -> 文娱`，属一对一确定性映射，未改动任何单条样本的归属。"
+        "该列语义为「文化/文艺」广义范畴，方法章节须说明其与日常语境中「娱乐」的差异。"
+    )
+
+    # 2) 教育类供给：按实际可达性二选一，避免与上方统计表冲突
+    edu_raw = int(raw_label_dist.get("教育", 0))
+    edu_avail = int(available.get("教育", 0))
+    if target <= 0:
+        caveats.append(
+            f"「教育」为长尾类别：原始采集 {edu_raw:,} 条，规范化标题去重后可用 {edu_avail:,} 条，"
+            "本次未设配额上限，全部纳入交付集。"
+        )
+    elif edu_avail >= target:
+        headroom = (edu_avail / target - 1) * 100 if target else 0.0
+        caveats.append(
+            f"「教育」为长尾类别：原始采集 {edu_raw:,} 条，规范化标题去重后可用 {edu_avail:,} 条，"
+            f"高于目标 {target:,} 条（余量 {edu_avail - target:,} 条，{headroom:.1f}%），"
+            f"已按等距抽样取 {target:,} 条。该余量偏小，若后续需扩样应向前延伸起始日期。"
+        )
+    else:
+        caveats.append(
+            f"「教育」为长尾类别：原始采集 {edu_raw:,} 条，规范化标题去重后可用 {edu_avail:,} 条，"
+            f"**低于**目标 {target:,} 条，实际交付 {edu_avail:,} 条（缺口 {target - edu_avail:,} 条），"
+            "各类别数量如实统计，未做任何补造。"
+        )
+
+    caveats += [
+        "原始标签中的“图片”“视频”属于媒体形态而非主题，已排除，避免污染主题分类。",
+        "“国内”“时政”“湾区”“华人”“健康”“理论”等标签不为目标类别，已保留原始标签但不纳入数据集。",
+        "标题去重采用**规范化标题全局去重**（保留首条）。审计已确认其中少量为不同事件共用"
+        "模板标题，属已知的过度删除，影响量见 `reports/data_audit_report.md`；本版本未改变该规则。",
+        "归档页仅提供“月-日 时:分”，年份由归档路径推断，已校验与归档日期一致。",
+        "发布时间为站点列表展示时间，非文章页精确发布时间，存在分钟级误差可能。",
+        "仅采集标题与元数据，未采集正文，符合课程实验的最小数据需求与版权要求。",
+    ]
+    return caveats
+
+
 def write_json(obj: dict, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -214,6 +274,10 @@ def write_markdown_report(ctx: dict, path: Path) -> None:
         A(f"| 配额抽样后交付样本量 | **{q.get('rows_delivered', 0):,}**"
           f"（每类上限 {q['cap_per_class']:,}） |")
     A("")
+    if q.get("cap_per_class", 0) > 0:
+        A("> **两套口径不可混用**：`清洗后六类合计` 是去重与类别映射后的可用池规模；"
+          f"`交付样本量` 是在此基础上按每类上限 {q['cap_per_class']:,} 条等距抽样后的实际交付规模。"
+          "论文与后续划分实验均以交付样本量为准。\n")
 
     A("## 2. 采集数量分布\n")
     if len(daily) > 31:
@@ -255,9 +319,14 @@ def write_markdown_report(ctx: dict, path: Path) -> None:
             n = int(avail.get(cat, 0))
             A(f"| {cat} | {n:,} | {'满足' if n >= 2000 else '**不足**'} |")
         A("")
+        low = min(config.TARGET_CATEGORIES, key=lambda c: int(avail.get(c, 0)))
+        if q.get("cap_per_class", 0) > 0:
+            balance = (f"本文档交付集已按等距抽样平衡至每类 {q['cap_per_class']:,} 条；"
+                       "若实验需要类内更多样本，可调高 `--max-per-class`。")
+        else:
+            balance = "本次未设配额上限，各类按实际可用量全部纳入交付集，类别不均衡需在实验中另行处理。"
         A("> 各类供给能力差异显著（对数刻度见 `category_availability.png`）："
-          "社会、财经供给充裕，教育为长尾类别。本文档交付集已按等距抽样平衡至每类 2,000 条；"
-          "若实验需要类内更多样本，可调高 `--max-per-class`。\n")
+          f"「{low}」为最紧缺类别（{int(avail.get(low, 0)):,} 条）。" + balance + "\n")
 
     A("## 4. 原始分类标签分布（映射前）\n")
     A("保留站点原始标签，便于核查映射是否合理。\n")
@@ -276,13 +345,17 @@ def write_markdown_report(ctx: dict, path: Path) -> None:
     A("")
 
     A("## 5. 重复与异常\n")
+    A("> 统计口径：**组数**指出现次数 >1 的唯一规范化标题个数；**记录数**指被实际删除的"
+      "多余记录数（同一组内保留 1 条）。二者不可混用，详见 `reports/data_audit_report.md`。\n")
     A("| 指标 | 数值 |")
     A("|---|---|")
     A(f"| 原始记录数 | {dup['raw_rows']:,} |")
     A(f"| 唯一 URL 数 | {dup['unique_url']:,} |")
     A(f"| URL 重复条数 | {dup['duplicate_url_rows']:,}（{dup['duplicate_url_rate']}%） |")
-    A(f"| 标题相同但 URL 不同（原始标题） | {dup['same_title_diff_url']:,}（{dup.get('same_title_diff_url_rate', 0)}%） |")
-    A(f"| 标题重复实际剔除（规范化后） | {q['duplicate_title_groups']:,} |")
+    A(f"| 标题相同但 URL 不同（原始标题，记录数） | {dup['same_title_diff_url']:,}（{dup.get('same_title_diff_url_rate', 0)}%） |")
+    A(f"| 标题重复组数（规范化后） | {q['duplicate_title_groups']:,} |")
+    A(f"| 标题重复涉及记录数（规范化后） | {q.get('records_in_duplicate_title_groups', 0):,} |")
+    A(f"| 标题重复实际剔除（记录数） | {q['duplicate_title_rows_dropped']:,} |")
     A(f"| 空标题（剔除） | {q['dropped_empty_title']:,} |")
     A(f"| 无效/非文章链接（剔除） | {q['dropped_invalid_url']:,} |")
     A(f"| 时间格式异常（剔除） | {q['dropped_bad_time']:,} |")

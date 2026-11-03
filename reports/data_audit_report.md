@@ -6,6 +6,16 @@
 - 复核依据：`dataset/news_raw.csv`（309,541 条原始记录）、`state/raw_parts/`（669 个逐日切片）均存在，因此重复标题与类别统计均可回溯到原始数据，**不存在"因缺少原始数据而无法验证"的审计项**。
 - 可复现性：全部统计量由 `audit_data.py` 生成，中间产物在 `reports/audit/`（`summary.json`、`dup_groups_sample.csv`、`culture_sample.csv`、`culture_manual_labels.csv`、`dup_manual_labels.csv`）。
 
+> **v1.1.0 修订状态**：本报告是修订前的审计快照，原文保留以留存证据链。
+> - A1（教育类报告文字）已修正：`main.py` 的限制说明改为由实际统计量生成。
+> - A6（统计口径命名）已修正：`cleaner.py` 拆分为 `duplicate_title_groups`（组数）与
+>   `duplicate_title_rows_dropped`（记录数）两个独立字段，质量报告同步更新。
+> - 本报告所依赖的 `audit_data.py` 存在**缺失值统计顺序缺陷**（先 `.fillna("")` 再
+>   `.isna().sum()`，导致缺失值恒为 0），已于 v1.1.0 修正；修正后的缺失值统计见
+>   `reports/cross_category_conflict_report.md` 第 1 节。
+> - A3 / A5 的结论未变，补充的跨类别冲突审计与三种去重策略对比见同一报告第 2–4 节；
+>   A5 所指的划分泄漏已通过 `build_splits.py` 的时间划分解决，见 `reports/time_split_report.md`。
+
 ---
 
 ## 结论摘要

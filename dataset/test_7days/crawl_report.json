@@ -96,7 +96,9 @@
     "dropped_invalid_url": 0,
     "dropped_bad_time": 0,
     "dropped_duplicate_url": 0,
-    "duplicate_title_groups": 48,
+    "duplicate_title_rows_dropped": 48,
+    "duplicate_title_groups": 46,
+    "records_in_duplicate_title_groups": 94,
     "dropped_unknown_category": 0,
     "dropped_non_target_category": 1017,
     "rows_after_clean": 1854,
@@ -109,7 +111,8 @@
     "duplicate_url_rows": 0,
     "duplicate_url_rate": 0.0,
     "same_title_diff_url": 47,
-    "same_title_diff_url_rate": 1.61
+    "same_title_diff_url_rate": 1.61,
+    "null_title_rows": 0
   },
   "category_statistics": [
     {

@@ -1,4 +1,10 @@
 {
+  "meta": {
+    "generated_at": "2026-11-04 02:44:17",
+    "script": "audit_data.py",
+    "raw_sha256": "7108fd4fd32cd74318eca24136969322d490807069354168c6554352f36b287a",
+    "clean_sha256": "29f4827b4a946fbfdba292b5259ffcc4607486f4d27aaf65c9c42f805b250cc4"
+  },
   "raw_rows": 309541,
   "raw_label_count": {
     "社会": 63240,
@@ -27,6 +33,93 @@
     "国是": 230,
     "汽车": 3,
     "unknown": 2
+  },
+  "raw_missing": {
+    "rows": 309541,
+    "per_column": {
+      "id": {
+        "nan": 17,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "title": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "category": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "publish_time": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "url": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "archive_date": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "source": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_raw_category": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_raw_time": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_is_article": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_is_gallery": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_is_video": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_time_issue": {
+        "nan": 309541,
+        "empty_string": 0,
+        "whitespace_only": 0
+      },
+      "_page_url": {
+        "nan": 0,
+        "empty_string": 0,
+        "whitespace_only": 0
+      }
+    },
+    "nan_total": 309558,
+    "empty_string_total": 0,
+    "whitespace_only_total": 0,
+    "critical_columns_nan": {
+      "id": 17,
+      "title": 0,
+      "url": 0,
+      "publish_time": 0,
+      "archive_date": 0,
+      "category": 0
+    },
+    "critical_columns_nan_total": 17
   },
   "stage_counts": {
     "0_raw": {
@@ -221,20 +314,25 @@
         "社会": 62321,
         "财经": 60482,
         "国际": 29156,
-        "文娱": 13122,
+        "文化": 13122,
         "体育": 12142,
         "教育": 2704
       }
     }
   },
   "dedup": {
-    "records_before_title_dedup": 309517,
+    "pool_records_after_url_dedup": 309517,
     "dup_title_groups": 6546,
     "dup_extra_rows_deleted": 8401,
     "records_in_dup_groups": 14947,
-    "dup_extra_rows_raw_title": 8367,
+    "same_title_diff_url_groups": 6547,
+    "same_title_diff_url_rows": 8367,
+    "same_title_multi_category_groups": 2827,
+    "same_title_multi_date_groups": 1731,
     "dup_groups_raw_title": 6514,
+    "dup_extra_rows_raw_title": 8367,
     "normalization_added_dups": 40,
+    "titles_changed_by_normalization": 3992,
     "cross_category_deleted": 3447,
     "cross_category_rate_pct": 41.03,
     "same_category_deleted": 4954,
@@ -272,55 +370,120 @@
       "创意": 4,
       "国是": 1
     },
-    "availability_by_dedup_mode": [
-      {
-        "category": "体育",
-        "only_url_dedup": 12282,
-        "removed_by_title_dedup": 140,
-        "kept_current": 12142,
-        "loss_pct": 1.14
-      },
-      {
-        "category": "国际",
-        "only_url_dedup": 29588,
-        "removed_by_title_dedup": 432,
-        "kept_current": 29156,
-        "loss_pct": 1.46
-      },
-      {
-        "category": "教育",
-        "only_url_dedup": 2737,
-        "removed_by_title_dedup": 33,
-        "kept_current": 2704,
-        "loss_pct": 1.21
-      },
-      {
-        "category": "文娱",
-        "only_url_dedup": 13221,
-        "removed_by_title_dedup": 99,
-        "kept_current": 13122,
-        "loss_pct": 0.75
-      },
-      {
-        "category": "社会",
-        "only_url_dedup": 63235,
-        "removed_by_title_dedup": 914,
-        "kept_current": 62321,
-        "loss_pct": 1.45
-      },
-      {
-        "category": "财经",
-        "only_url_dedup": 61189,
-        "removed_by_title_dedup": 707,
-        "kept_current": 60482,
-        "loss_pct": 1.16
-      }
-    ],
+    "span_same_day_groups": 4815,
+    "span_t_gt30d_groups": 766,
+    "span_le30d_groups": 5780,
     "monthly_deleted_pct_min": 2.01,
     "monthly_deleted_pct_max": 3.87
   },
+  "cross_category": {
+    "multi_label_groups": 2827,
+    "multi_label_rows": 6861,
+    "multi_label_rate_pct": 0.94,
+    "target_conflict_groups": 120,
+    "target_conflict_rows": 244,
+    "target_conflict_rate_pct": 0.079,
+    "target_conflict_combo": {
+      "社会|财经": 81,
+      "文娱|社会": 11,
+      "教育|社会": 9,
+      "国际|社会": 4,
+      "文娱|财经": 4,
+      "国际|财经": 3,
+      "体育|国际": 3,
+      "体育|财经": 2,
+      "体育|社会": 2,
+      "教育|财经": 1
+    },
+    "target_conflict_raw_combo": {
+      "社会|财经": 79,
+      "文化|社会": 11,
+      "教育|社会": 9,
+      "国际|社会": 4,
+      "文化|财经": 4,
+      "国际|财经": 3,
+      "体育|国际": 3,
+      "体育|财经": 2,
+      "体育|社会": 2,
+      "图片|社会|财经": 1,
+      "教育|财经": 1,
+      "时政|社会|财经": 1
+    },
+    "target_conflict_same_day_groups": 85,
+    "target_conflict_cross_day_groups": 35,
+    "target_conflict_gt30d_groups": 10,
+    "cross_channel_groups": 120,
+    "same_channel_groups": 0,
+    "sample_size": 100,
+    "sample_judge": {
+      "D": 91,
+      "T": 9
+    },
+    "sample_D": 91,
+    "sample_T": 9,
+    "sample_T_by_rule": 8,
+    "sample_T_by_override": 1,
+    "manual_T_overrides": {
+      "国家对成品油价格实施调控": "标题为通用表述，13 天内对应两次不同成品油调价窗口，属不同事件"
+    },
+    "judge_rule": "组内日期跨度 > 30 天判为 T（不同事件），否则 D（双频道同稿）"
+  },
+  "strategy_compare": [
+    {
+      "strategy": "A_仅URL去重",
+      "pool_rows": 309517,
+      "target_rows": 182252,
+      "conflict_groups_remaining": 120,
+      "conflict_rows_remaining": 242,
+      "unmapped_rows_dropped": 127265,
+      "财经": 61189,
+      "体育": 12282,
+      "文娱": 13221,
+      "教育": 2737,
+      "社会": 63235,
+      "国际": 29588,
+      "education_vs_A": 2737,
+      "delta_vs_A": 0,
+      "delta_pct": 0.0
+    },
+    {
+      "strategy": "B_标题全局去重(现行)",
+      "pool_rows": 301116,
+      "target_rows": 179927,
+      "conflict_groups_remaining": 0,
+      "conflict_rows_remaining": 0,
+      "unmapped_rows_dropped": 121189,
+      "财经": 60482,
+      "体育": 12142,
+      "文娱": 13122,
+      "教育": 2704,
+      "社会": 62321,
+      "国际": 29156,
+      "education_vs_A": 2704,
+      "delta_vs_A": -2325,
+      "delta_pct": -1.276
+    },
+    {
+      "strategy": "C_标题+归档日期去重",
+      "pool_rows": 303489,
+      "target_rows": 180650,
+      "conflict_groups_remaining": 34,
+      "conflict_rows_remaining": 68,
+      "unmapped_rows_dropped": 122839,
+      "财经": 60641,
+      "体育": 12162,
+      "文娱": 13135,
+      "教育": 2707,
+      "社会": 62774,
+      "国际": 29231,
+      "education_vs_A": 2707,
+      "delta_vs_A": -1602,
+      "delta_pct": -0.879
+    }
+  ],
   "culture": {
     "culture_total": 13223,
+    "sample_size": 150,
     "rule_dist_on_sample": {
       "其他": 80,
       "影视": 23,
@@ -331,8 +494,7 @@
       "传统文化": 5,
       "文化产业": 4,
       "娱乐明星": 1
-    },
-    "sample_size": 150
+    }
   },
   "clean_check": {
     "rows": 12000,
@@ -346,11 +508,23 @@
       "source",
       "raw_category"
     ],
-    "missing_values": 0,
+    "nan_total": 0,
+    "nan_per_column": {},
+    "empty_string_total": 0,
+    "whitespace_only_total": 0,
+    "missing_critical": {
+      "id": 0,
+      "title": 0,
+      "url": 0,
+      "publish_time": 0,
+      "archive_date": 0,
+      "category": 0
+    },
     "empty_title": 0,
     "dup_url": 0,
     "dup_id": 0,
     "dup_title": 0,
+    "invalid_category": 0,
     "category_counts": {
       "社会": 2000,
       "财经": 2000,

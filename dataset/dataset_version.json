@@ -1,0 +1,119 @@
+{
+  "dataset_version": "1.1.0",
+  "split_version": "1.0.0",
+  "dataset_generated_at": "2026-11-04 02:41:25",
+  "registered_at": "2026-11-04 02:44:20",
+  "random_seed": 42,
+  "source": "中国新闻网",
+  "records_total": 12000,
+  "splits": {
+    "train": {
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "purpose": "模型训练",
+      "rows": 6549,
+      "file": "dataset/splits/train.csv",
+      "sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+      "per_category": {
+        "财经": 1109,
+        "体育": 1107,
+        "文娱": 1134,
+        "教育": 1064,
+        "社会": 1057,
+        "国际": 1078
+      }
+    },
+    "val": {
+      "start": "2026-01-01",
+      "end": "2026-06-30",
+      "purpose": "参数调整",
+      "rows": 3184,
+      "file": "dataset/splits/val.csv",
+      "sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+      "per_category": {
+        "财经": 540,
+        "体育": 487,
+        "文娱": 503,
+        "教育": 518,
+        "社会": 545,
+        "国际": 591
+      }
+    },
+    "test": {
+      "start": "2026-07-01",
+      "end": "2026-10-31",
+      "purpose": "最终评估",
+      "rows": 2267,
+      "file": "dataset/splits/test.csv",
+      "sha256": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509",
+      "per_category": {
+        "财经": 351,
+        "体育": 406,
+        "文娱": 363,
+        "教育": 418,
+        "社会": 398,
+        "国际": 331
+      }
+    }
+  },
+  "files": {
+    "news_clean.csv": {
+      "rows": 12000,
+      "sha256": "29f4827b4a946fbfdba292b5259ffcc4607486f4d27aaf65c9c42f805b250cc4"
+    },
+    "train.csv": {
+      "rows": 6549,
+      "sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3"
+    },
+    "val.csv": {
+      "rows": 3184,
+      "sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+    },
+    "test.csv": {
+      "rows": 2267,
+      "sha256": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509"
+    }
+  },
+  "label_mapping": {
+    "target_categories": [
+      "财经",
+      "体育",
+      "文娱",
+      "教育",
+      "社会",
+      "国际"
+    ],
+    "raw_to_target": {
+      "财经": "财经",
+      "体育": "体育",
+      "文化": "文娱",
+      "教育": "教育",
+      "社会": "社会",
+      "国际": "国际"
+    },
+    "category_to_index": {
+      "财经": 0,
+      "体育": 1,
+      "文娱": 2,
+      "教育": 3,
+      "社会": 4,
+      "国际": 5
+    },
+    "excluded_raw_labels": [
+      "unknown",
+      "图片",
+      "视频"
+    ],
+    "note": "「文娱」沿用目标类名，数据来自站点「文化」频道标签，一对一确定性映射。"
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "note": "首次交付 12,000 条（每类 2,000），六类均衡。"
+    },
+    {
+      "version": "1.1.0",
+      "note": "审计修正：质量报告统计口径与教育类表述；新增跨类别冲突审计、时间划分与版本登记。**样本数据未改动**，news_clean.csv SHA256 与 1.0.0 一致。"
+    }
+  ]
+}
