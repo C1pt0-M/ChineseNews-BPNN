@@ -1,7 +1,10 @@
-# 中国新闻网历史新闻标题采集
+# 基于 TF-IDF 特征降维与 BP 神经网络的中文新闻分类研究
 
-面向机器学习课程实验「基于 TF-IDF 特征降维与 BP 神经网络的中文新闻分类研究」的数据采集程序。
+课程实验「基于 TF-IDF 特征降维与 BP 神经网络的中文新闻分类研究」的完整实现：
+数据采集 → 清洗 → 数据审计 → 时间划分 → 特征工程 → BP 神经网络实验。
+
 数据来源为中国新闻网（中新网）历史滚动新闻归档页，仅采集**标题与元数据**，不采集正文。
+当前进度：数据集版本 `1.1.0`，已完成第一轮特征方案对比实验。
 
 ---
 
@@ -60,7 +63,8 @@
 ## 3. 环境要求与安装
 
 - Python 3.10+（开发与测试环境为 Python 3.12）
-- 依赖：requests、beautifulsoup4、lxml、pandas、matplotlib
+- 采集与统计：requests、beautifulsoup4、lxml、pandas、matplotlib
+- 建模实验：scikit-learn、PyTorch（CPU 版即可）、jieba
 
 ```bash
 pip install -r requirements.txt
@@ -68,6 +72,9 @@ pip install -r requirements.txt
 
 > Windows 提示：若 `python` 与 `pip` 指向不同解释器，请统一使用绝对路径，
 > 例如 `D:/python3.12.4/python.exe -m pip install -r requirements.txt`。
+
+> 建模阶段在 CPU 上完成，未使用 GPU。方案 A（10,864 维稀疏输入）单轮约 3.5s，
+> 7 组配置基线实验合计约 4 分钟；5 随机种子重复实验约 12 分钟。
 
 ---
 
@@ -313,20 +320,100 @@ div.content_list > ul > li
 
 | 文件 | 职责 |
 |---|---|
-| `config.py` | 全部结构性常量：URL 模板、选择器、限速与重试参数、分类映射、路径 |
+| `config.py` | 采集阶段全部结构性常量：URL 模板、选择器、限速与重试参数、分类映射、路径 |
 | `crawler.py` | URL 构造与规范化、带重试/限速的请求、归档页解析、时间合成 |
 | `cleaner.py` | 标题规范化、去重、类别映射、配额抽样 |
 | `quality.py` | 统计、图表、JSON/Markdown 报告生成 |
-| `main.py` | 命令行入口（probe / crawl / clean / all）、断点续采、日志 |
+| `main.py` | 采集命令行入口（probe / crawl / clean / all）、断点续采、日志 |
 | `audit_data.py` | 数据质量审计（只读）：缺失值、重复标题、跨类别冲突、去重策略对比 |
 | `build_splits.py` | 按发布时间划分 train/val/test，做泄漏检查并登记版本与 SHA256 |
+| `model_config.py` | 建模阶段全部超参：TF-IDF 参数、方案维度、网络结构、训练参数、实验清单 |
+| `models/data.py` | 读取划分文件并校验 SHA256，标签转索引 |
+| `models/features.py` | jieba 分词、TF-IDF、卡方选择、TruncatedSVD、标准化（fit 仅限训练集） |
+| `models/bp.py` | 单隐层 BP 网络定义与参数量统计 |
+| `models/trainer.py` | 训练循环、Early Stopping、预测、随机种子控制 |
+| `models/metrics.py` | Accuracy / Macro P-R-F1 / Weighted F1 / 混淆矩阵 |
+| `models/plots.py` | 混淆矩阵、训练曲线、维度曲线、方案对比图 |
+| `models/runs.py` | 运行目录、汇总表、多种子统计的读写 |
+| `train_bp.py` | 训练入口：跑单组 / 全部 7 组 / 多随机种子 |
+| `evaluate_test.py` | 测试集一次性评估（训练阶段不加载测试集） |
+| `baseline_lr.py` | Logistic Regression 参考基线 |
+| `report_experiments.py` | 由 `results/` 自动生成实验报告 |
 
 请求、解析、清洗、保存相互独立，可单独调用；解析层不写盘，清洗层不发请求。
 两个审计/划分脚本只读取 `dataset/` 下的文件，不修改原始数据与交付数据集。
+建模脚本只读取 `dataset/splits/`，且训练阶段物理上不加载 `test.csv`。
 
 ---
 
-## 11. 常见问题
+## 11. 模型与实验（第一轮）
+
+### 11.1 三种特征处理方案
+
+| 方案 | 做法 | 输出 | 维度 |
+|---|---|---|---|
+| A | TF-IDF 直接输入 | 稀疏 | 10,864 |
+| B | TF-IDF + 卡方特征选择 | 稀疏 | 2,000 / 5,000 / 10,000 |
+| C | TF-IDF + TruncatedSVD | 稠密 | 100 / 200 / 300 |
+
+TF-IDF：`min_df=2`、`max_df=0.95`、`sublinear_tf=True`、`max_features=20000`、
+`ngram_range=(1,2)`；jieba 精确模式分词。**词表 / 卡方 / SVD / 标准化器均只在
+`train.csv` 上 fit**，验证集与测试集只做 transform。
+
+### 11.2 BP 网络
+
+`输入(d) → Linear(256) → ReLU → Dropout(0.2) → Linear(6)`，
+CrossEntropyLoss + Adam（lr=1e-3, weight_decay=1e-4），batch 64，
+最多 100 轮，验证集 Macro-F1 连续 10 轮无改善即早停。
+稀疏输入按 batch 转稠密，不整体 densify。
+
+### 11.3 跑实验
+
+```bash
+# 7 组基础实验（种子 42），CPU 约 4 分钟
+python train_bp.py --all
+
+# 候选配置补跑 5 个随机种子
+python train_bp.py --exp A_raw B_chi2_5000 B_chi2_10000 C_svd_300 --seeds 43,44,45,46
+
+# 测试集一次性评估（已评估的会跳过）
+python evaluate_test.py --all
+
+# 参考基线
+python baseline_lr.py
+
+# 由结果重新生成报告
+python report_experiments.py
+```
+
+### 11.4 第一轮主要结果（验证集，5 种子均值）
+
+| 配置 | 维度 | 参数量 | val Macro-F1 | test Macro-F1 |
+|---|---|---|---|---|
+| A 原始 TF-IDF | 10,864 | 2,782,982 | 0.7629 ± 0.0024 | 0.7372 ± 0.0015 |
+| B 卡方 10000 | 10,000 | 2,561,798 | 0.7615 ± 0.0013 | 0.7383 ± 0.0026 |
+| B 卡方 5000 | 5,000 | 1,281,798 | 0.7600 ± 0.0005 | 0.7410 ± 0.0024 |
+| C SVD 300 | 300 | 78,598 | 0.7131 ± 0.0021 | 0.6792 ± 0.0037 |
+| LR 基线 | 10,864 | — | 0.7513 | 0.7183 |
+
+要点：卡方压到 5,000 维几乎无损（参数量约降 2.2 倍），压到 2,000 维掉 1.8 个点；
+SVD 降维明显更差；BP 较线性基线提升约 1–2 个点。
+完整分析见 `reports/initial_experiment_report.md`，设计说明见 `reports/model_design.md`。
+
+### 11.5 产物与复现说明
+
+`results/runs/{exp_id}_s{seed}/` 下保存 `metrics.json`、`history.csv`、
+混淆矩阵、训练曲线、逐条预测 `test_predictions.csv` 与 `feature_builder.pkl`。
+
+> 有两个二进制产物未纳入仓库：`model.pt`（单个最大 11MB）与
+> `feature_builder.pkl`（含 SVD 分量矩阵，单个最大 25MB），两者合计约 400MB。
+> 训练是确定性的（同种子两次训练指标一致到 1e-12），用 11.3 的命令可完整重建。
+> 报告中的所有数字均来自仓库内已提交的 `metrics.json` 与 `experiment_summary.csv`。
+
+---
+
+
+## 12. 常见问题
 
 **Q：某天返回 404 怎么办？**
 该日无归档页（如非法日期 `2025-02-30` 或未归档的未来日期）。程序记入 `crawl_report.json`

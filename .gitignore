@@ -16,6 +16,17 @@ logs/
 # 原始采集结果 85MB（可由 main.py crawl 重新生成，见 README）
 dataset/news_raw.csv
 
+# ---------------------------------------------------------------- 建模产物
+# 二进制产物不入库：
+#   model.pt            单个最大 11MB，23 个运行合计约 250MB
+#   feature_builder.pkl 含 SVD 分量矩阵（300×10864 float64），单个最大 25MB
+# 训练是确定性的，可用 train_bp.py 以相同种子完整重建（见 README 11.5）；
+# 报告中引用的指标保存在已提交的 metrics.json / experiment_summary.csv 中。
+results/runs/*/model.pt
+results/runs/*/feature_builder.pkl
+# 分词缓存：可由语料重新生成
+results/cache/
+
 # ---------------------------------------------------------------- 编辑器与系统文件
 .vscode/
 .idea/
