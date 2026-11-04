@@ -1,0 +1,16 @@
+{
+  "best_epoch_equal": true,
+  "epochs_run_equal": true,
+  "max_absolute_history_difference": {
+    "train_loss": 0.0,
+    "val_loss": 0.0,
+    "val_f1_macro": 0.0,
+    "val_accuracy": 0.0
+  },
+  "history_tolerance": 0.0,
+  "validation_predictions_equal": true,
+  "confusion_equal": true,
+  "parameters_equal": true,
+  "no_test_read_attempts": true,
+  "test_metrics": null
+}

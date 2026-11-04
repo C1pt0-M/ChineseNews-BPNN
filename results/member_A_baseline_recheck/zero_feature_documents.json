@@ -1,0 +1,34 @@
+[
+  {
+    "split": "val",
+    "id": "cn10552755",
+    "title": "因何缅怀聂卫平？",
+    "category": "体育",
+    "publish_time": "2026-01-15 22:11:00",
+    "url": "https://www.chinanews.com/ty/2026/01-15/10552755.shtml",
+    "archive_date": "2026-01-15",
+    "source": "中国新闻网",
+    "raw_category": "体育",
+    "retained_tokens": [
+      "因何",
+      "缅怀",
+      "聂卫平"
+    ]
+  },
+  {
+    "split": "val",
+    "id": "cn10615069",
+    "title": "春到骆驼湾",
+    "category": "社会",
+    "publish_time": "2026-05-03 12:23:00",
+    "url": "https://www.chinanews.com/sh/2026/05-03/10615069.shtml",
+    "archive_date": "2026-05-03",
+    "source": "中国新闻网",
+    "raw_category": "社会",
+    "retained_tokens": [
+      "春到",
+      "骆驼",
+      "湾"
+    ]
+  }
+]

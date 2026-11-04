@@ -413,7 +413,16 @@ SVD 降维明显更差；BP 较线性基线提升约 1–2 个点。
 ---
 
 
-## 12. 常见问题
+## 12. 成员 A Baseline 整改验收
+
+成员 A 的最新复核入口见 [Baseline 整改验收报告](reports/member_A_baseline_recheck.md)，
+并配套 [数据与特征局限](reports/member_A_data_limitations.md) 和
+[验证集错误分析](reports/member_A_error_analysis.md)。
+本轮固定 B0、保留 v1.1.0 数据与原时间划分，未进行测试集模型评估。
+独立复现与日志位于 `results/member_A_baseline_recheck/`；已有目录会拒绝重复训练覆盖。
+测试集在历史多组实验中已被接触，历史测试指标不用于本轮调参或选模。
+
+## 13. 常见问题
 
 **Q：某天返回 404 怎么办？**
 该日无归档页（如非法日期 `2025-02-30` 或未归档的未来日期）。程序记入 `crawl_report.json`

@@ -64,7 +64,7 @@ def plot_confusion_matrix(cm, labels, title, out_path):
     plt.close(fig)
 
 
-def plot_training_curves(history, title, out_path, best_epoch=None):
+def plot_training_curves(history, title, out_path, best_epoch=None, stop_epoch=None):
     _setup_chinese_font()
     epochs = range(1, len(history["train_loss"]) + 1)
 
@@ -99,6 +99,13 @@ def plot_training_curves(history, title, out_path, best_epoch=None):
             label="验证集 Macro-F1")
     best_ep = best_epoch or int(np.argmax(history["val_f1_macro"])) + 1
     best_val = history["val_f1_macro"][best_ep - 1]
+    for panel in axes:
+        panel.axvline(best_ep, color="#555555", ls=":", lw=1,
+                      label=f"Selected @ {best_ep}")
+        if stop_epoch is not None:
+            panel.axvline(stop_epoch, color="#888888", ls="--", lw=1,
+                          label=f"Early stop @ {stop_epoch}")
+        panel.legend(frameon=False, fontsize=8)
     ax.scatter([best_ep], [best_val], color="#c0392b", zorder=5, s=28)
     ax.annotate(f"best {best_val:.4f} @ {best_ep}", (best_ep, best_val),
                 textcoords="offset points", xytext=(8, -14), fontsize=9,

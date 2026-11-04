@@ -1,0 +1,123 @@
+[
+  {
+    "text": "中国人民银行",
+    "jieba_tokens": [
+      "中国人民银行"
+    ],
+    "retained_tokens": [
+      "中国人民银行"
+    ],
+    "retained_token_in_vocab": {
+      "中国人民银行": true
+    },
+    "train_title_mentions": 2,
+    "val_title_mentions": 0
+  },
+  {
+    "text": "北京大学",
+    "jieba_tokens": [
+      "北京大学"
+    ],
+    "retained_tokens": [
+      "北京大学"
+    ],
+    "retained_token_in_vocab": {
+      "北京大学": true
+    },
+    "train_title_mentions": 4,
+    "val_title_mentions": 2
+  },
+  {
+    "text": "中国科学院",
+    "jieba_tokens": [
+      "中国科学院"
+    ],
+    "retained_tokens": [
+      "中国科学院"
+    ],
+    "retained_token_in_vocab": {
+      "中国科学院": true
+    },
+    "train_title_mentions": 5,
+    "val_title_mentions": 2
+  },
+  {
+    "text": "美加墨世界杯",
+    "jieba_tokens": [
+      "美加墨",
+      "世界杯"
+    ],
+    "retained_tokens": [
+      "美加墨",
+      "世界杯"
+    ],
+    "retained_token_in_vocab": {
+      "美加墨": false,
+      "世界杯": true
+    },
+    "train_title_mentions": 0,
+    "val_title_mentions": 20
+  },
+  {
+    "text": "全运会",
+    "jieba_tokens": [
+      "全运会"
+    ],
+    "retained_tokens": [
+      "全运会"
+    ],
+    "retained_token_in_vocab": {
+      "全运会": true
+    },
+    "train_title_mentions": 96,
+    "val_title_mentions": 0
+  },
+  {
+    "text": "SNH48",
+    "jieba_tokens": [
+      "SNH48"
+    ],
+    "retained_tokens": [
+      "SNH48"
+    ],
+    "retained_token_in_vocab": {
+      "SNH48": false
+    },
+    "train_title_mentions": 0,
+    "val_title_mentions": 1
+  },
+  {
+    "text": "丝芭",
+    "jieba_tokens": [
+      "丝",
+      "芭"
+    ],
+    "retained_tokens": [
+      "丝",
+      "芭"
+    ],
+    "retained_token_in_vocab": {
+      "丝": true,
+      "芭": true
+    },
+    "train_title_mentions": 0,
+    "val_title_mentions": 1
+  },
+  {
+    "text": "纤维芯片",
+    "jieba_tokens": [
+      "纤维",
+      "芯片"
+    ],
+    "retained_tokens": [
+      "纤维",
+      "芯片"
+    ],
+    "retained_token_in_vocab": {
+      "纤维": false,
+      "芯片": true
+    },
+    "train_title_mentions": 0,
+    "val_title_mentions": 1
+  }
+]

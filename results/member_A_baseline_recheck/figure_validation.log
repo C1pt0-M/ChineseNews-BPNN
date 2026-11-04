@@ -1,0 +1,17 @@
+
+--- results\member_A_baseline_recheck\figures\eval_loss.svg ---
+  category: vector  ext: svg  size: 39733 B
+  [PASS] 无问题。
+
+--- results\member_A_baseline_recheck\figures\per_class_metrics.svg ---
+  category: vector  ext: svg  size: 45350 B
+  [PASS] 无问题。
+
+--- results\member_A_baseline_recheck\figures\train_online_loss.svg ---
+  category: vector  ext: svg  size: 37650 B
+  [PASS] 无问题。
+
+--- results\member_A_baseline_recheck\figures\val_macro_f1.svg ---
+  category: vector  ext: svg  size: 35627 B
+  [PASS] 无问题。
+

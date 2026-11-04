@@ -18,3 +18,4 @@
 # 审计归档含逐文件 SHA256，保留实验产物与执行源码快照的原始字节。
 # SVG/补丁由工具生成，行尾空格不属于源代码风格检查范围。
 results/member_A_audit_20261105/** -text whitespace=-blank-at-eol
+results/member_A_baseline_recheck/** -text whitespace=-blank-at-eol,-blank-at-eof

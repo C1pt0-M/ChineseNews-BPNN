@@ -1,0 +1,22 @@
+[
+  {
+    "figure": "train_online_loss",
+    "warnings": [],
+    "clipped_text": []
+  },
+  {
+    "figure": "eval_loss",
+    "warnings": [],
+    "clipped_text": []
+  },
+  {
+    "figure": "val_macro_f1",
+    "warnings": [],
+    "clipped_text": []
+  },
+  {
+    "figure": "per_class_metrics",
+    "warnings": [],
+    "clipped_text": []
+  }
+]

@@ -1,0 +1,31 @@
+COMMAND: D:\python3.12.4\python.exe tests/run_training_without_test.py --exp A_raw --seeds 42 --output-root results\member_A_baseline_recheck
+==============================================================================
+BP 神经网络 · 中文新闻标题分类 · 训练阶段
+PyTorch 2.8.0+cpu  |  设备 CPU  |  线程 16
+待跑配置 1 组 × 种子 [42] = 1 次训练
+==============================================================================
+  train: 6549 条，各类 {'财经': 1109, '体育': 1107, '文娱': 1134, '教育': 1064, '社会': 1057, '国际': 1078}
+  val: 3184 条，各类 {'财经': 540, '体育': 487, '文娱': 503, '教育': 518, '社会': 545, '国际': 591}
+
+=== 实验 A_raw (seed=42) | 原始 TF-IDF（稀疏高维，直接输入 BP） ===
+    特征：TF-IDF 10864 维 → 输入 10864 维（稀疏），fit 行数 6549，耗时 分词0.0s + 变换0.3s
+    网络：10864 → 256 → ReLU → Dropout(0.2) → 6
+    epoch   1/100  train_online_loss=1.6122  train_eval_loss=1.1179  val_loss=1.2558  val_F1=0.7223  (2.2s) *
+    epoch   2/100  train_online_loss=0.8025  train_eval_loss=0.4290  val_loss=0.7624  val_F1=0.7606  (2.2s) *
+    epoch   3/100  train_online_loss=0.3833  train_eval_loss=0.2243  val_loss=0.6870  val_F1=0.7622  (2.3s) *
+    epoch   4/100  train_online_loss=0.2226  train_eval_loss=0.1351  val_loss=0.6816  val_F1=0.7616  (2.4s)
+    epoch   5/100  train_online_loss=0.1430  train_eval_loss=0.0893  val_loss=0.7025  val_F1=0.7587  (2.7s)
+    epoch   6/100  train_online_loss=0.1004  train_eval_loss=0.0639  val_loss=0.7207  val_F1=0.7549  (3.0s)
+    epoch   7/100  train_online_loss=0.0747  train_eval_loss=0.0501  val_loss=0.7433  val_F1=0.7468  (3.0s)
+    epoch   8/100  train_online_loss=0.0611  train_eval_loss=0.0416  val_loss=0.7591  val_F1=0.7486  (3.0s)
+    epoch   9/100  train_online_loss=0.0531  train_eval_loss=0.0353  val_loss=0.7750  val_F1=0.7485  (3.1s)
+    epoch  10/100  train_online_loss=0.0468  train_eval_loss=0.0313  val_loss=0.7864  val_F1=0.7452  (3.1s)
+    epoch  11/100  train_online_loss=0.0423  train_eval_loss=0.0285  val_loss=0.8010  val_F1=0.7434  (3.1s)
+    epoch  12/100  train_online_loss=0.0395  train_eval_loss=0.0263  val_loss=0.8110  val_F1=0.7461  (3.3s)
+    epoch  13/100  train_online_loss=0.0367  train_eval_loss=0.0244  val_loss=0.8140  val_F1=0.7444  (3.5s)
+    早停：验证集 macro-F1 连续 10 轮无改善（最佳 epoch 3）
+    验证集：acc=0.7613  P_macro=0.7659  R_macro=0.7612  F1_macro=0.7622  F1_weighted=0.7621
+    最佳轮数 3（共跑 13 轮），训练耗时 36.8s，参数量 2,782,982
+    已保存 → results\member_A_baseline_recheck\A_raw_s42
+独立结果已保存至 results\member_A_baseline_recheck；历史汇总未改写。
+Runtime test.csv read attempts: 0

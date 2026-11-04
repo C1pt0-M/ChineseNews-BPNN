@@ -1,0 +1,3 @@
+﻿split,documents,mean_tokens,empty_token_documents,empty_token_ratio,zero_feature_documents,token_occurrences,unique_tokens,oov_token_occurrences,oov_occurrence_rate,oov_unique_rate,tfidf_features,unseen_in_train_occurrence_rate,unseen_in_train_unique_rate
+train,6549,9.774622079706825,0,0.0,0,64014,16277,9773,0.1526697284968913,0.5959329114701727,10864,0.0,0.0
+val,3184,9.883793969849247,0,0.0,2,31470,10580,7728,0.2455672068636797,0.5877126654064272,10864,0.16800127105179535,0.4242911153119093

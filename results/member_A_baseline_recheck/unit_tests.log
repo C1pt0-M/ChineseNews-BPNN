@@ -1,0 +1,14 @@
+COMMAND: D:\python3.12.4\python.exe -m unittest discover -s tests -v
+test_early_stopping_restores_macro_f1_checkpoint (test_baseline_audit.AuditTests.test_early_stopping_restores_macro_f1_checkpoint) ... ok
+test_eval_loss_is_weighted_no_grad_and_rng_neutral (test_baseline_audit.AuditTests.test_eval_loss_is_weighted_no_grad_and_rng_neutral) ... ok
+test_existing_run_rejected_before_features_or_training (test_baseline_audit.AuditTests.test_existing_run_rejected_before_features_or_training) ... ok
+test_fingerprint_mismatch_blocks_loading_and_test_entry (test_baseline_audit.AuditTests.test_fingerprint_mismatch_blocks_loading_and_test_entry) ... ok
+test_lr_no_test_uses_train_val_loader (test_baseline_audit.AuditTests.test_lr_no_test_uses_train_val_loader) ... ok
+test_numeric_diagnostics_match_actual_filter (test_baseline_audit.AuditTests.test_numeric_diagnostics_match_actual_filter) ... ok
+test_training_entry_fits_features_only_on_train (test_baseline_audit.AuditTests.test_training_entry_fits_features_only_on_train) ... ok
+test_training_loader_does_not_open_test (test_baseline_audit.AuditTests.test_training_loader_does_not_open_test) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.512s
+
+OK

@@ -28,6 +28,7 @@ import torch
 
 import model_config as C
 from models.bp import BPNet
+from models.data import verify_dataset
 from models.features import corpus_cache_key, tokenize_corpus
 from models.metrics import compute_metrics, format_metrics_line
 from models.plots import plot_confusion_matrix
@@ -38,6 +39,7 @@ from models.trainer import predict, set_seed
 
 def load_test_split():
     """仅在测试阶段读取 test.csv，并做与训练一致的基本校验。"""
+    verify_dataset(strict=True, splits=("test",))
     path = C.SPLIT_DIR / "test.csv"
     df = pd.read_csv(path, encoding="utf-8-sig")
     unknown = set(df["category"]) - set(C.LABELS)

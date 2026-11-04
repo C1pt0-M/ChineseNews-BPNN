@@ -1,0 +1,44 @@
+COMMAND: D:\python3.12.4\python.exe verify_dataset.py
+[PASS] news_clean.csv 存在                 
+[PASS] 样本总量为 12,000                        (实际 12,000)
+[PASS] 类别名称与目标六类完全一致                       (实际 ['体育', '国际', '教育', '文娱', '社会', '财经'])
+[PASS] 每个类别均为 2,000 条                      (财经=2000 / 体育=2000 / 文娱=2000 / 教育=2000 / 社会=2000 / 国际=2000)
+[PASS] 无空标题（含纯空白）                        
+[PASS] 无无效标签                             
+[PASS] 无重复 ID                              (重复 0)
+[PASS] 无重复 URL                             (重复 0)
+[PASS] 无重复标题                               (重复 0)
+[PASS] 时间字段可正确解析                         
+[PASS] 字段完整（8 列）                           (实际 ['id', 'title', 'category', 'publish_time', 'url', 'archive_date', 'source', 'raw_category'])
+[PASS] 划分文件齐备                            
+[PASS] 三集合合计等于 12,000                      (实际 12,000)
+[PASS] 三集合 ID 互不交叉                         (交叉 0)
+[PASS] 三集合并集等于原数据集                         (并集 12,000)
+[PASS] 合并后各类仍为 2,000                       (财经=2000 / 体育=2000 / 文娱=2000 / 教育=2000 / 社会=2000 / 国际=2000)
+[PASS] 各集合时间边界正确                           (train:2025-01-01~2025-12-31；val:2026-01-01~2026-06-30；test:2026-07-01~2026-10-31)
+[PASS] 跨集合无精确重复标题                          (跨集合重复 0)
+[PASS] 三集合 URL 互不交叉                        (交叉 0)
+[PASS] train 样本数正确                         (6549)
+[PASS] val 样本数正确                           (3184)
+[PASS] test 样本数正确                          (2267)
+[PASS] dataset_version.json 存在           
+[PASS] 数据集固定为 v1.1.0                     
+[PASS] 划分固定为 v1.0.0                      
+[PASS] 版本号已登记                              (1.1.0)
+[PASS] 随机种子已登记                             (42)
+[PASS] news_clean.csv SHA256 与实际一致       
+[PASS] train.csv SHA256 一致               
+[PASS] val.csv SHA256 一致                 
+[PASS] test.csv SHA256 一致                
+[PASS] 标签映射完整                            
+[PASS] 标签索引与模型配置逐项一致                     
+[PASS] 文化到文娱代理映射保持不变                     
+[PASS] 质量报告存在                              (D:\ChineseNews-BPNN\reports\quality_report.md)
+[PASS] 时间划分报告存在                            (D:\ChineseNews-BPNN\reports\time_split_report.md)
+[PASS] 跨类别冲突报告存在                           (D:\ChineseNews-BPNN\reports\cross_category_conflict_report.md)
+[PASS] 报告中清洗后合计与 crawl_report 一致           (crawl_report=179,927)
+[PASS] 报告中交付样本量与 crawl_report 一致           (crawl_report=12,000)
+[PASS] 报告未残留「教育可能无法达成」的过时表述              
+[PASS] 划分报告样本数与 split_statistics.csv 一致  
+
+合计 41 项，通过 41 项，失败 0 项

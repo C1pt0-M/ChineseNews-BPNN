@@ -1,0 +1,113 @@
+{
+  "fingerprints": {
+    "dataset_version": "1.1.0",
+    "train": {
+      "rows": 6549,
+      "sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+      "expected_sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+      "ok": true
+    },
+    "val": {
+      "rows": 3184,
+      "sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+      "expected_sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+      "ok": true
+    },
+    "test": {
+      "rows": 2267,
+      "sha256": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509",
+      "expected_sha256": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509",
+      "ok": true
+    }
+  },
+  "exact_intersections": [
+    {
+      "left": "train",
+      "right": "val",
+      "field": "id",
+      "intersection": 0
+    },
+    {
+      "left": "train",
+      "right": "val",
+      "field": "url",
+      "intersection": 0
+    },
+    {
+      "left": "train",
+      "right": "val",
+      "field": "title",
+      "intersection": 0
+    },
+    {
+      "left": "train",
+      "right": "test",
+      "field": "id",
+      "intersection": 0
+    },
+    {
+      "left": "train",
+      "right": "test",
+      "field": "url",
+      "intersection": 0
+    },
+    {
+      "left": "train",
+      "right": "test",
+      "field": "title",
+      "intersection": 0
+    },
+    {
+      "left": "val",
+      "right": "test",
+      "field": "id",
+      "intersection": 0
+    },
+    {
+      "left": "val",
+      "right": "test",
+      "field": "url",
+      "intersection": 0
+    },
+    {
+      "left": "val",
+      "right": "test",
+      "field": "title",
+      "intersection": 0
+    }
+  ],
+  "label_mapping": {
+    "target_categories": [
+      "财经",
+      "体育",
+      "文娱",
+      "教育",
+      "社会",
+      "国际"
+    ],
+    "raw_to_target": {
+      "财经": "财经",
+      "体育": "体育",
+      "文化": "文娱",
+      "教育": "教育",
+      "社会": "社会",
+      "国际": "国际"
+    },
+    "category_to_index": {
+      "财经": 0,
+      "体育": 1,
+      "文娱": 2,
+      "教育": 3,
+      "社会": 4,
+      "国际": 5
+    },
+    "excluded_raw_labels": [
+      "unknown",
+      "图片",
+      "视频"
+    ],
+    "note": "「文娱」沿用目标类名，数据来自站点「文化」频道标签，一对一确定性映射。"
+  },
+  "dataset_version": "1.1.0",
+  "split_version": "1.0.0"
+}

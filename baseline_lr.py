@@ -37,7 +37,7 @@ def main(argv=None) -> int:
         print(f"[跳过] {OUT_FILE.name} 已存在；如需重算请加 --force")
         return 0
 
-    splits = load_splits(verify=True)
+    splits = load_splits(verify=True, splits=("train", "val"))
     train_texts, y_train, _ = splits["train"]
     val_texts, y_val, _ = splits["val"]
 

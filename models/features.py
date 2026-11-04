@@ -6,9 +6,9 @@
     B：TF-IDF → SelectKBest(chi2)    → 稀疏矩阵（低维）
     C：TF-IDF → TruncatedSVD         → 稠密矩阵（低维），可选 z-score
 
-「只在训练集 fit」通过 API 强制：FeatureBuilder.fit() 是唯一创建
-词表 / 卡方选择器 / SVD / 标准化器的入口，transform() 未 fit 直接抛错，
-调用方无法把验证集或测试集喂进 fit。
+FeatureBuilder.fit() 创建词表及变换器，transform() 未 fit 直接抛错。
+API 无法辨识传入文本属于哪个集合；只在训练集 fit 由训练入口保证，
+并通过入口集成测试核查，不能将方法参数名视为数据泄漏防护。
 """
 
 from __future__ import annotations

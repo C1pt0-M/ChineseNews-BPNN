@@ -1,0 +1,7 @@
+{
+  "definition": "first 8 title characters, exact prefix; integrity risk only",
+  "cross_split_groups": 98,
+  "affected_records": 414,
+  "cross_split_cross_category_groups": 25,
+  "not_proof_of_same_event": true
+}

@@ -112,7 +112,9 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
                           f"验证集混淆矩阵 · {exp['label']} (seed={seed})",
                           out_dir / "confusion_val.png")
     plot_training_curves(result["history"], f"{exp['label']} · seed={seed}",
-                         out_dir / "training_curve.png", best_epoch=result["best_epoch"])
+                         out_dir / "training_curve.png", best_epoch=result["best_epoch"],
+                         stop_epoch=(result["epochs_run"] if result["epochs_run"] <
+                                     result["train_params"]["max_epochs"] else None))
     val_df = splits["val"][2].copy()
     val_df["predicted_category"] = [C.LABELS[i] for i in predict(result["model"], X_val)]
     val_df.to_csv(out_dir / "val_predictions.csv", index=False, encoding="utf-8-sig")

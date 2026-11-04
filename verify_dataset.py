@@ -17,6 +17,7 @@ from pathlib import Path
 import pandas as pd
 
 import config
+import model_config
 
 DATASET = config.DATASET_DIR
 SPLITS = DATASET / "splits"
@@ -47,6 +48,7 @@ def sha256(path: Path) -> str:
 
 
 def main() -> int:
+    results.clear()
     # ---------------- 交付数据集
     clean_path = DATASET / "news_clean.csv"
     check("news_clean.csv 存在", clean_path.exists())
@@ -122,11 +124,19 @@ def main() -> int:
             for j in range(i + 1, len(names)):
                 inter += len(set(parts[names[i]]["title"]) & set(parts[names[j]]["title"]))
         check("跨集合无精确重复标题", inter == 0, f"跨集合重复 {inter}")
+        url_inter = sum(len(set(parts[a]["url"]) & set(parts[b]["url"]))
+                        for i, a in enumerate(names) for b in names[i + 1:])
+        check("三集合 URL 互不交叉", url_inter == 0, f"交叉 {url_inter}")
+        expected_rows = {"train": 6549, "val": 3184, "test": 2267}
+        for name, count in expected_rows.items():
+            check(f"{name} 样本数正确", len(parts[name]) == count, str(len(parts[name])))
 
     # ---------------- 版本信息与指纹
     check("dataset_version.json 存在", VERSION_JSON.exists())
     if VERSION_JSON.exists():
         v = json.loads(VERSION_JSON.read_text(encoding="utf-8"))
+        check("数据集固定为 v1.1.0", v.get("dataset_version") == "1.1.0")
+        check("划分固定为 v1.0.0", v.get("split_version") == "1.0.0")
         check("版本号已登记", bool(v.get("dataset_version")),
               str(v.get("dataset_version")))
         check("随机种子已登记", v.get("random_seed") is not None,
@@ -142,6 +152,11 @@ def main() -> int:
         check("标签映射完整",
               set(lm.get("target_categories", [])) == set(cats)
               and set(lm.get("category_to_index", {})) == set(cats))
+        check("标签索引与模型配置逐项一致",
+              lm.get("category_to_index") == model_config.LABEL_TO_INDEX
+              and lm.get("target_categories") == model_config.LABELS)
+        check("文化到文娱代理映射保持不变",
+              lm.get("raw_to_target", {}).get("文化") == "文娱")
 
     # ---------------- 报告与数据同步
     for name, p in [("质量报告", QUALITY_MD), ("时间划分报告", SPLIT_MD),
