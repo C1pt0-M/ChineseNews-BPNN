@@ -68,6 +68,11 @@ def save_history(history: dict, path: Path) -> None:
         "val_f1_macro": history["val_f1_macro"][i],
         "epoch_time": history["epoch_time"][i],
     } for i in range(n)]
+    for i, row in enumerate(rows):
+        row["train_online_loss"] = history.get("train_online_loss", history["train_loss"])[i]
+        row["val_macro_f1"] = history.get("val_macro_f1", history["val_f1_macro"])[i]
+        if "train_eval_loss" in history:
+            row["train_eval_loss"] = history["train_eval_loss"][i]
     pd.DataFrame(rows).to_csv(path, index=False, encoding="utf-8-sig")
 
 

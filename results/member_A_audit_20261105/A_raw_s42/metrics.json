@@ -1,0 +1,182 @@
+{
+  "run_id": "A_raw_s42",
+  "experiment_id": "A_raw",
+  "label": "A 原始 TF-IDF",
+  "scheme": "A",
+  "scheme_name": "原始 TF-IDF（稀疏高维，直接输入 BP）",
+  "seed": 42,
+  "dataset_version": "1.1.0",
+  "split_version": "1.0.0",
+  "created_at": "2026-11-05 01:32:38",
+  "provenance": {
+    "git_head": "8f02aebe1783ec1067dccc7b32bfa1a402ebdd5f",
+    "git_status": " M models/data.py\n M models/plots.py\n M models/runs.py\n M models/trainer.py\n M train_bp.py\n?? \"ChineseNews_BPNN_\\344\\270\\211\\344\\272\\272\\345\\210\\206\\345\\267\\245\\344\\270\\216\\350\\257\\276\\347\\250\\213\\346\\212\\245\\345\\221\\212\\350\\247\\204\\345\\210\\222.md\"\n?? member_A_train.log\n?? results/member_A_audit_20261105/\n",
+    "source_sha256": {
+      "D:\\ChineseNews-BPNN\\train_bp.py": "0f6d5d5e6f3cc441e3873853abde2897d9fccdda18b2fecbeefcd0c040f551dd",
+      "models\\bp.py": "cde1d13cf9aff98ea61c817c327acedc4b6d8b0f81d42bb83de684c6e814af28",
+      "models\\data.py": "3cf37f2bd26bd59d3737319000afc6b0d20b87a6207daa37df474583360cf783",
+      "models\\features.py": "355ec709c5f66c10576cc05314cfcda63461efac1dddbf6defff2fcfe423cddb",
+      "models\\metrics.py": "8d979aac625881956806a7446d10f0ad0470e86018db92d1bf64e405f385979b",
+      "models\\plots.py": "45b9923e5b9614d5554d232c3d74fbfae6682ccdde5f0721cb65c74934ce9a25",
+      "models\\runs.py": "067f7208440f94ed6bc7bbf8b8460c5f02e79a34a2ad60e09821e0e27e6c58d2",
+      "models\\trainer.py": "36169ca8eb83b2dbcb2771103c7f81737db347f75254f4be9c1c37e38ddf7cda",
+      "models\\__init__.py": "d40bb798b7d48497ff16c7f07cb412e3e4f4972dd1c1e9a22871f51cec9c728a",
+      "model_config.py": "8980d2e5905c476dda24c383e9880c85842095da8b0ba07d936abe7fa8533199"
+    },
+    "python": "3.12.4",
+    "torch": "2.8.0+cpu",
+    "torch_threads": 16,
+    "tfidf_params": {
+      "min_df": 2,
+      "max_df": 0.95,
+      "sublinear_tf": true,
+      "max_features": 20000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "norm": "l2",
+      "use_idf": true,
+      "smooth_idf": true,
+      "token_pattern": null,
+      "lowercase": false
+    },
+    "split_sha256": {
+      "train": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+      "val": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+    }
+  },
+  "feature": {
+    "scheme": "A",
+    "tfidf_features": 10864,
+    "input_dim": 10864,
+    "fit_rows": 6549,
+    "sparse": true
+  },
+  "model": {
+    "input_dim": 10864,
+    "hidden_dim": 256,
+    "activation": "ReLU",
+    "dropout": 0.2,
+    "output_dim": 6,
+    "n_parameters": 2782982
+  },
+  "training": {
+    "best_epoch": 3,
+    "epochs_run": 13,
+    "train_time": 57.973537500045495,
+    "tokenize_time": 0.0934766000136733,
+    "feature_time": 0.46411519998218864,
+    "params": {
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 100,
+      "patience": 10,
+      "min_delta": 0.0001,
+      "grad_clip": 5.0
+    },
+    "early_stopping_patience": 10,
+    "selection_metric": "f1_macro"
+  },
+  "val": {
+    "accuracy": 0.7613065326633166,
+    "precision_macro": 0.7658926457974343,
+    "recall_macro": 0.7612351956161337,
+    "f1_macro": 0.7621953318923316,
+    "f1_weighted": 0.7620686912447284,
+    "per_class": {
+      "财经": {
+        "precision": 0.6798623063683304,
+        "recall": 0.7314814814814815,
+        "f1": 0.7047279214986619,
+        "support": 540
+      },
+      "体育": {
+        "precision": 0.9333333333333333,
+        "recall": 0.8336755646817249,
+        "f1": 0.8806941431670282,
+        "support": 487
+      },
+      "文娱": {
+        "precision": 0.6857638888888888,
+        "recall": 0.7852882703777336,
+        "f1": 0.732159406858202,
+        "support": 503
+      },
+      "教育": {
+        "precision": 0.8104838709677419,
+        "recall": 0.7760617760617761,
+        "f1": 0.7928994082840237,
+        "support": 518
+      },
+      "社会": {
+        "precision": 0.5964566929133859,
+        "recall": 0.5559633027522936,
+        "f1": 0.5754985754985755,
+        "support": 545
+      },
+      "国际": {
+        "precision": 0.8894557823129252,
+        "recall": 0.8849407783417935,
+        "f1": 0.8871925360474979,
+        "support": 591
+      }
+    },
+    "confusion_matrix": [
+      [
+        395,
+        4,
+        25,
+        18,
+        82,
+        16
+      ],
+      [
+        11,
+        406,
+        26,
+        10,
+        16,
+        18
+      ],
+      [
+        18,
+        6,
+        395,
+        22,
+        52,
+        10
+      ],
+      [
+        29,
+        9,
+        32,
+        402,
+        39,
+        7
+      ],
+      [
+        100,
+        9,
+        82,
+        37,
+        303,
+        14
+      ],
+      [
+        28,
+        1,
+        16,
+        7,
+        16,
+        523
+      ]
+    ],
+    "n_samples": 3184,
+    "loss": 0.6870276340887175
+  },
+  "test": null,
+  "test_evaluated_at": "",
+  "notes": "验证集指标用于模型选择；测试集尚未评估，由 evaluate_test.py 一次性完成。"
+}

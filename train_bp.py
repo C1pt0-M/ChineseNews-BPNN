@@ -26,6 +26,10 @@ import argparse
 import pickle
 import sys
 import time
+import hashlib
+import platform
+import subprocess
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -37,7 +41,7 @@ from models.metrics import format_metrics_line
 from models.plots import plot_confusion_matrix, plot_training_curves
 from models.runs import (SUMMARY_FILE, now_str, rebuild_summary, run_path,
                          save_confusion, save_history, save_json)
-from models.trainer import train_bp_model
+from models.trainer import train_bp_model, predict
 
 
 def log(msg: str = "") -> None:
@@ -75,7 +79,12 @@ def build_features(exp: dict, seed: int, splits: dict, log_fn=log):
     return builder, X_train, y_train, X_val, y_val, {"tokenize": token_time, "feature": feat_time}
 
 
-def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool = False) -> dict:
+def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool = False,
+               output_root: Path | None = None) -> dict:
+    out_dir = (output_root / f"{exp['id']}_s{seed}") if output_root else run_path(exp["id"], seed)
+    # 必须在训练前拒绝覆盖，防止误改历史实验。
+    if out_dir.exists():
+        raise FileExistsError(f"结果目录已存在，拒绝覆盖：{out_dir}")
     tag = f"{exp['id']} (seed={seed})"
     log(f"\n=== 实验 {tag} | {C.SCHEME_NAMES[exp['scheme']]} ===")
 
@@ -95,7 +104,6 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
     )
 
     val_metrics = result["val_metrics"]
-    out_dir = run_path(exp["id"], seed)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     save_history(result["history"], out_dir / "history.csv")
@@ -104,7 +112,10 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
                           f"验证集混淆矩阵 · {exp['label']} (seed={seed})",
                           out_dir / "confusion_val.png")
     plot_training_curves(result["history"], f"{exp['label']} · seed={seed}",
-                         out_dir / "training_curve.png")
+                         out_dir / "training_curve.png", best_epoch=result["best_epoch"])
+    val_df = splits["val"][2].copy()
+    val_df["predicted_category"] = [C.LABELS[i] for i in predict(result["model"], X_val)]
+    val_df.to_csv(out_dir / "val_predictions.csv", index=False, encoding="utf-8-sig")
 
     torch.save(result["model"].state_dict(), out_dir / "model.pt")
     with open(out_dir / "feature_builder.pkl", "wb") as f:
@@ -120,6 +131,17 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
         "dataset_version": "1.1.0",
         "split_version": "1.0.0",
         "created_at": now_str(),
+        "provenance": {
+            "git_head": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+            "git_status": subprocess.check_output(["git", "status", "--short"], text=True),
+            "source_sha256": {str(p): hashlib.sha256(p.read_bytes()).hexdigest()
+                              for p in [Path(__file__), *Path("models").glob("*.py"), Path("model_config.py")]},
+            "python": platform.python_version(), "torch": torch.__version__,
+            "torch_threads": torch.get_num_threads(),
+            "tfidf_params": C.TFIDF_PARAMS,
+            "split_sha256": {s: hashlib.sha256((C.SPLIT_DIR / f"{s}.csv").read_bytes()).hexdigest()
+                             for s in ("train", "val")},
+        },
         "feature": builder.describe(),
         "model": result["architecture"],
         "training": {
@@ -142,7 +164,7 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
     log(f"    验证集：{format_metrics_line(val_metrics)}")
     log(f"    最佳轮数 {result['best_epoch']}（共跑 {result['epochs_run']} 轮）"
         f"，训练耗时 {result['train_time']:.1f}s，参数量 {result['n_parameters']:,}")
-    log(f"    已保存 → {out_dir.relative_to(C.BASE_DIR)}")
+    log(f"    已保存 → {out_dir.resolve().relative_to(C.BASE_DIR)}")
     return payload
 
 
@@ -162,6 +184,7 @@ def parse_args(argv=None):
     p.add_argument("--epochs", type=int, default=None)
     p.add_argument("--patience", type=int, default=None)
     p.add_argument("--quiet", action="store_true", help="不打印每轮日志")
+    p.add_argument("--output-root", type=Path, help="独立结果根目录；不改写历史汇总")
     return p.parse_args(argv)
 
 
@@ -196,7 +219,7 @@ def main(argv=None) -> int:
     log(f"待跑配置 {len(exps)} 组 × 种子 {seeds} = {len(exps) * len(seeds)} 次训练")
     log("=" * 78)
 
-    splits = load_splits(verify=True)
+    splits = load_splits(verify=True, splits=("train", "val"))
     for name in ("train", "val"):
         _, y, _ = splits[name]
         counts = np.bincount(y, minlength=C.N_CLASSES)
@@ -206,11 +229,15 @@ def main(argv=None) -> int:
     for exp in exps:
         for seed in seeds:
             try:
-                run_single(exp, seed, splits, overrides, quiet=args.quiet)
+                run_single(exp, seed, splits, overrides, quiet=args.quiet,
+                           output_root=args.output_root)
             except Exception as exc:                     # 单组失败不影响其余
                 failures.append((exp["id"], seed, repr(exc)))
                 log(f"    [失败] {exp['id']} seed={seed}: {exc}")
 
+    if args.output_root:
+        log(f"独立结果已保存至 {args.output_root}；历史汇总未改写。")
+        return 1 if failures else 0
     summary = rebuild_summary()
     log("\n" + "=" * 78)
     log(f"汇总已写入 {SUMMARY_FILE.relative_to(C.BASE_DIR)}（{len(summary)} 条运行记录）")

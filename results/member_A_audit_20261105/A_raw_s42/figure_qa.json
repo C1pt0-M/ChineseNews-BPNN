@@ -1,0 +1,17 @@
+[
+  {
+    "figure": "eval_loss",
+    "warnings": [],
+    "clipped_labels": []
+  },
+  {
+    "figure": "online_vs_eval",
+    "warnings": [],
+    "clipped_labels": []
+  },
+  {
+    "figure": "val_macro_f1",
+    "warnings": [],
+    "clipped_labels": []
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "same_epochs": true,
+  "historical_prediction_matches_metrics": true,
+  "new_predictions_equal_historical": true,
+  "max_abs_history_difference": {
+    "train_loss": 0.0,
+    "val_loss": 0.0,
+    "val_f1_macro": 0.0,
+    "val_accuracy": 0.0
+  },
+  "best_epoch": 3,
+  "epochs_run": 13,
+  "historical_model_sha256": "49c2c970ef4402edff6b75fb0666356da5bfdf643e86a0a3a6c9c9b3a43fb441",
+  "historical_feature_sha256": "3880095ad4854de323d39861eac07c1940b7d6ec6921daa234f00a97d7096fd5"
+}

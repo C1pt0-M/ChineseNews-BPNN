@@ -76,6 +76,15 @@ def _eval_loss_and_metrics(model, X, y, criterion, batch_size: int = 512):
     return metrics
 
 
+def evaluate_training_set(model, X, y, batch_size: int = 512):
+    """Epoch 更新结束后，在 eval/no_grad 下按样本数加权计算训练集 CE。
+
+    与验证评估共用实现；无参数更新，也不消耗 Dropout 随机数。
+    返回指标中的 loss 不包含优化器的 weight decay 惩罚。
+    """
+    return _eval_loss_and_metrics(model, X, y, nn.CrossEntropyLoss(), batch_size)
+
+
 def train_bp_model(X_train, y_train, X_val, y_val,
                    seed: int = C.SEED,
                    train_params: dict | None = None,
@@ -85,7 +94,7 @@ def train_bp_model(X_train, y_train, X_val, y_val,
 
     返回 dict：
         model     : 载入最佳权重的网络（按验证集 macro-F1 选择）
-        history   : 每轮 train_loss / val_loss / val_f1_macro / epoch_time
+        history   : 每轮 online/eval loss、验证指标与耗时
         val_metrics: 最佳轮对应的验证集指标
         best_epoch, train_time, n_parameters
     """
@@ -108,8 +117,12 @@ def train_bp_model(X_train, y_train, X_val, y_val,
 
     n_train = X_train.shape[0]
     batch_size = tp["batch_size"]
-    history = {"train_loss": [], "val_loss": [], "val_f1_macro": [],
+    history = {"train_online_loss": [], "train_eval_loss": [],
+               "val_loss": [], "val_macro_f1": [],
                "val_accuracy": [], "epoch_time": []}
+    # 旧消费者的兼容别名；新文件同时保存明确命名的字段。
+    history["train_loss"] = history["train_online_loss"]
+    history["val_f1_macro"] = history["val_macro_f1"]
 
     best_f1, best_epoch, best_state = -1.0, 0, None
     best_val_metrics = None
@@ -136,12 +149,14 @@ def train_bp_model(X_train, y_train, X_val, y_val,
             seen += len(sel)
 
         train_loss = running / max(seen, 1)
+        train_m = evaluate_training_set(model, X_train, y_train)
         val_m = _eval_loss_and_metrics(model, X_val, y_val, criterion)
         epoch_time = time.perf_counter() - t0
         total_train_time += epoch_time
         epochs_run = epoch
 
         history["train_loss"].append(train_loss)
+        history["train_eval_loss"].append(train_m["loss"])
         history["val_loss"].append(val_m["loss"])
         history["val_f1_macro"].append(val_m["f1_macro"])
         history["val_accuracy"].append(val_m["accuracy"])
@@ -159,7 +174,8 @@ def train_bp_model(X_train, y_train, X_val, y_val,
 
         if log_fn:
             log_fn(f"    epoch {epoch:3d}/{tp['max_epochs']}  "
-                   f"train_loss={train_loss:.4f}  val_loss={val_m['loss']:.4f}  "
+                   f"train_online_loss={train_loss:.4f}  "
+                   f"train_eval_loss={train_m['loss']:.4f}  val_loss={val_m['loss']:.4f}  "
                    f"val_F1={val_m['f1_macro']:.4f}  ({epoch_time:.1f}s){flag}")
 
         if epoch - best_epoch >= tp["patience"]:

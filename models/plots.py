@@ -64,26 +64,41 @@ def plot_confusion_matrix(cm, labels, title, out_path):
     plt.close(fig)
 
 
-def plot_training_curves(history, title, out_path):
+def plot_training_curves(history, title, out_path, best_epoch=None):
     _setup_chinese_font()
     epochs = range(1, len(history["train_loss"]) + 1)
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), dpi=150)
+    has_eval = "train_eval_loss" in history
+    fig, axes = plt.subplots(1, 3 if has_eval else 2,
+                             figsize=(15 if has_eval else 11, 4.2), dpi=150)
 
     ax = axes[0]
-    ax.plot(epochs, history["train_loss"], label="训练损失", lw=1.8)
-    ax.plot(epochs, history["val_loss"], label="验证损失", lw=1.8)
+    ax.plot(epochs, history["train_eval_loss"] if has_eval else history["train_loss"],
+            label="Train Eval" if has_eval else "Train Online (历史口径)",
+            color="#0072B2", marker="o", ms=3, lw=1.8)
+    ax.plot(epochs, history["val_loss"], label="Val Eval", color="#D55E00",
+            linestyle="--", marker="s", ms=3, lw=1.8)
     ax.set_xlabel("Epoch")
     ax.set_ylabel("CrossEntropy Loss")
     ax.set_title("损失曲线", fontsize=11, fontweight="bold")
     ax.grid(alpha=0.25)
     ax.legend(frameon=False)
 
-    ax = axes[1]
+    if has_eval:
+        ax = axes[1]
+        ax.plot(epochs, history["train_online_loss"], label="Train Online",
+                color="#0072B2", marker="o", ms=3)
+        ax.plot(epochs, history["train_eval_loss"], label="Train Eval",
+                color="#D55E00", linestyle="--", marker="s", ms=3)
+        ax.set(xlabel="Epoch", ylabel="CrossEntropy Loss", title="训练损失统计口径")
+        ax.grid(alpha=0.25)
+        ax.legend(frameon=False)
+
+    ax = axes[-1]
     ax.plot(epochs, history["val_f1_macro"], color="#c0392b", lw=1.8,
             label="验证集 Macro-F1")
-    best_ep = int(np.argmax(history["val_f1_macro"])) + 1
-    best_val = max(history["val_f1_macro"])
+    best_ep = best_epoch or int(np.argmax(history["val_f1_macro"])) + 1
+    best_val = history["val_f1_macro"][best_ep - 1]
     ax.scatter([best_ep], [best_val], color="#c0392b", zorder=5, s=28)
     ax.annotate(f"best {best_val:.4f} @ {best_ep}", (best_ep, best_val),
                 textcoords="offset points", xytext=(8, -14), fontsize=9,
@@ -97,6 +112,8 @@ def plot_training_curves(history, title, out_path):
     fig.suptitle(title, fontsize=12, fontweight="bold")
     fig.tight_layout()
     fig.savefig(out_path, bbox_inches="tight")
+    if has_eval:
+        fig.savefig(out_path.with_suffix(".svg"), bbox_inches="tight")
     plt.close(fig)
 
 

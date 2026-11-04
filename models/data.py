@@ -23,7 +23,7 @@ def file_sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def verify_dataset(strict: bool = True) -> dict:
+def verify_dataset(strict: bool = True, splits=("train", "val", "test")) -> dict:
     """对照 dataset_version.json 校验三份划分文件。
 
     返回 {split: {rows, sha256, expected_sha256, ok}}。
@@ -35,13 +35,14 @@ def verify_dataset(strict: bool = True) -> dict:
     version_info = json.loads(C.DATASET_VERSION_FILE.read_text(encoding="utf-8"))
     report: dict = {"dataset_version": version_info.get("dataset_version")}
 
-    for split in ("train", "val", "test"):
+    for split in splits:
         path = C.SPLIT_DIR / f"{split}.csv"
         if not path.exists():
             raise FileNotFoundError(f"缺少划分文件：{path}")
         actual_sha = file_sha256(path)
         expected = version_info["files"][f"{split}.csv"]["sha256"]
-        rows = sum(1 for _ in open(path, encoding="utf-8-sig")) - 1
+        with open(path, encoding="utf-8-sig") as stream:
+            rows = sum(1 for _ in stream) - 1
         ok = actual_sha == expected and rows == version_info["files"][f"{split}.csv"]["rows"]
         report[split] = {
             "rows": rows,
@@ -57,16 +58,17 @@ def verify_dataset(strict: bool = True) -> dict:
     return report
 
 
-def load_splits(verify: bool = True) -> dict:
-    """读取 train/val/test，返回 {split: (texts, y, df)}。
+def load_splits(verify: bool = True, splits=("train", "val", "test")) -> dict:
+    """读取指定 splits，返回 {split: (texts, y, df)}。
 
+    默认兼容旧调用读取全部；训练入口必须显式传入 train/val。
     只做读取与类型转换，不修改任何数据文件。
     """
     if verify:
-        verify_dataset(strict=True)
+        verify_dataset(strict=True, splits=splits)
 
     out: dict = {}
-    for split in ("train", "val", "test"):
+    for split in splits:
         path = C.SPLIT_DIR / f"{split}.csv"
         df = pd.read_csv(path, encoding="utf-8-sig")
 

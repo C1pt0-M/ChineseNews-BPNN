@@ -1,0 +1,29 @@
+==============================================================================
+BP ������ �� �������ű������ �� ѵ���׶�
+PyTorch 2.8.0+cpu  |  �豸 CPU  |  �߳� 16
+�������� 1 �� �� ���� [42] = 1 ��ѵ��
+==============================================================================
+  train: 6549 �������� {'�ƾ�': 1109, '����': 1107, '����': 1134, '����': 1064, '���': 1057, '����': 1078}
+  val: 3184 �������� {'�ƾ�': 540, '����': 487, '����': 503, '����': 518, '���': 545, '����': 591}
+
+=== ʵ�� A_raw (seed=42) | ԭʼ TF-IDF��ϡ���ά��ֱ������ BP�� ===
+    ������TF-IDF 10864 ά �� ���� 10864 ά��ϡ�裩��fit ���� 6549����ʱ �ִ�0.1s + �任0.5s
+    ���磺10864 �� 256 �� ReLU �� Dropout(0.2) �� 6
+    epoch   1/100  train_online_loss=1.6122  train_eval_loss=1.1179  val_loss=1.2558  val_F1=0.7223  (4.2s) *
+    epoch   2/100  train_online_loss=0.8025  train_eval_loss=0.4290  val_loss=0.7624  val_F1=0.7606  (4.4s) *
+    epoch   3/100  train_online_loss=0.3833  train_eval_loss=0.2243  val_loss=0.6870  val_F1=0.7622  (4.5s) *
+    epoch   4/100  train_online_loss=0.2226  train_eval_loss=0.1351  val_loss=0.6816  val_F1=0.7616  (4.9s)
+    epoch   5/100  train_online_loss=0.1430  train_eval_loss=0.0893  val_loss=0.7025  val_F1=0.7587  (5.0s)
+    epoch   6/100  train_online_loss=0.1004  train_eval_loss=0.0639  val_loss=0.7207  val_F1=0.7549  (5.2s)
+    epoch   7/100  train_online_loss=0.0747  train_eval_loss=0.0501  val_loss=0.7433  val_F1=0.7468  (4.2s)
+    epoch   8/100  train_online_loss=0.0611  train_eval_loss=0.0416  val_loss=0.7591  val_F1=0.7486  (4.3s)
+    epoch   9/100  train_online_loss=0.0531  train_eval_loss=0.0353  val_loss=0.7750  val_F1=0.7485  (4.1s)
+    epoch  10/100  train_online_loss=0.0468  train_eval_loss=0.0313  val_loss=0.7864  val_F1=0.7452  (4.3s)
+    epoch  11/100  train_online_loss=0.0423  train_eval_loss=0.0285  val_loss=0.8010  val_F1=0.7434  (4.4s)
+    epoch  12/100  train_online_loss=0.0395  train_eval_loss=0.0263  val_loss=0.8110  val_F1=0.7461  (4.1s)
+    epoch  13/100  train_online_loss=0.0367  train_eval_loss=0.0244  val_loss=0.8140  val_F1=0.7444  (4.6s)
+    ��ͣ����֤�� macro-F1 ���� 10 ���޸��ƣ���� epoch 3��
+    ��֤����acc=0.7613  P_macro=0.7659  R_macro=0.7612  F1_macro=0.7622  F1_weighted=0.7621
+    ������� 3������ 13 �֣���ѵ����ʱ 58.0s�������� 2,782,982
+    [ʧ��] A_raw seed=42: 'results\\member_A_audit_20261105\\A_raw_s42' is not in the subpath of 'D:\\ChineseNews-BPNN'
+��������ѱ����� results\member_A_audit_20261105����ʷ����δ��д��

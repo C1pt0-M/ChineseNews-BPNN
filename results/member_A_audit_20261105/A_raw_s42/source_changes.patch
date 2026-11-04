@@ -1,0 +1,317 @@
+diff --git a/models/data.py b/models/data.py
+index 5838e31..1d5a4f3 100644
+--- a/models/data.py
++++ b/models/data.py
+@@ -23,7 +23,7 @@ def file_sha256(path: Path) -> str:
+     return h.hexdigest()
+ 
+ 
+-def verify_dataset(strict: bool = True) -> dict:
++def verify_dataset(strict: bool = True, splits=("train", "val", "test")) -> dict:
+     """对照 dataset_version.json 校验三份划分文件。
+ 
+     返回 {split: {rows, sha256, expected_sha256, ok}}。
+@@ -35,13 +35,14 @@ def verify_dataset(strict: bool = True) -> dict:
+     version_info = json.loads(C.DATASET_VERSION_FILE.read_text(encoding="utf-8"))
+     report: dict = {"dataset_version": version_info.get("dataset_version")}
+ 
+-    for split in ("train", "val", "test"):
++    for split in splits:
+         path = C.SPLIT_DIR / f"{split}.csv"
+         if not path.exists():
+             raise FileNotFoundError(f"缺少划分文件：{path}")
+         actual_sha = file_sha256(path)
+         expected = version_info["files"][f"{split}.csv"]["sha256"]
+-        rows = sum(1 for _ in open(path, encoding="utf-8-sig")) - 1
++        with open(path, encoding="utf-8-sig") as stream:
++            rows = sum(1 for _ in stream) - 1
+         ok = actual_sha == expected and rows == version_info["files"][f"{split}.csv"]["rows"]
+         report[split] = {
+             "rows": rows,
+@@ -57,16 +58,17 @@ def verify_dataset(strict: bool = True) -> dict:
+     return report
+ 
+ 
+-def load_splits(verify: bool = True) -> dict:
+-    """读取 train/val/test，返回 {split: (texts, y, df)}。
++def load_splits(verify: bool = True, splits=("train", "val", "test")) -> dict:
++    """读取指定 splits，返回 {split: (texts, y, df)}。
+ 
++    默认兼容旧调用读取全部；训练入口必须显式传入 train/val。
+     只做读取与类型转换，不修改任何数据文件。
+     """
+     if verify:
+-        verify_dataset(strict=True)
++        verify_dataset(strict=True, splits=splits)
+ 
+     out: dict = {}
+-    for split in ("train", "val", "test"):
++    for split in splits:
+         path = C.SPLIT_DIR / f"{split}.csv"
+         df = pd.read_csv(path, encoding="utf-8-sig")
+ 
+diff --git a/models/plots.py b/models/plots.py
+index c58c3bf..eea6562 100644
+--- a/models/plots.py
++++ b/models/plots.py
+@@ -64,26 +64,41 @@ def plot_confusion_matrix(cm, labels, title, out_path):
+     plt.close(fig)
+ 
+ 
+-def plot_training_curves(history, title, out_path):
++def plot_training_curves(history, title, out_path, best_epoch=None):
+     _setup_chinese_font()
+     epochs = range(1, len(history["train_loss"]) + 1)
+ 
+-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), dpi=150)
++    has_eval = "train_eval_loss" in history
++    fig, axes = plt.subplots(1, 3 if has_eval else 2,
++                             figsize=(15 if has_eval else 11, 4.2), dpi=150)
+ 
+     ax = axes[0]
+-    ax.plot(epochs, history["train_loss"], label="训练损失", lw=1.8)
+-    ax.plot(epochs, history["val_loss"], label="验证损失", lw=1.8)
++    ax.plot(epochs, history["train_eval_loss"] if has_eval else history["train_loss"],
++            label="Train Eval" if has_eval else "Train Online (历史口径)",
++            color="#0072B2", marker="o", ms=3, lw=1.8)
++    ax.plot(epochs, history["val_loss"], label="Val Eval", color="#D55E00",
++            linestyle="--", marker="s", ms=3, lw=1.8)
+     ax.set_xlabel("Epoch")
+     ax.set_ylabel("CrossEntropy Loss")
+     ax.set_title("损失曲线", fontsize=11, fontweight="bold")
+     ax.grid(alpha=0.25)
+     ax.legend(frameon=False)
+ 
+-    ax = axes[1]
++    if has_eval:
++        ax = axes[1]
++        ax.plot(epochs, history["train_online_loss"], label="Train Online",
++                color="#0072B2", marker="o", ms=3)
++        ax.plot(epochs, history["train_eval_loss"], label="Train Eval",
++                color="#D55E00", linestyle="--", marker="s", ms=3)
++        ax.set(xlabel="Epoch", ylabel="CrossEntropy Loss", title="训练损失统计口径")
++        ax.grid(alpha=0.25)
++        ax.legend(frameon=False)
++
++    ax = axes[-1]
+     ax.plot(epochs, history["val_f1_macro"], color="#c0392b", lw=1.8,
+             label="验证集 Macro-F1")
+-    best_ep = int(np.argmax(history["val_f1_macro"])) + 1
+-    best_val = max(history["val_f1_macro"])
++    best_ep = best_epoch or int(np.argmax(history["val_f1_macro"])) + 1
++    best_val = history["val_f1_macro"][best_ep - 1]
+     ax.scatter([best_ep], [best_val], color="#c0392b", zorder=5, s=28)
+     ax.annotate(f"best {best_val:.4f} @ {best_ep}", (best_ep, best_val),
+                 textcoords="offset points", xytext=(8, -14), fontsize=9,
+@@ -97,6 +112,8 @@ def plot_training_curves(history, title, out_path):
+     fig.suptitle(title, fontsize=12, fontweight="bold")
+     fig.tight_layout()
+     fig.savefig(out_path, bbox_inches="tight")
++    if has_eval:
++        fig.savefig(out_path.with_suffix(".svg"), bbox_inches="tight")
+     plt.close(fig)
+ 
+ 
+diff --git a/models/runs.py b/models/runs.py
+index dc962c7..801173f 100644
+--- a/models/runs.py
++++ b/models/runs.py
+@@ -68,6 +68,11 @@ def save_history(history: dict, path: Path) -> None:
+         "val_f1_macro": history["val_f1_macro"][i],
+         "epoch_time": history["epoch_time"][i],
+     } for i in range(n)]
++    for i, row in enumerate(rows):
++        row["train_online_loss"] = history.get("train_online_loss", history["train_loss"])[i]
++        row["val_macro_f1"] = history.get("val_macro_f1", history["val_f1_macro"])[i]
++        if "train_eval_loss" in history:
++            row["train_eval_loss"] = history["train_eval_loss"][i]
+     pd.DataFrame(rows).to_csv(path, index=False, encoding="utf-8-sig")
+ 
+ 
+diff --git a/models/trainer.py b/models/trainer.py
+index a52f569..7ded0cf 100644
+--- a/models/trainer.py
++++ b/models/trainer.py
+@@ -76,6 +76,15 @@ def _eval_loss_and_metrics(model, X, y, criterion, batch_size: int = 512):
+     return metrics
+ 
+ 
++def evaluate_training_set(model, X, y, batch_size: int = 512):
++    """Epoch 更新结束后，在 eval/no_grad 下按样本数加权计算训练集 CE。
++
++    与验证评估共用实现；无参数更新，也不消耗 Dropout 随机数。
++    返回指标中的 loss 不包含优化器的 weight decay 惩罚。
++    """
++    return _eval_loss_and_metrics(model, X, y, nn.CrossEntropyLoss(), batch_size)
++
++
+ def train_bp_model(X_train, y_train, X_val, y_val,
+                    seed: int = C.SEED,
+                    train_params: dict | None = None,
+@@ -85,7 +94,7 @@ def train_bp_model(X_train, y_train, X_val, y_val,
+ 
+     返回 dict：
+         model     : 载入最佳权重的网络（按验证集 macro-F1 选择）
+-        history   : 每轮 train_loss / val_loss / val_f1_macro / epoch_time
++        history   : 每轮 online/eval loss、验证指标与耗时
+         val_metrics: 最佳轮对应的验证集指标
+         best_epoch, train_time, n_parameters
+     """
+@@ -108,8 +117,12 @@ def train_bp_model(X_train, y_train, X_val, y_val,
+ 
+     n_train = X_train.shape[0]
+     batch_size = tp["batch_size"]
+-    history = {"train_loss": [], "val_loss": [], "val_f1_macro": [],
++    history = {"train_online_loss": [], "train_eval_loss": [],
++               "val_loss": [], "val_macro_f1": [],
+                "val_accuracy": [], "epoch_time": []}
++    # 旧消费者的兼容别名；新文件同时保存明确命名的字段。
++    history["train_loss"] = history["train_online_loss"]
++    history["val_f1_macro"] = history["val_macro_f1"]
+ 
+     best_f1, best_epoch, best_state = -1.0, 0, None
+     best_val_metrics = None
+@@ -136,12 +149,14 @@ def train_bp_model(X_train, y_train, X_val, y_val,
+             seen += len(sel)
+ 
+         train_loss = running / max(seen, 1)
++        train_m = evaluate_training_set(model, X_train, y_train)
+         val_m = _eval_loss_and_metrics(model, X_val, y_val, criterion)
+         epoch_time = time.perf_counter() - t0
+         total_train_time += epoch_time
+         epochs_run = epoch
+ 
+         history["train_loss"].append(train_loss)
++        history["train_eval_loss"].append(train_m["loss"])
+         history["val_loss"].append(val_m["loss"])
+         history["val_f1_macro"].append(val_m["f1_macro"])
+         history["val_accuracy"].append(val_m["accuracy"])
+@@ -159,7 +174,8 @@ def train_bp_model(X_train, y_train, X_val, y_val,
+ 
+         if log_fn:
+             log_fn(f"    epoch {epoch:3d}/{tp['max_epochs']}  "
+-                   f"train_loss={train_loss:.4f}  val_loss={val_m['loss']:.4f}  "
++                   f"train_online_loss={train_loss:.4f}  "
++                   f"train_eval_loss={train_m['loss']:.4f}  val_loss={val_m['loss']:.4f}  "
+                    f"val_F1={val_m['f1_macro']:.4f}  ({epoch_time:.1f}s){flag}")
+ 
+         if epoch - best_epoch >= tp["patience"]:
+diff --git a/train_bp.py b/train_bp.py
+index 173cfbb..cdbbe94 100644
+--- a/train_bp.py
++++ b/train_bp.py
+@@ -26,6 +26,10 @@ import argparse
+ import pickle
+ import sys
+ import time
++import hashlib
++import platform
++import subprocess
++from pathlib import Path
+ 
+ import numpy as np
+ import torch
+@@ -37,7 +41,7 @@ from models.metrics import format_metrics_line
+ from models.plots import plot_confusion_matrix, plot_training_curves
+ from models.runs import (SUMMARY_FILE, now_str, rebuild_summary, run_path,
+                          save_confusion, save_history, save_json)
+-from models.trainer import train_bp_model
++from models.trainer import train_bp_model, predict
+ 
+ 
+ def log(msg: str = "") -> None:
+@@ -75,7 +79,12 @@ def build_features(exp: dict, seed: int, splits: dict, log_fn=log):
+     return builder, X_train, y_train, X_val, y_val, {"tokenize": token_time, "feature": feat_time}
+ 
+ 
+-def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool = False) -> dict:
++def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool = False,
++               output_root: Path | None = None) -> dict:
++    out_dir = (output_root / f"{exp['id']}_s{seed}") if output_root else run_path(exp["id"], seed)
++    # 必须在训练前拒绝覆盖，防止误改历史实验。
++    if out_dir.exists():
++        raise FileExistsError(f"结果目录已存在，拒绝覆盖：{out_dir}")
+     tag = f"{exp['id']} (seed={seed})"
+     log(f"\n=== 实验 {tag} | {C.SCHEME_NAMES[exp['scheme']]} ===")
+ 
+@@ -95,7 +104,6 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool
+     )
+ 
+     val_metrics = result["val_metrics"]
+-    out_dir = run_path(exp["id"], seed)
+     out_dir.mkdir(parents=True, exist_ok=True)
+ 
+     save_history(result["history"], out_dir / "history.csv")
+@@ -104,7 +112,10 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool
+                           f"验证集混淆矩阵 · {exp['label']} (seed={seed})",
+                           out_dir / "confusion_val.png")
+     plot_training_curves(result["history"], f"{exp['label']} · seed={seed}",
+-                         out_dir / "training_curve.png")
++                         out_dir / "training_curve.png", best_epoch=result["best_epoch"])
++    val_df = splits["val"][2].copy()
++    val_df["predicted_category"] = [C.LABELS[i] for i in predict(result["model"], X_val)]
++    val_df.to_csv(out_dir / "val_predictions.csv", index=False, encoding="utf-8-sig")
+ 
+     torch.save(result["model"].state_dict(), out_dir / "model.pt")
+     with open(out_dir / "feature_builder.pkl", "wb") as f:
+@@ -120,6 +131,17 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool
+         "dataset_version": "1.1.0",
+         "split_version": "1.0.0",
+         "created_at": now_str(),
++        "provenance": {
++            "git_head": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
++            "git_status": subprocess.check_output(["git", "status", "--short"], text=True),
++            "source_sha256": {str(p): hashlib.sha256(p.read_bytes()).hexdigest()
++                              for p in [Path(__file__), *Path("models").glob("*.py"), Path("model_config.py")]},
++            "python": platform.python_version(), "torch": torch.__version__,
++            "torch_threads": torch.get_num_threads(),
++            "tfidf_params": C.TFIDF_PARAMS,
++            "split_sha256": {s: hashlib.sha256((C.SPLIT_DIR / f"{s}.csv").read_bytes()).hexdigest()
++                             for s in ("train", "val")},
++        },
+         "feature": builder.describe(),
+         "model": result["architecture"],
+         "training": {
+@@ -142,7 +164,7 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool
+     log(f"    验证集：{format_metrics_line(val_metrics)}")
+     log(f"    最佳轮数 {result['best_epoch']}（共跑 {result['epochs_run']} 轮）"
+         f"，训练耗时 {result['train_time']:.1f}s，参数量 {result['n_parameters']:,}")
+-    log(f"    已保存 → {out_dir.relative_to(C.BASE_DIR)}")
++    log(f"    已保存 → {out_dir.resolve().relative_to(C.BASE_DIR)}")
+     return payload
+ 
+ 
+@@ -162,6 +184,7 @@ def parse_args(argv=None):
+     p.add_argument("--epochs", type=int, default=None)
+     p.add_argument("--patience", type=int, default=None)
+     p.add_argument("--quiet", action="store_true", help="不打印每轮日志")
++    p.add_argument("--output-root", type=Path, help="独立结果根目录；不改写历史汇总")
+     return p.parse_args(argv)
+ 
+ 
+@@ -196,7 +219,7 @@ def main(argv=None) -> int:
+     log(f"待跑配置 {len(exps)} 组 × 种子 {seeds} = {len(exps) * len(seeds)} 次训练")
+     log("=" * 78)
+ 
+-    splits = load_splits(verify=True)
++    splits = load_splits(verify=True, splits=("train", "val"))
+     for name in ("train", "val"):
+         _, y, _ = splits[name]
+         counts = np.bincount(y, minlength=C.N_CLASSES)
+@@ -206,11 +229,15 @@ def main(argv=None) -> int:
+     for exp in exps:
+         for seed in seeds:
+             try:
+-                run_single(exp, seed, splits, overrides, quiet=args.quiet)
++                run_single(exp, seed, splits, overrides, quiet=args.quiet,
++                           output_root=args.output_root)
+             except Exception as exc:                     # 单组失败不影响其余
+                 failures.append((exp["id"], seed, repr(exc)))
+                 log(f"    [失败] {exp['id']} seed={seed}: {exc}")
+ 
++    if args.output_root:
++        log(f"独立结果已保存至 {args.output_root}；历史汇总未改写。")
++        return 1 if failures else 0
+     summary = rebuild_summary()
+     log("\n" + "=" * 78)
+     log(f"汇总已写入 {SUMMARY_FILE.relative_to(C.BASE_DIR)}（{len(summary)} 条运行记录）")

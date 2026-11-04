@@ -1,0 +1,137 @@
+{
+  "same_epochs": true,
+  "historical_prediction_matches_metrics": true,
+  "new_predictions_equal_historical": true,
+  "max_abs_history_difference": {
+    "train_loss": 0.0,
+    "val_loss": 0.0,
+    "val_f1_macro": 0.0,
+    "val_accuracy": 0.0
+  },
+  "best_epoch": 3,
+  "epochs_run": 13,
+  "historical_model_sha256": "49c2c970ef4402edff6b75fb0666356da5bfdf643e86a0a3a6c9c9b3a43fb441",
+  "historical_feature_sha256": "3880095ad4854de323d39861eac07c1940b7d6ec6921daa234f00a97d7096fd5"
+}
+[
+  {
+    "id":"cn10544815",
+    "title":"全国铁路计划加开旅客列车785列 这些方向余票充足",
+    "category":"社会",
+    "predicted_category":"财经"
+  },
+  {
+    "id":"cn10545163",
+    "title":"科技促产业崛起 广西罗汉果从桂林山野走向欧美市场",
+    "category":"社会",
+    "predicted_category":"财经"
+  },
+  {
+    "id":"cn10545374",
+    "title":"年轻人社交新实验：“一次聊天”换来“长期技能”",
+    "category":"社会",
+    "predicted_category":"财经"
+  },
+  {
+    "id":"cn10546164",
+    "title":"变民生蓝图为幸福实景",
+    "category":"财经",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10547393",
+    "title":"新年伊始 入境游持续火热",
+    "category":"财经",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10548206",
+    "title":"SNH48母公司丝芭擅自出版被罚",
+    "category":"财经",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10544262",
+    "title":"夜游逛馆、看戏迎新 京津冀跨年更添“文化味”",
+    "category":"社会",
+    "predicted_category":"文娱"
+  },
+  {
+    "id":"cn10544460",
+    "title":"文博启新元 中国多地民众走进博物馆共度跨年夜",
+    "category":"社会",
+    "predicted_category":"文娱"
+  },
+  {
+    "id":"cn10546236",
+    "title":"左手抹布右手笔 57岁家政工把生活写成书绘成画",
+    "category":"社会",
+    "predicted_category":"文娱"
+  },
+  {
+    "id":"cn10544388",
+    "title":"浙江卫视跨年晚会实现4K超高清频道大型直播",
+    "category":"文娱",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10550352",
+    "title":"捐出去的藏品不该成为“泼出去的水”",
+    "category":"文娱",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10550548",
+    "title":"闫学晶母子先后道歉，为何难获谅解？",
+    "category":"文娱",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10544218",
+    "title":"新年贺词里的140万亿",
+    "category":"财经",
+    "predicted_category":"文娱"
+  },
+  {
+    "id":"cn10546839",
+    "title":"浙江传统服装企业跨界破圈 国潮娃衣出海圈粉",
+    "category":"财经",
+    "predicted_category":"文娱"
+  },
+  {
+    "id":"cn10547069",
+    "title":"四部门发文推动职工文体消费 明确春秋游每年最多四次",
+    "category":"文娱",
+    "predicted_category":"财经"
+  },
+  {
+    "id":"cn10547811",
+    "title":"中国大百科全书出版社推出以“中国百科网”为核心数字矩阵产品",
+    "category":"文娱",
+    "predicted_category":"财经"
+  },
+  {
+    "id":"cn10550271",
+    "title":"如何引导孩子合理使用“网络梗”？专家支招",
+    "category":"教育",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10556668",
+    "title":"中国学者成功开发“纤维芯片”：丝线般细软、为纤维电子系统集成提供新路径",
+    "category":"教育",
+    "predicted_category":"社会"
+  },
+  {
+    "id":"cn10550222",
+    "title":"补短板、优服务、稳收益——把家门口就业好事办好",
+    "category":"社会",
+    "predicted_category":"教育"
+  },
+  {
+    "id":"cn10552791",
+    "title":"“智能”养宠背后的伪科技与真痛点",
+    "category":"社会",
+    "predicted_category":"教育"
+  }
+]
