@@ -1,0 +1,25 @@
+{
+  "validation_rows": 3184,
+  "group_counts": {
+    "持续错误": 548,
+    "稳定修正": 30,
+    "稳定退化": 32,
+    "种子不稳定": 288
+  },
+  "validation_percent": {
+    "持续错误": 17.21105527638191,
+    "稳定修正": 0.9422110552763818,
+    "稳定退化": 1.0050251256281406,
+    "种子不稳定": 9.045226130653267
+  },
+  "review_counts": {
+    "持续错误": 60,
+    "稳定修正": 30,
+    "稳定退化": 32,
+    "种子不稳定": 30
+  },
+  "review_seed": 42,
+  "review_sampling": "fixed hash; 60 persistent with priority directions, all 30 corrected and 32 degraded, 30 non-overlapping unstable balanced by category",
+  "groups_overlap": "unstable may overlap the first three groups; review sample is deduplicated",
+  "test_labels_or_metrics_used": false
+}

@@ -26,13 +26,19 @@ class TitleFeatureBuilder:
     """Fits vocabularies, IDF and selectors only on supplied training titles."""
     raw_text_input = True
 
-    def __init__(self, scheme, seed=C.SEED):
+    def __init__(self, scheme, seed=C.SEED, word_k=None, char_k=None):
         if scheme not in ("F_char", "F_word_char"):
             raise ValueError(f"Unknown title feature scheme: {scheme}")
+        for name, value in (("word_k", word_k), ("char_k", char_k)):
+            if value is not None and (isinstance(value, bool) or not isinstance(value, int) or value <= 0):
+                raise ValueError(f"{name} must be a positive integer")
+        if scheme == "F_char" and word_k is not None:
+            raise ValueError("word_k applies only to F_word_char")
         self.scheme = scheme
         self.char_params = dict(C.CHAR_TFIDF_PARAMS)
-        self.char_k = 10000 if scheme == "F_char" else 5000
-        self.word = FeatureBuilder("B", k=5000, seed=seed) if scheme == "F_word_char" else None
+        self.char_k = char_k if char_k is not None else (10000 if scheme == "F_char" else 5000)
+        self.word = (FeatureBuilder("B", k=word_k if word_k is not None else 5000, seed=seed)
+                     if scheme == "F_word_char" else None)
         self.char_vectorizer = None
         self.char_selector = None
 
@@ -66,7 +72,7 @@ class TitleFeatureBuilder:
             "word": None if self.word is None else {
                 "tokenization": "models.features.tokenize: jieba precise mode; filter non-Chinese/non-Latin tokens; lowercase Latin",
                 "tfidf_params": _vectorizer_params(self.word.vectorizer),
-                "chi2_k_requested": 5000, "tfidf_features": self.word.n_features_in_,
+                "chi2_k_requested": self.word.k, "tfidf_features": self.word.n_features_in_,
                 "selected_features": self.word_dim_,
             },
             "char": {"tfidf_params": _vectorizer_params(self.char_vectorizer), "chi2_k_requested": self.char_k,

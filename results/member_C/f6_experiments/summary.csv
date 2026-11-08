@@ -1,0 +1,4 @@
+﻿scheme,seed,word_dim,char_dim,input_dim,train_rows,val_rows,macro_f1,accuracy,best_epoch,epochs_run,early_stopped,n_parameters,train_seconds,feature_seconds,society_to_finance,society_to_entertainment,run_path
+Baseline,42,5000,5000,10000,7531,3184,0.7895027144985053,0.7873743718592965,9,19,True,640454,29.437393500003964,3.053487099998165,88,75,results\member_C\f3_formal_a_reviewed\F_word_char_s42
+F6-A,42,3000,7000,10000,7531,3184,0.7876839221732223,0.785175879396985,19,29,True,640454,53.657638899981976,3.1118802999990294,89,75,results\member_C\f6_experiments\runs\F6_A_s42
+F6-B,42,7000,3000,10000,7531,3184,0.7911406092644685,0.7892587939698492,11,21,True,640454,35.98891179999919,3.0038088000001153,96,76,results\member_C\f6_experiments\runs\F6_B_s42

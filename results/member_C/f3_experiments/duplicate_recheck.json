@@ -1,0 +1,34 @@
+{
+  "education_rows": 371,
+  "education_against_splits": {
+    "train": {
+      "id_exact": 0,
+      "url_exact": 0,
+      "normalized_title_exact": 0,
+      "near_rows": 0
+    },
+    "val": {
+      "id_exact": 0,
+      "url_exact": 0,
+      "normalized_title_exact": 0,
+      "near_rows": 0
+    },
+    "test": {
+      "id_exact": 0,
+      "url_exact": 0,
+      "normalized_title_exact": 0,
+      "near_rows": 0
+    }
+  },
+  "education_near_other_candidates": 0,
+  "baseline_near_pairs": 4,
+  "baseline_near_involved": 5,
+  "candidate_sha256": "466c129f055e5c0a8ad6223bb8fa05fa61137b713a4176d69908ba6d73739d42",
+  "rule": "normalized character trigram-set Jaccard >= 0.8",
+  "test_fields": [
+    "id",
+    "title",
+    "url",
+    "publish_time"
+  ]
+}

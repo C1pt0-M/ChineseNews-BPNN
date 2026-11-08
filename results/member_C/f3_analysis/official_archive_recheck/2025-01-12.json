@@ -1,0 +1,10 @@
+{
+  "date": "2025-01-12",
+  "requested_url": "https://www.chinanews.com/scroll-news/2025/0112/news.shtml",
+  "final_url": "https://www.chinanews.com/scroll-news/2025/0112/news.shtml",
+  "retrieved_at_utc": "2026-11-08T04:52:48.905695+00:00",
+  "http_status": 200,
+  "html_sha256": "6e4e2d6ba248adae0b5e914661f567db52185405caedbbfb473b1816514b8bb3",
+  "records": 284,
+  "pagination": false
+}

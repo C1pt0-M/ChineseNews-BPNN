@@ -1,0 +1,80 @@
+{
+  "source": "saved processors; no fitting or test data used",
+  "models": {
+    "Baseline": {
+      "processor_sha256": "3aed22d598d81377d1ed26c858e7827137904edc3547ec183c202b9fd05ddc75",
+      "branches": {
+        "word": {
+          "vocabulary_size": 12473,
+          "selected_size": 5000,
+          "vocabulary_equal": true,
+          "idf_equal_atol_1e-14": true,
+          "chi2_scores_pvalues_equal_rtol_atol_1e-12": true,
+          "support_overlap_with_baseline": 5000,
+          "support_is_subset_of_baseline": true,
+          "support_is_superset_of_baseline": true
+        },
+        "char": {
+          "vocabulary_size": 44806,
+          "selected_size": 5000,
+          "vocabulary_equal": true,
+          "idf_equal_atol_1e-14": true,
+          "chi2_scores_pvalues_equal_rtol_atol_1e-12": true,
+          "support_overlap_with_baseline": 5000,
+          "support_is_subset_of_baseline": true,
+          "support_is_superset_of_baseline": true
+        }
+      }
+    },
+    "F6-A": {
+      "processor_sha256": "a8c320af20b4b6e610bb7971a092b29213691fe5c3d615135bc5f5b29e8d02e7",
+      "branches": {
+        "word": {
+          "vocabulary_size": 12473,
+          "selected_size": 3000,
+          "vocabulary_equal": true,
+          "idf_equal_atol_1e-14": true,
+          "chi2_scores_pvalues_equal_rtol_atol_1e-12": true,
+          "support_overlap_with_baseline": 3000,
+          "support_is_subset_of_baseline": true,
+          "support_is_superset_of_baseline": false
+        },
+        "char": {
+          "vocabulary_size": 44806,
+          "selected_size": 7000,
+          "vocabulary_equal": true,
+          "idf_equal_atol_1e-14": true,
+          "chi2_scores_pvalues_equal_rtol_atol_1e-12": true,
+          "support_overlap_with_baseline": 5000,
+          "support_is_subset_of_baseline": false,
+          "support_is_superset_of_baseline": true
+        }
+      }
+    },
+    "F6-B": {
+      "processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "branches": {
+        "word": {
+          "vocabulary_size": 12473,
+          "selected_size": 7000,
+          "vocabulary_equal": true,
+          "idf_equal_atol_1e-14": true,
+          "chi2_scores_pvalues_equal_rtol_atol_1e-12": true,
+          "support_overlap_with_baseline": 5000,
+          "support_is_subset_of_baseline": false,
+          "support_is_superset_of_baseline": true
+        },
+        "char": {
+          "vocabulary_size": 44806,
+          "selected_size": 3000,
+          "vocabulary_equal": true,
+          "idf_equal_atol_1e-14": true,
+          "chi2_scores_pvalues_equal_rtol_atol_1e-12": true,
+          "support_overlap_with_baseline": 3000,
+          "support_is_subset_of_baseline": true,
+          "support_is_superset_of_baseline": false
+        }
+      }
+    }
+  }
+}

@@ -87,3 +87,29 @@ def load_splits(verify: bool = True, splits=("train", "val", "test")) -> dict:
         y = df["category"].map(C.LABEL_TO_INDEX).to_numpy(dtype="int64")
         out[split] = (texts, y, df)
     return out
+
+
+def load_training_override(path: Path, expected_sha256: str, base_split: tuple) -> tuple:
+    """Read a fingerprinted derived training CSV while retaining the original base rows."""
+    path = Path(path).resolve()
+    if path in {(C.SPLIT_DIR / 'val.csv').resolve(), (C.SPLIT_DIR / 'test.csv').resolve()}:
+        raise ValueError('Validation and test files cannot be used as training overrides')
+    if not expected_sha256 or file_sha256(path) != expected_sha256:
+        raise ValueError('Training override SHA-256 does not match the supplied fingerprint')
+    frame = pd.read_csv(path, encoding='utf-8-sig', dtype=str, keep_default_na=False)
+    base = base_split[2].fillna('').astype(str).reset_index(drop=True)
+    if list(frame.columns) != list(base.columns) or len(frame) < len(base):
+        raise ValueError('Training override must contain all baseline columns and rows')
+    if not frame.iloc[:len(base)].reset_index(drop=True).equals(base):
+        raise ValueError('Original training rows must be retained unchanged and in order')
+    if frame['id'].eq('').any() or frame['id'].duplicated().any() or frame['title'].eq('').any():
+        raise ValueError('Training override has missing IDs or titles, or duplicate IDs')
+    if frame['url'].eq('').any() or frame['url'].duplicated().any() or frame['title'].duplicated().any():
+        raise ValueError('Training override has missing or duplicate URLs or duplicate titles')
+    if not frame['category'].isin(C.LABELS).all():
+        raise ValueError('Training override contains unknown labels')
+    timestamps = pd.to_datetime(frame['publish_time'], errors='coerce')
+    if timestamps.isna().any() or not timestamps.between('2025-01-01', '2025-12-31 23:59:59').all():
+        raise ValueError('Training override must remain within the original 2025 training window')
+    y = frame['category'].map(C.LABEL_TO_INDEX).to_numpy(dtype='int64')
+    return frame['title'].tolist(), y, frame

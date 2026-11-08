@@ -1,0 +1,11 @@
+﻿group,seed,macro_f1,accuracy,best_epoch,epochs_run,early_stopped,word_dim,char_dim,n_parameters,train_seconds,society_to_finance,society_to_entertainment,run_path
+F3-A baseline,42,0.7895027144985053,0.7873743718592965,9,19,True,5000,5000,640454,29.437393500003964,88,75,results\member_C\f3_formal_a_reviewed\F_word_char_s42
+F3-A baseline,43,0.7880913602620935,0.7858040201005025,9,19,True,5000,5000,640454,37.53660550000495,89,74,results\member_C\f3_analysis\f3_a_multiseed\runs\F_word_char_s43
+F3-A baseline,44,0.7877106145410906,0.785175879396985,9,19,True,5000,5000,640454,31.10779649995675,92,72,results\member_C\f3_analysis\f3_a_multiseed\runs\F_word_char_s44
+F3-A baseline,45,0.7856430686237562,0.7829773869346733,10,20,True,5000,5000,640454,33.56692480001948,93,74,results\member_C\f3_analysis\f3_a_multiseed\runs\F_word_char_s45
+F3-A baseline,46,0.7857365641632267,0.7842336683417085,9,19,True,5000,5000,640454,34.61218320002081,95,77,results\member_C\f3_analysis\f3_a_multiseed\runs\F_word_char_s46
+F6-B,42,0.7911406092644685,0.7892587939698492,11,21,True,7000,3000,640454,35.98891179999919,96,76,results\member_C\f6_experiments\runs\F6_B_s42
+F6-B,43,0.7881750745208754,0.7858040201005025,13,23,True,7000,3000,640454,34.575150499949814,106,75,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s43
+F6-B,44,0.7914469656267517,0.7892587939698492,11,21,True,7000,3000,640454,41.52694360000896,101,73,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s44
+F6-B,45,0.7921259003628728,0.7898869346733668,10,20,True,7000,3000,640454,36.182955100011895,93,72,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s45
+F6-B,46,0.7885766686579573,0.7861180904522613,17,27,True,7000,3000,640454,42.17481619997125,99,75,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s46

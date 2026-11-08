@@ -1,0 +1,20 @@
+{
+  "LinearSVC": {
+    "C": 0.1,
+    "cv_mean": 0.7779095616576377,
+    "val_macro_f1": 0.7753997612293023,
+    "accuracy": 0.777324120603015,
+    "society_to_finance": 100,
+    "society_to_entertainment": 82,
+    "fit_seconds": 0.04170110000995919
+  },
+  "LogisticRegression": {
+    "C": 1.0,
+    "cv_mean": 0.7744320853188863,
+    "val_macro_f1": 0.7725645662344927,
+    "accuracy": 0.7716708542713567,
+    "society_to_finance": 101,
+    "society_to_entertainment": 77,
+    "fit_seconds": 0.8004857000050833
+  }
+}

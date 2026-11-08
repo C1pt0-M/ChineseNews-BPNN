@@ -1,0 +1,14 @@
+{
+  "seed_independent_F3_A_processor": "F3-A 5000 word + 5000 character saved processor, selected nonzero counts",
+  "cohorts": {
+    "persistent_both": "F2 and F3-A each misclassify all 5 seeds",
+    "stable_f3": "F3-A correctly predicts all 5 seeds",
+    "stable_both": "F2 and F3-A both correctly predict all 5 seeds"
+  },
+  "cohort_overlap": "stable_both is a subset of stable_f3; persistent_both is disjoint from both",
+  "input_hashes": {
+    "feature_per_title.csv": "a9f90bc301eb5bfa4639b8309460dda8ddd989e0521cf6d9742c0de88eb1f8d5",
+    "prediction_comparison.csv": "beccedbe066ac0ac40e7f7117a7987f2bdb22a1b6436650f423c71c6587a0277"
+  },
+  "train_or_test_evaluation": false
+}

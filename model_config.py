@@ -90,6 +90,8 @@ EXPERIMENTS = [
 F_EXPERIMENTS = [
     {"id": "F_char", "scheme": "F_char", "label": "F character TF-IDF + chi2", "k": 10000},
     {"id": "F_word_char", "scheme": "F_word_char", "label": "F word and character TF-IDF + chi2", "k": 5000},
+    {"id": "F6_A", "scheme": "F_word_char", "label": "F6 word 3000 + character 7000", "word_k": 3000, "char_k": 7000},
+    {"id": "F6_B", "scheme": "F_word_char", "label": "F6 word 7000 + character 3000", "word_k": 7000, "char_k": 3000},
 ]
 CHAR_TFIDF_PARAMS = {
     "analyzer": "char", "ngram_range": (2, 4), "min_df": 2,

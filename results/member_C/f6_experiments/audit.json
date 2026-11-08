@@ -1,0 +1,39 @@
+{
+  "sha256": {
+    "Baseline": {
+      "metrics.json": "07b116107c6d098df95e0d47eb1ed1685d4e01cbb4356779096ace6d7da57587",
+      "model.pt": "3f4e58a5e33666952f98414d4b0700d38ebe11d900834e14b3c1359863972e6d",
+      "feature_builder.pkl": "3aed22d598d81377d1ed26c858e7827137904edc3547ec183c202b9fd05ddc75",
+      "history.csv": "f25a6b97cb2df9c6b71b38d899cd593ef3ff04c7e5ff65f8ec3cc38f1734e272",
+      "val_predictions.csv": "02a4446d50dd6febde2ce43cddd32b4cf2f252f8e5aaeb16b806c231ca58c1ab"
+    },
+    "F6-A": {
+      "metrics.json": "5cefbcc2fe8f776706fcb71292738064f351ecc0ff7633407fbe72cd19c20710",
+      "model.pt": "be6a8bfe98127da44c1bc483586c83daf830da99bf1f212d13243da0a7b94938",
+      "feature_builder.pkl": "a8c320af20b4b6e610bb7971a092b29213691fe5c3d615135bc5f5b29e8d02e7",
+      "history.csv": "f811d2f76b18ffa5c40a1fed1ddbd7b83ed67d3caa3dc3b70c574c3f6c94b30a",
+      "val_predictions.csv": "25603cb4a8be31a00df51e732cecbcff4ae5b82b68a6da4e446258194d1da6fc"
+    },
+    "F6-B": {
+      "metrics.json": "e25bf3775305cb022a1819329e463d22672c78118cc063413daf3281ff543e38",
+      "model.pt": "d3fcfbde23ea41de498ac4f57c7b6c754853345b9e2b9a59b6c8669760da4134",
+      "feature_builder.pkl": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "history.csv": "97aef810e5e7e8a1ab6b9fa38e5009206298fda749d210c6e0d5e94e36a33d40",
+      "val_predictions.csv": "2440f728d0c9f9107900b97833e19f5110f4b19e89f122c1ea1d3f5d5f731711"
+    },
+    "train": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880",
+    "validation": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+    "prediction_comparison": "beccedbe066ac0ac40e7f7117a7987f2bdb22a1b6436650f423c71c6587a0277"
+  },
+  "checkpoint_strict_load_and_prediction_match": true,
+  "saved_validation_metrics_recomputed": true,
+  "test_data_read": false,
+  "feature_fit_called": false,
+  "training_executed": false,
+  "fit_scope_evidence": "run metadata split hash and fit_rows, builder fit_rows; no independent refit in this audit",
+  "cohorts": {
+    "persistent_both": "F2 and F3-A each wrong in all five prior seeds",
+    "stable_f3": "F3-A correct in all five prior seeds",
+    "stable_both": "F2 and F3-A each correct in all five prior seeds"
+  }
+}

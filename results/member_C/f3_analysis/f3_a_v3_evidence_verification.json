@@ -1,0 +1,7 @@
+{
+  "selected_count": 982,
+  "archive_days": 336,
+  "train_sha256": "8c3d1a8fed5185df91d1fe2767e61de4c1b399d6caeec3312680e4ea3257b5be",
+  "test_labels_used": false,
+  "evidence": "each selected record re-parsed from hash-verified official HTML and matched URL, ID, title, category and minute"
+}

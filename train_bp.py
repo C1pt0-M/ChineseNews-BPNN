@@ -35,7 +35,7 @@ import numpy as np
 import torch
 
 import model_config as C
-from models.data import load_splits
+from models.data import load_splits, load_training_override
 from models.features import FeatureBuilder, corpus_cache_key, tokenize_corpus
 from models.f_features import TitleFeatureBuilder
 from models.metrics import format_metrics_line
@@ -56,7 +56,8 @@ def build_features(exp: dict, seed: int, splits: dict, log_fn=log):
 
     t0 = time.perf_counter()
     if exp["scheme"] in ("F_char", "F_word_char"):
-        builder = TitleFeatureBuilder(exp["scheme"], seed=seed)
+        quotas = {name: exp[name] for name in ("word_k", "char_k") if name in exp}
+        builder = TitleFeatureBuilder(exp["scheme"], seed=seed, **quotas)
         builder.fit(train_texts, y_train)
         X_train = builder.transform(train_texts)
         X_val = builder.transform(val_texts)
@@ -138,7 +139,7 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
         "scheme": exp["scheme"],
         "scheme_name": C.SCHEME_NAMES[exp["scheme"]],
         "seed": seed,
-        "dataset_version": "1.1.0",
+        "dataset_version": "1.1.0+derived_train" if overrides.get("train_file") else "1.1.0",
         "split_version": "1.0.0",
         "created_at": now_str(),
         "provenance": {
@@ -149,8 +150,10 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
             "python": platform.python_version(), "torch": torch.__version__,
             "torch_threads": torch.get_num_threads(),
             "tfidf_params": C.TFIDF_PARAMS,
-            "split_sha256": {s: hashlib.sha256((C.SPLIT_DIR / f"{s}.csv").read_bytes()).hexdigest()
-                             for s in ("train", "val")},
+            "split_sha256": {
+                "train": hashlib.sha256(Path(overrides.get("train_file") or C.SPLIT_DIR / "train.csv").read_bytes()).hexdigest(),
+                "val": hashlib.sha256((C.SPLIT_DIR / "val.csv").read_bytes()).hexdigest(),
+            },
         },
         "feature": builder.describe(),
         "model": result["architecture"],
@@ -169,6 +172,15 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
         "test_evaluated_at": "",
         "notes": "验证集指标用于模型选择；测试集尚未评估，由 evaluate_test.py 一次性完成。",
     }
+    if overrides.get("train_file"):
+        actual_sha = payload["provenance"]["split_sha256"]["train"]
+        if actual_sha != overrides["train_sha256"]:
+            raise RuntimeError("Training file changed while the run was in progress")
+        payload["provenance"]["training_data"] = {
+            "path": str(Path(overrides["train_file"]).resolve()), "sha256": actual_sha,
+            "base_train_sha256": hashlib.sha256((C.SPLIT_DIR / "train.csv").read_bytes()).hexdigest(),
+            "rows": len(y_train),
+        }
     save_json(out_dir / "metrics.json", payload)
 
     log(f"    验证集：{format_metrics_line(val_metrics)}")
@@ -198,12 +210,19 @@ def parse_args(argv=None):
     p.add_argument("--patience", type=int, default=None)
     p.add_argument("--quiet", action="store_true", help="不打印每轮日志")
     p.add_argument("--output-root", type=Path, help="独立结果根目录；不改写历史汇总")
+    p.add_argument("--train-file", type=Path, help="derived training CSV; original validation split is retained")
+    p.add_argument("--train-sha256", help="expected SHA-256 of --train-file")
     return p.parse_args(argv)
 
 
 def main(argv=None) -> int:
     args = parse_args(argv)
     seeds = [int(s) for s in str(args.seeds).split(",") if s.strip()]
+
+    if bool(args.train_file) != bool(args.train_sha256):
+        raise ValueError('--train-file and --train-sha256 must be provided together')
+    if args.train_file and args.output_root is None:
+        raise ValueError('Derived training datasets require --output-root')
 
     exps = C.EXPERIMENTS if args.all else [C.experiment_by_id(e) for e in args.exp]
 
@@ -241,7 +260,8 @@ def main(argv=None) -> int:
         bp_params["input_dropout"] = args.input_dropout
     overrides = {"model_type": args.model_type, "train_params": train_params or None, "bp_params": bp_params or None,
                  "hidden_dim": bp_params.get("hidden_dim"),
-                 "dropout": bp_params.get("dropout")}
+                 "dropout": bp_params.get("dropout"), "train_file": args.train_file,
+                 "train_sha256": args.train_sha256}
 
     log("=" * 78)
     log("BP 神经网络 · 中文新闻标题分类 · 训练阶段")
@@ -250,6 +270,8 @@ def main(argv=None) -> int:
     log("=" * 78)
 
     splits = load_splits(verify=True, splits=("train", "val"))
+    if args.train_file:
+        splits['train'] = load_training_override(args.train_file, args.train_sha256, splits['train'])
     for name in ("train", "val"):
         _, y, _ = splits[name]
         counts = np.bincount(y, minlength=C.N_CLASSES)

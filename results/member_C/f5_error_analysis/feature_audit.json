@@ -1,0 +1,32 @@
+{
+  "F2": {
+    "train_rows": 6549,
+    "val_rows": 3184,
+    "tfidf_selected_input_dim": 10000,
+    "word_seen_train_unique": 64448,
+    "char_seen_train_unique": 269371,
+    "word_vectorizer_vocabulary": 10864,
+    "char_vectorizer_vocabulary": 38347,
+    "train_val_selected_mean_weight_js_divergence_bits": 0.1374667349980085
+  },
+  "F3-A": {
+    "train_rows": 7531,
+    "val_rows": 3184,
+    "tfidf_selected_input_dim": 10000,
+    "word_seen_train_unique": 72269,
+    "char_seen_train_unique": 303612,
+    "word_vectorizer_vocabulary": 12473,
+    "char_vectorizer_vocabulary": 44806,
+    "train_val_selected_mean_weight_js_divergence_bits": 0.13547476077441817
+  },
+  "definitions": {
+    "unseen": "distinct analyzer ngrams absent from raw training titles, prior to min_df/max_df and chi2",
+    "vocab_miss": "distinct analyzer ngrams absent from fitted vectorizer vocabulary; includes pruning",
+    "coverage": "nonzero selected TF-IDF features per title",
+    "nearest": "cosine of final concatenated L2 normalized sparse TF-IDF, no supervised refitting",
+    "centroid": "L2 normalized mean of per-title final training vectors",
+    "js": "Jensen-Shannon divergence in bits between L1-normalized mean selected-feature weights, train vs validation"
+  },
+  "fit_called": false,
+  "test_used": false
+}

@@ -1,0 +1,221 @@
+{
+  "name": "F3-A",
+  "rows": 7531,
+  "base_rows": 6549,
+  "new_rows": 982,
+  "seed": 42,
+  "train_sha256": "ceadd4d85a787c9d45ccac8e5a91ed9a88359c9e9f489111e14a8133c7c7aff5",
+  "base_train_sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+  "candidate_manifest_sha256": "466c129f055e5c0a8ad6223bb8fa05fa61137b713a4176d69908ba6d73739d42",
+  "title_decisions_sha256": "47f773c701940e777a4c801e474bb2becd47335dfc47e89653caf7d0c99fab62",
+  "official_evidence_sha256": "ffa27e01a4dfd45232b0e9d0c5e0284283f51657bf899055d58860ba124c7b13",
+  "new_sample_evidence_sha256": "f5c4e24f2ba240e7aa02c379e48496ff3f460ac024d87250d1f0feb56e744292",
+  "new_ids_sha256": "0c80bf65005f18e64fecd9278aa318832c0192fa0ea791750ce242cc1be34da2",
+  "category_counts": {
+    "社会": 1216,
+    "财经": 1275,
+    "国际": 1239,
+    "文娱": 1304,
+    "体育": 1273,
+    "教育": 1224
+  },
+  "added_counts": {
+    "体育": 166,
+    "国际": 161,
+    "教育": 160,
+    "文娱": 170,
+    "社会": 159,
+    "财经": 166
+  },
+  "monthly": {
+    "财经": {
+      "available": 190,
+      "monthly_actual": {
+        "1": 13,
+        "2": 11,
+        "3": 14,
+        "4": 16,
+        "5": 14,
+        "6": 12,
+        "7": 14,
+        "8": 14,
+        "9": 15,
+        "10": 13,
+        "11": 13,
+        "12": 17
+      },
+      "monthly_unconstrained": {
+        "1": 13,
+        "2": 11,
+        "3": 14,
+        "4": 16,
+        "5": 14,
+        "6": 12,
+        "7": 14,
+        "8": 14,
+        "9": 15,
+        "10": 13,
+        "11": 13,
+        "12": 17
+      }
+    },
+    "体育": {
+      "available": 199,
+      "monthly_actual": {
+        "1": 9,
+        "2": 15,
+        "3": 10,
+        "4": 11,
+        "5": 14,
+        "6": 10,
+        "7": 13,
+        "8": 19,
+        "9": 13,
+        "10": 13,
+        "11": 24,
+        "12": 15
+      },
+      "monthly_unconstrained": {
+        "1": 9,
+        "2": 15,
+        "3": 10,
+        "4": 11,
+        "5": 14,
+        "6": 10,
+        "7": 13,
+        "8": 19,
+        "9": 13,
+        "10": 13,
+        "11": 24,
+        "12": 15
+      }
+    },
+    "文娱": {
+      "available": 209,
+      "monthly_actual": {
+        "1": 16,
+        "2": 11,
+        "3": 11,
+        "4": 14,
+        "5": 16,
+        "6": 13,
+        "7": 13,
+        "8": 15,
+        "9": 17,
+        "10": 14,
+        "11": 14,
+        "12": 16
+      },
+      "monthly_unconstrained": {
+        "1": 16,
+        "2": 11,
+        "3": 11,
+        "4": 14,
+        "5": 16,
+        "6": 13,
+        "7": 13,
+        "8": 15,
+        "9": 17,
+        "10": 14,
+        "11": 14,
+        "12": 16
+      }
+    },
+    "教育": {
+      "available": 233,
+      "monthly_actual": {
+        "1": 7,
+        "2": 8,
+        "3": 9,
+        "4": 10,
+        "5": 12,
+        "6": 20,
+        "7": 14,
+        "8": 18,
+        "9": 22,
+        "10": 9,
+        "11": 12,
+        "12": 19
+      },
+      "monthly_unconstrained": {
+        "1": 7,
+        "2": 8,
+        "3": 9,
+        "4": 10,
+        "5": 12,
+        "6": 20,
+        "7": 14,
+        "8": 18,
+        "9": 22,
+        "10": 9,
+        "11": 12,
+        "12": 19
+      }
+    },
+    "社会": {
+      "available": 162,
+      "monthly_actual": {
+        "1": 7,
+        "2": 13,
+        "3": 6,
+        "4": 14,
+        "5": 16,
+        "6": 13,
+        "7": 15,
+        "8": 18,
+        "9": 16,
+        "10": 15,
+        "11": 9,
+        "12": 17
+      },
+      "monthly_unconstrained": {
+        "1": 16,
+        "2": 11,
+        "3": 12,
+        "4": 13,
+        "5": 15,
+        "6": 13,
+        "7": 14,
+        "8": 15,
+        "9": 13,
+        "10": 12,
+        "11": 11,
+        "12": 14
+      }
+    },
+    "国际": {
+      "available": 198,
+      "monthly_actual": {
+        "1": 16,
+        "2": 12,
+        "3": 15,
+        "4": 14,
+        "5": 14,
+        "6": 14,
+        "7": 14,
+        "8": 13,
+        "9": 11,
+        "10": 12,
+        "11": 12,
+        "12": 14
+      },
+      "monthly_unconstrained": {
+        "1": 16,
+        "2": 13,
+        "3": 15,
+        "4": 14,
+        "5": 14,
+        "6": 14,
+        "7": 14,
+        "8": 12,
+        "9": 11,
+        "10": 12,
+        "11": 12,
+        "12": 14
+      }
+    }
+  },
+  "provenance": "base original train + 2025 recovered candidate; independent archive page evidence",
+  "selection": "Fixed seed 42 hash rank, title review, conservative Jaccard 0.5 event screen plus additional reviewed exclusions when present; stratified by baseline category/month; capacity-aware",
+  "limitations": "title-level semantic review, possible same-event paraphrases, constrained monthly quotas"
+}

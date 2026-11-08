@@ -1,0 +1,60 @@
+{
+  "inputs": {
+    "train_sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+    "f3_train_manifest_sha256": "13bbec58006cd467623097c71e178e4f28826d2ebfd9b020583104a6f7ced695",
+    "val_sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+  },
+  "source_page_count": 152,
+  "source_page_hashes_in": "review_source_extract.csv",
+  "outputs_sha256": {
+    "summary.md": "93484a8961c0d7979ef37b67e5360b6c4aa5cba34f9dc84e9c32fe7cf4a8f509",
+    "feature_diagnostics.md": "57fd16ec038851180b93b008187cb244f7949dd88117caa4851595fcc2b01ca8",
+    "next_experiments.md": "69850e51cba17d406c98a3cadab2103d9c6a12aba57d3446845964e388a1a2d2",
+    "error_groups.csv": "3e7a3f702095cd1aa09619b784fbbd6f813f24b399716b32d7b7fdffe86de716",
+    "manual_review.csv": "38abe4e0e74dac041d2c55a138f1556fba88c5a5095fd50c2ae707058cd43f80",
+    "review_queue.csv": "47648e3f2b4118790b536ca4a059eddd5c840611d7e50ef36d02df383d2fd0d3",
+    "review_source_extract.csv": "8bd02e65b8d647e5cb220d7d64b9434748a4866acee858b92a7a43c8626ebd65",
+    "feature_per_title.csv": "a9f90bc301eb5bfa4639b8309460dda8ddd989e0521cf6d9742c0de88eb1f8d5",
+    "nearest_training.csv": "66387a66ec141ab294107b9b4cc835134c1ec3e47cdd7bef831a4de373f4d2d3",
+    "error_group_statistics.csv": "f654ffe5231ece669381950fb6ac0fedcb1bd58b40247d468d78d7096d58f221",
+    "group_direction_statistics.csv": "0e5240fd03399cdce39600c394157ffafb0466892f91123726f167805e23fec5",
+    "training_month_distribution.csv": "31e7dd32334f85836067628a5aeb9268d20ad9a45b8a3d493a94a6f8150ddae5",
+    "feature_group_summary.csv": "96858f2060c18579520b4c5c8dc1994b4d5889b65902b5871a00d2d4a8fc6ef9",
+    "class_centroid_similarity.csv": "f2ace38173d743506010885b0a5aca6b1b2ae46c3d5d940cee606aef43f47eca",
+    "added_training_topics.csv": "8420eaf8ba40aaa7308660327f4e7baa27831e490179a52e05d35263027dfa22",
+    "train_val_coverage.csv": "c31c846e5e94f0b20454fa6de9f37276dcc8686b145c1a2e1ea0268a4c8e35a5"
+  },
+  "no_training_or_fit": true,
+  "test_metrics_read": false,
+  "review_sampling_seed": 42,
+  "input_file_sha256": {
+    "dataset\\splits\\train.csv": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+    "dataset\\splits\\val.csv": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+    "results\\member_C\\f3_analysis\\f3_a_dataset_formal\\train.csv": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880",
+    "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\feature_builder.pkl": "142651e830138c6464ff9a0a2fcf43d4d84ecddc6cacb27414c5b085a51510d3",
+    "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\feature_builder.pkl": "3aed22d598d81377d1ed26c858e7827137904edc3547ec183c202b9fd05ddc75",
+    "models\\features.py": "007184f351a9603972e1efa603fd7f4e26f293e98f8e2dbe16d48ff3f7534a8a",
+    "models\\f_features.py": "81d4b0752f2a62f682b83a196b4389b3e084e46bb60be85faade6ae783519dd9",
+    "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\val_predictions.csv": "e8bab9a397199d520da57ccae784b5e6dda3deac78a017baa8bfc6afe736746e",
+    "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\val_predictions.csv": "02a4446d50dd6febde2ce43cddd32b4cf2f252f8e5aaeb16b806c231ca58c1ab",
+    "results\\member_C\\f2_formal_word_char\\F_word_char_s43\\val_predictions.csv": "be52b04047b8be0de4e9d8a21a87e857c535de82b3d9e311a99906a29e1c7e88",
+    "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\val_predictions.csv": "0e8bb09aba528323d459733180e3fcdaeec46de071ceaa7bdcfb7fabdec59344",
+    "results\\member_C\\f2_formal_word_char\\F_word_char_s44\\val_predictions.csv": "50f4dc420b2a2f3dd3e6e956b3aa750711022ba5a42875d12fcf5142e1f6da24",
+    "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s44\\val_predictions.csv": "d0b96b92da7d79f685728d2d07ff7cb6c22493f8752e3d04266eaa5765c7f0c3",
+    "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\val_predictions.csv": "29ebe9da4664b60ca354be8939216c750fedcecd6f988a40d0a585fd31116b39",
+    "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s45\\val_predictions.csv": "9e548a8f71ccc0b62f30192f0f085bf3683c8608e2df44b3f1202b86c56ff0a1",
+    "results\\member_C\\f2_formal_word_char\\F_word_char_s46\\val_predictions.csv": "7828ef524ec37e64654f1ccb1fcfa299b13168524959fb76a801e0d75940eee3",
+    "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s46\\val_predictions.csv": "e0911cabfe2bdd989a74c9fc266f708d0cc6e5412d6c848f20cc0d4450e4979f"
+  },
+  "analysis_scripts_sha256": {
+    "build_groups.py": "c683e061e225b8292c8bac42b41efa7faa77fac9ce5398b62c0ab547757267ee",
+    "build_manual_review.py": "9aaf8e0d5efbca44f649e46a807fa152f9285644512db335bf387c9ad99e43c0",
+    "extract_review_sources.py": "d779412ca9fa29a71886bbfa14a44f3b56bd16a54cebe2ea2b3513a8716ec407",
+    "feature_audit.py": "1a80397e9b07add87827a20b2e4bb5f23f8c8be1195b852f3a90c241fbfc32cf",
+    "fetch_review_articles.py": "59c2a83ef70a71c03cd7c205eb3ab5643f1654908efcf1e0d010e475794cb2bc",
+    "group_directions.py": "695ba99734a53fbdae6288ac5f1679848b782981b290e4fc2348bf0fb5c11c55",
+    "refresh_audit_manifest.py": "21ce153fae0af1bd37d369c7062dddc0d9dcebcfc0211b66e79a618f4d52f17a",
+    "train_val_coverage.py": "87439f9c01eb52e71815ed4ec73e2cfb5e453fd90876b5a75e642287710cf69c",
+    "write_f5_reports.py": "30edf054551b743b226f3a4382366facd1e7f06976fd9c8c5cfe7327ba4b7992"
+  }
+}

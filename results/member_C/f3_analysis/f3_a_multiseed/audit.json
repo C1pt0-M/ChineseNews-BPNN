@@ -1,0 +1,24 @@
+{
+  "train_sha256": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880",
+  "val_sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+  "base_train_sha256": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "reused_f3_seed42": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42",
+  "heldout_test_metrics_used": false,
+  "all_checkpoint_predictions_recomputed": true,
+  "strict_model_loads": 10,
+  "independent_feature_refits": 2,
+  "features_match_refits_all_seeds": true,
+  "saved_metrics_and_early_stopping_verified": true,
+  "f2_always_wrong": 617,
+  "f3_always_wrong": 627,
+  "both_always_wrong": 548,
+  "always_corrected": 30,
+  "always_introduced": 32
+}

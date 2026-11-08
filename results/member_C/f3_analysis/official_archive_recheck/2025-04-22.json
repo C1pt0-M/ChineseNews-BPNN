@@ -1,0 +1,10 @@
+{
+  "date": "2025-04-22",
+  "requested_url": "https://www.chinanews.com/scroll-news/2025/0422/news.shtml",
+  "final_url": "https://www.chinanews.com/scroll-news/2025/0422/news.shtml",
+  "retrieved_at_utc": "2026-11-08T04:55:27.614454+00:00",
+  "http_status": 200,
+  "html_sha256": "cdc80f03030ec5f2e35c260701b9b2d8ae718036374d36ece4504dc4f3c1d907",
+  "records": 442,
+  "pagination": false
+}
