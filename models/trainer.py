@@ -18,7 +18,7 @@ import torch
 import torch.nn as nn
 
 import model_config as C
-from .bp import BPNet
+from .bp import build_model
 from .metrics import compute_metrics
 
 
@@ -89,7 +89,7 @@ def train_bp_model(X_train, y_train, X_val, y_val,
                    seed: int = C.SEED,
                    train_params: dict | None = None,
                    bp_params: dict | None = None,
-                   log_fn=print) -> dict:
+                   log_fn=print, model_type: str = "bp") -> dict:
     """训练一个 BP 网络并返回最佳模型、历史与验证集指标。
 
     返回 dict：
@@ -108,8 +108,11 @@ def train_bp_model(X_train, y_train, X_val, y_val,
     set_seed(seed)
 
     n_features = X_train.shape[1]
-    model = BPNet(input_dim=n_features, hidden_dim=bp["hidden_dim"],
-                  n_classes=bp["n_classes"], dropout=bp["dropout"])
+    model = build_model({
+        "model_type": model_type, "input_dim": n_features,
+        "hidden_dim": bp["hidden_dim"], "output_dim": bp["n_classes"],
+        "dropout": bp["dropout"], "input_dropout": bp.get("input_dropout", 0.0),
+    })
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=tp["lr"],

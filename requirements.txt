@@ -1,15 +1,10 @@
-# ---------------------------------------------------------------- 采集与数据处理
-requests>=2.31.0
-beautifulsoup4>=4.12.0
-lxml>=5.0.0
-pandas>=2.1.0
-matplotlib>=3.8.0
-
-# ---------------------------------------------------------------- 建模与实验
-# TF-IDF / 卡方选择 / SVD / 标准化 / 评价指标 / 参考基线
-scikit-learn>=1.4.0
-# BP 神经网络（CPU 版即可，无需 CUDA）
-torch>=2.2.0
-# 中文分词
-jieba>=0.42.1
-numpy>=1.26.0
+beautifulsoup4==4.15.0
+jieba==0.42.1
+matplotlib==3.11.2
+numpy==2.5.4
+pandas==3.1.1
+Pillow==13.0.0
+Requests==2.34.2
+scikit_learn==1.9.1
+scipy==1.18.1
+torch==2.4.1+cu121

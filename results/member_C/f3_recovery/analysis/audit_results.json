@@ -1,0 +1,121 @@
+{
+  "provenance": {
+    "dataset_sha256": "c5dc8b898884bff35f429d20ed98efbfbfda27ddc17c073e5d991d2a20f54190",
+    "raw_sha256": "cd40f689feec47029a91a8961fd07023cf1bf2aa3e45ee9ada97ed4628e50d8c",
+    "source": "中国新闻网",
+    "crawl_summary": {
+      "days_success": 365,
+      "days_not_found": 0,
+      "days_failed": 0,
+      "days_parse_failed": 0,
+      "total_records": 165125
+    },
+    "coverage": [
+      "2025-01-01",
+      "2025-12-31"
+    ]
+  },
+  "raw": {
+    "rows": 165125,
+    "time_issues": 0,
+    "bad_publish_time": 0,
+    "publish_date_differs_from_archive_date": 0,
+    "duplicate_id_extra": 11,
+    "duplicate_url_extra": 3,
+    "duplicate_clean_title_extra": 4130
+  },
+  "clean": {
+    "rows": 97798,
+    "categories": {
+      "财经": 33547,
+      "体育": 6721,
+      "文娱": 7441,
+      "教育": 1438,
+      "社会": 32939,
+      "国际": 15712
+    },
+    "date_min": "2025-01-01 00:10:00",
+    "date_max": "2025-12-31 23:01:00",
+    "monthly_counts": {
+      "2025-01": 8576,
+      "2025-02": 6938,
+      "2025-03": 7804,
+      "2025-04": 8277,
+      "2025-05": 8635,
+      "2025-06": 7585,
+      "2025-07": 8349,
+      "2025-08": 8734,
+      "2025-09": 8353,
+      "2025-10": 7571,
+      "2025-11": 7837,
+      "2025-12": 9139
+    },
+    "duplicates": {
+      "id": 0,
+      "url": 0,
+      "title": 0,
+      "_url_key": 0,
+      "_title_key": 36
+    }
+  },
+  "train": {
+    "rows": 6549,
+    "categories": {
+      "财经": 1109,
+      "体育": 1107,
+      "文娱": 1134,
+      "教育": 1064,
+      "社会": 1057,
+      "国际": 1078
+    },
+    "hash": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3"
+  },
+  "exact_overlap_rows": {
+    "train": {
+      "id": 6549,
+      "_url_key": 6549,
+      "_title_key": 6555,
+      "any": 6555
+    },
+    "val": {
+      "id": 0,
+      "_url_key": 0,
+      "_title_key": 0,
+      "any": 0
+    },
+    "test": {
+      "id": 0,
+      "_url_key": 0,
+      "_title_key": 0,
+      "any": 0
+    }
+  },
+  "train_exact_label_conflicts": 1,
+  "train_id_metadata_conflicts": 0,
+  "raw_title_cross_category_groups": 54,
+  "train_ids_missing_in_recovered_clean": 0,
+  "unseen_after_exact": 91243,
+  "near_reference_rows": {
+    "train": 31,
+    "val": 1,
+    "test": 3
+  },
+  "after_reference_near": 91208,
+  "internal_near_pairs": 244,
+  "internal_near_involved_rows": 466,
+  "conservative_candidate_count": 90742,
+  "conservative_categories": {
+    "财经": 32240,
+    "体育": 5572,
+    "文娱": 6290,
+    "教育": 371,
+    "社会": 31758,
+    "国际": 14511
+  },
+  "total_after_conservative_filter": 97291,
+  "balanced_2x_possible": false,
+  "balanced_4x_possible": false,
+  "balanced_scale_upper_bound": 1.3486842105263157,
+  "near_definition": "NFKC/casefold, alphanumeric only, trigram-set Jaccard >= 0.80; conservative removal of both candidate endpoints",
+  "publication_time_limitation": "Archive list gives month/day/hour/minute; year is inferred from archive path, not verified against each article page."
+}

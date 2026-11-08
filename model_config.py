@@ -55,6 +55,7 @@ SVD_STANDARDIZE = True   # SVD 后做 z-score，均值/方差只从训练集计�
 BP_PARAMS = {
     "hidden_dim": 256,
     "dropout": 0.2,
+    "input_dropout": 0.0,  # 新增：输入层 Dropout，0 表示关闭
     "n_classes": N_CLASSES,
 }
 
@@ -85,7 +86,20 @@ EXPERIMENTS = [
     {"id": "C_svd_300",     "scheme": "C", "label": "C SVD 300",               "k": None,   "n_components": 300},
 ]
 
+# F.2 remains opt-in, so the historical --all experiment set is unchanged.
+F_EXPERIMENTS = [
+    {"id": "F_char", "scheme": "F_char", "label": "F character TF-IDF + chi2", "k": 10000},
+    {"id": "F_word_char", "scheme": "F_word_char", "label": "F word and character TF-IDF + chi2", "k": 5000},
+]
+CHAR_TFIDF_PARAMS = {
+    "analyzer": "char", "ngram_range": (2, 4), "min_df": 2,
+    "max_df": 0.95, "max_features": None, "sublinear_tf": True,
+    "norm": "l2", "use_idf": True, "smooth_idf": True, "lowercase": False,
+}
+
 SCHEME_NAMES = {
+    "F_char": "Character TF-IDF + chi2",
+    "F_word_char": "Word and character TF-IDF + chi2",
     "A": "原始 TF-IDF（稀疏高维，直接输入 BP）",
     "B": "TF-IDF + 卡方特征选择（稀疏降维）",
     "C": "TF-IDF + TruncatedSVD（稠密低维）",
@@ -94,7 +108,7 @@ SCHEME_NAMES = {
 
 def experiment_by_id(exp_id: str) -> dict:
     """按 id 取实验配置，找不到时抛错而非静默返回空配置。"""
-    for exp in EXPERIMENTS:
+    for exp in EXPERIMENTS + F_EXPERIMENTS:
         if exp["id"] == exp_id:
             return exp
-    raise KeyError(f"未知实验 id: {exp_id}，可选：{[e['id'] for e in EXPERIMENTS]}")
+    raise KeyError(f"未知实验 id: {exp_id}，可选：{[e['id'] for e in EXPERIMENTS + F_EXPERIMENTS]}")

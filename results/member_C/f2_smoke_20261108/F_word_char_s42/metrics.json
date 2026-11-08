@@ -1,0 +1,230 @@
+{
+  "run_id": "F_word_char_s42",
+  "experiment_id": "F_word_char",
+  "label": "F word and character TF-IDF + chi2",
+  "scheme": "F_word_char",
+  "scheme_name": "Word and character TF-IDF + chi2",
+  "seed": 42,
+  "dataset_version": "1.1.0",
+  "split_version": "1.0.0",
+  "created_at": "2026-11-08 00:59:10",
+  "provenance": {
+    "git_head": "31d6837a7f55db25dfb0b2cc7529430318bcfc4f",
+    "git_status": " M evaluate_test.py\n M model_config.py\n M models/bp.py\n M models/trainer.py\n M requirements.txt\n M train_bp.py\n M verify_dataset.py\n?? docs/member_c/\n?? models/f_features.py\n?? results/member_C/\n?? tests/test_f_features.py\n?? tests/test_model_architectures.py\n",
+    "source_sha256": {
+      "D:\\Project\\machine-learning\\ChineseNews-BPNN\\train_bp.py": "116b9a36726bb53ad6bbd8d36e81b890cfa9178335f32617564ed18ff5221568",
+      "models\\bp.py": "01c794a05a74fa93022803e94e929f6b847439d9505dcbe7c1b52378d04a99cd",
+      "models\\data.py": "3be67ae6b9a9773b3d1ac71eaabed6d6fe4e387746459f046fb50adb89f71956",
+      "models\\features.py": "007184f351a9603972e1efa603fd7f4e26f293e98f8e2dbe16d48ff3f7534a8a",
+      "models\\f_features.py": "c267e123a6ab3959e43a4def1408e0ba0f3c4c548cda5408ba7183ed56c79739",
+      "models\\metrics.py": "8d979aac625881956806a7446d10f0ad0470e86018db92d1bf64e405f385979b",
+      "models\\plots.py": "f1be7876951c544b11e8a08946359da57bdd253c28cafe8b97755332b102a031",
+      "models\\runs.py": "067f7208440f94ed6bc7bbf8b8460c5f02e79a34a2ad60e09821e0e27e6c58d2",
+      "models\\trainer.py": "269184b4fe64099737326ded70d65d51fcd9a311ade723c1ed99c436d69ebd66",
+      "models\\__init__.py": "d40bb798b7d48497ff16c7f07cb412e3e4f4972dd1c1e9a22871f51cec9c728a",
+      "model_config.py": "032d25556e3ec473183f6e1e97677c343a8c679a996f88edd1a6ffb7a2c8a25e"
+    },
+    "python": "3.11.15",
+    "torch": "2.4.1+cu121",
+    "torch_threads": 14,
+    "tfidf_params": {
+      "min_df": 2,
+      "max_df": 0.95,
+      "sublinear_tf": true,
+      "max_features": 20000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "norm": "l2",
+      "use_idf": true,
+      "smooth_idf": true,
+      "token_pattern": null,
+      "lowercase": false
+    },
+    "split_sha256": {
+      "train": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+      "val": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+    }
+  },
+  "feature": {
+    "scheme": "F_word_char",
+    "input_source": "title",
+    "fit_rows": 6549,
+    "sparse": true,
+    "tfidf_features": 49211,
+    "input_dim": 10000,
+    "word": {
+      "tokenization": "models.features.tokenize: jieba precise mode; filter non-Chinese/non-Latin tokens; lowercase Latin",
+      "tfidf_params": {
+        "min_df": 2,
+        "max_df": 0.95,
+        "sublinear_tf": true,
+        "max_features": 20000,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "norm": "l2",
+        "use_idf": true,
+        "smooth_idf": true,
+        "token_pattern": null,
+        "lowercase": false,
+        "tokenizer": "models.features._identity_tokens",
+        "preprocessor": null
+      },
+      "chi2_k_requested": 5000,
+      "tfidf_features": 10864,
+      "selected_features": 5000
+    },
+    "char": {
+      "tfidf_params": {
+        "analyzer": "char",
+        "ngram_range": [
+          2,
+          4
+        ],
+        "min_df": 2,
+        "max_df": 0.95,
+        "max_features": null,
+        "sublinear_tf": true,
+        "norm": "l2",
+        "use_idf": true,
+        "smooth_idf": true,
+        "lowercase": false
+      },
+      "chi2_k_requested": 5000,
+      "tfidf_features": 38347,
+      "selected_features": 5000
+    },
+    "normalization": "each TF-IDF branch L2 before chi2; concatenated selected features row L2"
+  },
+  "model": {
+    "model_type": "bp",
+    "input_dim": 10000,
+    "hidden_dim": 64,
+    "activation": "ReLU",
+    "dropout": 0.2,
+    "input_dropout": 0.0,
+    "output_dim": 6,
+    "n_parameters": 640454
+  },
+  "training": {
+    "best_epoch": 1,
+    "epochs_run": 1,
+    "train_time": 0.9173086000009789,
+    "tokenize_time": 0.0,
+    "feature_time": 1.9626134000009188,
+    "params": {
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 1,
+      "patience": 10,
+      "min_delta": 0.0001,
+      "grad_clip": 5.0
+    },
+    "early_stopping_patience": 10,
+    "selection_metric": "f1_macro"
+  },
+  "val": {
+    "accuracy": 0.49905778894472363,
+    "precision_macro": 0.7878603741874975,
+    "recall_macro": 0.49786823325510804,
+    "f1_macro": 0.4727059460465795,
+    "f1_weighted": 0.474226255716886,
+    "per_class": {
+      "财经": {
+        "precision": 1.0,
+        "recall": 0.011111111111111112,
+        "f1": 0.02197802197802198,
+        "support": 540
+      },
+      "体育": {
+        "precision": 0.9787234042553191,
+        "recall": 0.6611909650924025,
+        "f1": 0.7892156862745098,
+        "support": 487
+      },
+      "文娱": {
+        "precision": 0.8944099378881988,
+        "recall": 0.28628230616302186,
+        "f1": 0.43373493975903615,
+        "support": 503
+      },
+      "教育": {
+        "precision": 0.25987841945288753,
+        "recall": 0.9903474903474904,
+        "f1": 0.4117174959871589,
+        "support": 518
+      },
+      "社会": {
+        "precision": 0.7080745341614907,
+        "recall": 0.20917431192660552,
+        "f1": 0.32294617563739375,
+        "support": 545
+      },
+      "国际": {
+        "precision": 0.8860759493670886,
+        "recall": 0.8291032148900169,
+        "f1": 0.8566433566433567,
+        "support": 591
+      }
+    },
+    "confusion_matrix": [
+      [
+        6,
+        2,
+        1,
+        488,
+        27,
+        16
+      ],
+      [
+        0,
+        322,
+        2,
+        141,
+        2,
+        20
+      ],
+      [
+        0,
+        2,
+        144,
+        342,
+        14,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        513,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        12,
+        393,
+        114,
+        24
+      ],
+      [
+        0,
+        1,
+        1,
+        97,
+        2,
+        490
+      ]
+    ],
+    "n_samples": 3184,
+    "loss": 1.732471546336035
+  },
+  "test": null,
+  "test_evaluated_at": "",
+  "notes": "验证集指标用于模型选择；测试集尚未评估，由 evaluate_test.py 一次性完成。"
+}

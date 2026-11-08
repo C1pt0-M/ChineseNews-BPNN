@@ -1,0 +1,152 @@
+{
+  "scope": "local project only; held-out files used solely for id/url/title/time duplicate screening",
+  "sha256": {
+    "train": "e1d8e6f78d3fb8a1de9d90488397595ffb03277f6ea062d80c4df34341916eb3",
+    "val": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+    "test": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509",
+    "clean": "29f4827b4a946fbfdba292b5259ffcc4607486f4d27aaf65c9c42f805b250cc4",
+    "week_clean": "fe74314f7ffc9e9555e9b94a41540b98ec2b0c9516ae39504e7b9e8789f2768d",
+    "week_raw": "0724bdc2cbf95e10a4419034f71cfce90b09273f9c46c8d88c3eb9f3f68f4be0",
+    "culture_audit_sample": "8734f7d8b3ee66d41a2e1bf77c6c5a02c690a00fbbcf52a61abb0caa29028193"
+  },
+  "base": {
+    "rows": 6549,
+    "date_min": "2025-01-01 00:10:00",
+    "date_max": "2025-12-31 20:17:00",
+    "categories": {
+      "财经": 1109,
+      "体育": 1107,
+      "文娱": 1134,
+      "教育": 1064,
+      "社会": 1057,
+      "国际": 1078
+    },
+    "duplicates_extra_rows": {
+      "id": 0,
+      "url": 0,
+      "url_key": 0,
+      "title": 0,
+      "title_key": 0
+    }
+  },
+  "clean_2025_rows": 6549,
+  "clean_2025_not_in_train": 0,
+  "train_not_in_clean_2025": 0,
+  "train_source_fields_match": true,
+  "week": {
+    "raw_rows": 2919,
+    "reconstructed_clean_rows": 1854,
+    "clean_rows": 1854,
+    "raw_clean_reproduces_id_set": true,
+    "date_min": "2025-01-01 00:10:00",
+    "date_max": "2025-01-07 23:38:00",
+    "categories": {
+      "财经": 609,
+      "体育": 87,
+      "文娱": 133,
+      "教育": 13,
+      "社会": 658,
+      "国际": 354
+    },
+    "clean_stats": {
+      "input_rows": 2919,
+      "dropped_empty_title": 0,
+      "dropped_invalid_url": 0,
+      "dropped_bad_time": 0,
+      "dropped_duplicate_url": 0,
+      "duplicate_title_rows_dropped": 48,
+      "duplicate_title_groups": 46,
+      "records_in_duplicate_title_groups": 94,
+      "dropped_unknown_category": 0,
+      "dropped_non_target_category": 1017,
+      "rows_after_clean": 1854
+    },
+    "duplicates_extra_rows": {
+      "id": 0,
+      "url": 0,
+      "url_key": 0,
+      "title": 0,
+      "title_key": 0
+    }
+  },
+  "exact_overlap_rows_by_key": {
+    "train": {
+      "id": 114,
+      "url": 114,
+      "url_key": 114,
+      "title": 114,
+      "title_key": 114
+    },
+    "val": {
+      "id": 0,
+      "url": 0,
+      "url_key": 0,
+      "title": 0,
+      "title_key": 0
+    },
+    "test": {
+      "id": 0,
+      "url": 0,
+      "url_key": 0,
+      "title": 0,
+      "title_key": 0
+    }
+  },
+  "excluded_any_exact_identity_rows": 114,
+  "unseen_exact_candidate_count": 1740,
+  "unseen_exact_candidate_categories": {
+    "财经": 588,
+    "体育": 72,
+    "文娱": 112,
+    "教育": 3,
+    "社会": 636,
+    "国际": 329
+  },
+  "near_definition": "NFKC casefold; retain Unicode alphanumeric; set of character trigrams; Jaccard >= 0.80",
+  "candidate_near_rows_by_reference": {
+    "train": 2,
+    "val": 0,
+    "test": 0
+  },
+  "candidate_count_after_reference_near_screen": 1738,
+  "candidate_categories_after_reference_near_screen": {
+    "财经": 587,
+    "体育": 72,
+    "文娱": 112,
+    "教育": 3,
+    "社会": 636,
+    "国际": 328
+  },
+  "within_candidate_near_pairs": 3,
+  "within_candidate_near_involved_rows": 6,
+  "conservative_available_count": 1732,
+  "conservative_available_categories": {
+    "财经": 587,
+    "体育": 70,
+    "文娱": 111,
+    "教育": 3,
+    "社会": 635,
+    "国际": 326
+  },
+  "upper_bound_without_near_screen": 1740,
+  "max_total_before_near_screen": 8289,
+  "base_train_rows_near_heldout": {
+    "val": 0,
+    "test": 0
+  },
+  "base_train_near_internal_pairs": 4,
+  "base_train_near_internal_involved_rows": 5,
+  "base_train_rows_sharing_exact_8char_prefix_with_heldout": {
+    "val": 156,
+    "test": 86
+  },
+  "raw_culture_audit_sample": {
+    "all_source_rows": 150,
+    "rows_in_2025": 89,
+    "article_url_and_id_rows_in_2025": 89,
+    "remaining_after_exact_screen_against_splits_and_week": 75,
+    "remaining_after_near_screen_against_splits_and_week": 75,
+    "remaining_near_internal_pairs": 0,
+    "qualification": "provisional; raw snapshot lacks the full raw pool and original row-level cleaning flags"
+  }
+}

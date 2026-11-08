@@ -21,13 +21,14 @@ from __future__ import annotations
 import argparse
 import pickle
 import sys
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import torch
 
 import model_config as C
-from models.bp import BPNet
+from models.bp import build_model
 from models.data import verify_dataset
 from models.features import corpus_cache_key, tokenize_corpus
 from models.metrics import compute_metrics, format_metrics_line
@@ -50,8 +51,8 @@ def load_test_split():
     return texts, y, df
 
 
-def evaluate_run(run_name: str, force: bool = False) -> dict:
-    run_dir = C.RUN_DIR / run_name
+def evaluate_run(run_name: str, force: bool = False, output_root: Path | None = None) -> dict:
+    run_dir = (output_root or C.RUN_DIR) / run_name
     metrics_file = run_dir / "metrics.json"
     if not metrics_file.exists():
         raise FileNotFoundError(f"未找到运行目录：{run_dir}")
@@ -68,13 +69,15 @@ def evaluate_run(run_name: str, force: bool = False) -> dict:
         state = torch.load(f, map_location="cpu", weights_only=True)
 
     arch = payload["model"]
-    model = BPNet(input_dim=arch["input_dim"], hidden_dim=arch["hidden_dim"],
-                  n_classes=arch["output_dim"], dropout=arch["dropout"])
-    model.load_state_dict(state)
+    model = build_model(arch)
+    model.load_state_dict(state, strict=True)
 
     texts, y_test, df_test = load_test_split()
-    tokens = tokenize_corpus(texts, corpus_cache_key(texts) + "_test")
-    X_test = builder.transform(tokens)
+    if getattr(builder, "raw_text_input", False):
+        X_test = builder.transform(texts)
+    else:
+        tokens = tokenize_corpus(texts, corpus_cache_key(texts) + "_test")
+        X_test = builder.transform(tokens)
 
     if X_test.shape[1] != arch["input_dim"]:
         raise RuntimeError(f"特征维度与模型不一致：{X_test.shape[1]} vs {arch['input_dim']}")
@@ -106,14 +109,15 @@ def evaluate_run(run_name: str, force: bool = False) -> dict:
     save_json(metrics_file, payload)
 
     print(f"[{run_name}] 测试集：{format_metrics_line(m)}")
-    print(f"    混淆矩阵与逐条预测已写入 {run_dir.relative_to(C.BASE_DIR)}")
+    print(f"    混淆矩阵与逐条预测已写入 {run_dir.resolve()}")
     return payload
 
 
-def all_run_names() -> list[str]:
-    if not C.RUN_DIR.exists():
+def all_run_names(output_root: Path | None = None) -> list[str]:
+    root = output_root or C.RUN_DIR
+    if not root.exists():
         return []
-    return sorted(p.name for p in C.RUN_DIR.iterdir()
+    return sorted(p.name for p in root.iterdir()
                   if (p / "metrics.json").exists())
 
 
@@ -123,9 +127,10 @@ def main(argv=None) -> int:
     g.add_argument("--run", nargs="+", help="运行目录名，如 C_svd_200_s42")
     g.add_argument("--all", action="store_true", help="评估全部已训练运行")
     p.add_argument("--force", action="store_true", help="覆盖已有测试结果")
+    p.add_argument("--output-root", type=Path, help="root directory of independent training runs")
     args = p.parse_args(argv)
 
-    targets = all_run_names() if args.all else args.run
+    targets = all_run_names(args.output_root) if args.all else args.run
     if not targets:
         print("没有可评估的运行，请先执行 train_bp.py")
         return 1
@@ -137,13 +142,14 @@ def main(argv=None) -> int:
     failures = []
     for name in targets:
         try:
-            evaluate_run(name, force=args.force)
+            evaluate_run(name, force=args.force, output_root=args.output_root)
         except Exception as exc:
             failures.append((name, repr(exc)))
             print(f"[失败] {name}: {exc}")
 
-    summary = rebuild_summary()
-    print(f"\n汇总已更新：{len(summary)} 条运行记录")
+    if args.output_root is None:
+        summary = rebuild_summary()
+        print(f"\nSummary updated: {len(summary)} runs")
     if failures:
         print(f"有 {len(failures)} 个运行评估失败：{failures}")
         return 1

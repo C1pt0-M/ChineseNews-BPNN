@@ -37,6 +37,7 @@ import torch
 import model_config as C
 from models.data import load_splits
 from models.features import FeatureBuilder, corpus_cache_key, tokenize_corpus
+from models.f_features import TitleFeatureBuilder
 from models.metrics import format_metrics_line
 from models.plots import plot_confusion_matrix, plot_training_curves
 from models.runs import (SUMMARY_FILE, now_str, rebuild_summary, run_path,
@@ -54,20 +55,27 @@ def build_features(exp: dict, seed: int, splits: dict, log_fn=log):
     val_texts, y_val, _ = splits["val"]
 
     t0 = time.perf_counter()
-    key = corpus_cache_key(train_texts, val_texts)
-    train_tokens = tokenize_corpus(train_texts, f"{key}_train")
-    val_tokens = tokenize_corpus(val_texts, f"{key}_val")
-    token_time = time.perf_counter() - t0
-
-    builder = FeatureBuilder(
-        scheme=exp["scheme"], k=exp.get("k"),
-        n_components=exp.get("n_components"), seed=seed,
-    )
-    t1 = time.perf_counter()
-    builder.fit(train_tokens, y_train)
-    X_train = builder.transform(train_tokens)
-    X_val = builder.transform(val_tokens)
-    feat_time = time.perf_counter() - t1
+    if exp["scheme"] in ("F_char", "F_word_char"):
+        builder = TitleFeatureBuilder(exp["scheme"], seed=seed)
+        builder.fit(train_texts, y_train)
+        X_train = builder.transform(train_texts)
+        X_val = builder.transform(val_texts)
+        token_time = 0.0  # Included in feature time for this pipeline.
+        feat_time = time.perf_counter() - t0
+    else:
+        key = corpus_cache_key(train_texts, val_texts)
+        train_tokens = tokenize_corpus(train_texts, f"{key}_train")
+        val_tokens = tokenize_corpus(val_texts, f"{key}_val")
+        token_time = time.perf_counter() - t0
+        builder = FeatureBuilder(
+            scheme=exp["scheme"], k=exp.get("k"),
+            n_components=exp.get("n_components"), seed=seed,
+        )
+        t1 = time.perf_counter()
+        builder.fit(train_tokens, y_train)
+        X_train = builder.transform(train_tokens)
+        X_val = builder.transform(val_tokens)
+        feat_time = time.perf_counter() - t1
 
     log_fn(f"    特征：TF-IDF {builder.n_features_in_} 维 → 输入 {builder.n_features_out_} 维"
            f"（{'稠密' if exp['scheme'] == 'C' else '稀疏'}），"
@@ -92,15 +100,15 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
 
     builder, X_train, y_train, X_val, y_val, timing = build_features(exp, seed, splits, log_fn)
 
-    hidden = overrides.get("hidden_dim") or C.BP_PARAMS["hidden_dim"]
-    dropout = overrides.get("dropout") if overrides.get("dropout") is not None else C.BP_PARAMS["dropout"]
-    log_fn(f"    网络：{builder.n_features_out_} → {hidden}"
-           f" → ReLU → Dropout({dropout}) → {C.N_CLASSES}")
+    model_type = overrides.get("model_type", "bp")
+    log_fn(f"    Model type: {model_type}; input={builder.n_features_out_}; "
+           f"parameters: {overrides.get('bp_params') or {}}")
+
     result = train_bp_model(
         X_train, y_train, X_val, y_val, seed=seed,
         train_params=overrides.get("train_params"),
         bp_params=overrides.get("bp_params"),
-        log_fn=log_fn,
+        log_fn=log_fn, model_type=model_type,
     )
 
     val_metrics = result["val_metrics"]
@@ -166,7 +174,7 @@ def run_single(exp: dict, seed: int, splits: dict, overrides: dict, quiet: bool 
     log(f"    验证集：{format_metrics_line(val_metrics)}")
     log(f"    最佳轮数 {result['best_epoch']}（共跑 {result['epochs_run']} 轮）"
         f"，训练耗时 {result['train_time']:.1f}s，参数量 {result['n_parameters']:,}")
-    log(f"    已保存 → {out_dir.resolve().relative_to(C.BASE_DIR)}")
+    log(f"    已保存 → {out_dir.resolve()}")
     return payload
 
 
@@ -178,8 +186,11 @@ def parse_args(argv=None):
 
     p.add_argument("--seeds", default=str(C.SEED),
                    help="随机种子，逗号分隔，默认 42")
+    p.add_argument("--model-type", choices=("bp", "linear", "hybrid"), default="bp",
+                   help="model architecture (default: bp)")
     p.add_argument("--hidden", type=int, default=None, help="隐藏层神经元数")
     p.add_argument("--dropout", type=float, default=None)
+    p.add_argument("--input-dropout",type=float,default=None,help="输入层 Dropout 概率，默认 0.0",)
     p.add_argument("--lr", type=float, default=None)
     p.add_argument("--weight-decay", type=float, default=None)
     p.add_argument("--batch-size", type=int, default=None)
@@ -196,6 +207,19 @@ def main(argv=None) -> int:
 
     exps = C.EXPERIMENTS if args.all else [C.experiment_by_id(e) for e in args.exp]
 
+    f_exps = [e for e in exps if e["scheme"] in ("F_char", "F_word_char")]
+    if f_exps:
+        if len(f_exps) != len(exps):
+            raise ValueError("Run F experiments separately from historical experiments")
+        if args.output_root is None:
+            raise ValueError("F experiments require --output-root")
+        for name, required in (("model_type", "bp"), ("hidden", 64), ("lr", 0.0003),
+                               ("dropout", 0.2), ("input_dropout", 0.0)):
+            actual = getattr(args, name)
+            if actual is not None and actual != required:
+                raise ValueError(f"F experiments require {name}={required}")
+            setattr(args, name, required)
+
     train_params, bp_params = {}, {}
     if args.lr is not None:
         train_params["lr"] = args.lr
@@ -211,7 +235,11 @@ def main(argv=None) -> int:
         bp_params["hidden_dim"] = args.hidden
     if args.dropout is not None:
         bp_params["dropout"] = args.dropout
-    overrides = {"train_params": train_params or None, "bp_params": bp_params or None,
+    if args.input_dropout is not None:
+        if not 0.0 <= args.input_dropout < 1.0:
+            raise ValueError("--input-dropout 必须满足 0 <= p < 1")
+        bp_params["input_dropout"] = args.input_dropout
+    overrides = {"model_type": args.model_type, "train_params": train_params or None, "bp_params": bp_params or None,
                  "hidden_dim": bp_params.get("hidden_dim"),
                  "dropout": bp_params.get("dropout")}
 

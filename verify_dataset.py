@@ -180,8 +180,7 @@ def main() -> int:
         stats_csv = SPLITS / "split_statistics.csv"
         if stats_csv.exists():
             st = pd.read_csv(stats_csv, encoding=config.CSV_ENCODING)
-            okay = all(f"{int(st.loc[(st['split'] == n) &
-                                    (st['category'] == '合计'), 'count'].iloc[0]):,}" in text
+            okay = all(f"{int(st.loc[(st['split'] == n) & (st['category'] == '合计'), 'count'].iloc[0]):,}" in text
                        for n, _, _ in BOUNDARIES)
             check("划分报告样本数与 split_statistics.csv 一致", okay)
 
