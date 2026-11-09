@@ -1,0 +1,44 @@
+{
+  "data_source": "dataset/splits/test.csv",
+  "test_previously_viewed": true,
+  "selection_preflight_sha256": "a7aaa1e6224ea830847cd578adcf47bdf1783f97e99dad3dcf0aba4c9989982c",
+  "test_sha256": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509",
+  "encoder_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "test_embeddings_sha256": "aacc15df21e12af1cbe1e6f8ca44871a60ce993a06a9b8d0b7e1175d30f01f1b",
+  "encoder_cost": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "dtype": "float32",
+    "model_load_seconds": 1.102173200022662,
+    "batch_encode_seconds": 0.883018099993933,
+    "batch_size": 32,
+    "titles_truncated": 0,
+    "encoder_frozen_parameters": 23953920,
+    "encoder_trainable_parameters": 0,
+    "versions": {
+      "torch": "2.4.1+cu121",
+      "transformers": "4.44.2",
+      "tokenizers": "0.19.1",
+      "huggingface_hub": "0.24.7",
+      "safetensors": "0.4.5",
+      "numpy": "2.4.3"
+    }
+  },
+  "tfidf_transform_seconds_by_seed": {
+    "42": 0.6044241999916267,
+    "43": 0.2053252000187058,
+    "44": 0.19294150001951493,
+    "45": 0.19182560002082027,
+    "46": 0.18852650001645088
+  },
+  "bp_prediction_seconds_total": 0.7575847000116482,
+  "bp_inference_cpu_threads": 4,
+  "same_test_rows_labels_order_for_15_runs": true,
+  "strict_model_load": true,
+  "model_state_unchanged_after_inference": true,
+  "all_locked_input_hashes_unchanged": true,
+  "fit_or_train_performed": false,
+  "test_labels_used_to_change_models_or_settings": false,
+  "history_test_set_previously_viewed": true,
+  "external_encoder_pretraining_overlap_unknown": true
+}

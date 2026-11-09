@@ -1,0 +1,39 @@
+{
+  "created_after_training": true,
+  "source_hash_scope": "recorded at audit time after training",
+  "python": "3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:36:00) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "torch_threads": 14,
+  "cuda": "12.1",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "package_versions": {
+    "torch": "2.4.1+cu121",
+    "transformers": "4.44.2",
+    "tokenizers": "0.19.1",
+    "huggingface_hub": "0.24.7",
+    "safetensors": "0.4.5",
+    "regex": "2024.11.6",
+    "tqdm": "4.67.1",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.1",
+    "jieba": "0.42.1",
+    "matplotlib": "3.10.8"
+  },
+  "source_sha256": {
+    "results\\member_C\\f8_experiments\\pipeline.py": "0f41b1bd292bb090cea1fee32dbbe2d07689d733a8218dfe05b56cf0003f1925",
+    "results\\member_C\\f8_experiments\\download_model.py": "af1e5c0f13aa3f77a565d2a4e2fc2e8e0dfef2f89623446ec43414dc432fbefb",
+    "results\\member_C\\f8_experiments\\review_seed42.py": "c77bc08cdeb870d607faa52e04ea0feef76528ad084819c79732377d5908c05e",
+    "results\\member_C\\f8_experiments\\verify_encoder.py": "6099925bc5fde426b7434c479874e1fb4e0fea5845e5922b1390b6f7af93557b",
+    "results\\member_C\\f8_experiments\\analyze_f8.py": "fe8769792ae17cd1361ad5b6989a80e6e08dfe37094f1b991dd8370d7ab67885",
+    "models\\bp.py": "01c794a05a74fa93022803e94e929f6b847439d9505dcbe7c1b52378d04a99cd",
+    "models\\trainer.py": "269184b4fe64099737326ded70d65d51fcd9a311ade723c1ed99c436d69ebd66",
+    "models\\f_features.py": "83d7ca4e7ebe95ab830bf361d26806d7b55ca7cb06eaf566f35ac72a59b29de5",
+    "models\\features.py": "007184f351a9603972e1efa603fd7f4e26f293e98f8e2dbe16d48ff3f7534a8a",
+    "model_config.py": "7a0305632473dc333213714a63e75f586f0b27cadf177daca912ab895bd8acd1"
+  },
+  "model_weights_sha256": "354763b9b1357bc9c44f62c6be2276321081ed2567773608c0d0785b61d5a026",
+  "cache_manifest_sha256": "77016f51f896d62d29b7591203524b40238b2a780d904a6794c71a4785fc3e8e",
+  "local_dependencies": "results/member_C/f8_experiments/vendor; no system-level package install"
+}

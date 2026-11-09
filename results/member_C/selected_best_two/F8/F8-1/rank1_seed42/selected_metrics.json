@@ -1,0 +1,129 @@
+{
+  "group": "F8-1",
+  "seed": 42,
+  "split": "validation",
+  "val": {
+    "accuracy": 0.8282035175879398,
+    "precision_macro": 0.8276873496187012,
+    "recall_macro": 0.8290021313076311,
+    "f1_macro": 0.8278492800761864,
+    "f1_weighted": 0.8271288447571555,
+    "per_class": {
+      "财经": {
+        "precision": 0.7810077519379846,
+        "recall": 0.7462962962962963,
+        "f1": 0.7632575757575758,
+        "support": 540
+      },
+      "体育": {
+        "precision": 0.9194214876033058,
+        "recall": 0.9137577002053389,
+        "f1": 0.9165808444902163,
+        "support": 487
+      },
+      "文娱": {
+        "precision": 0.7868852459016393,
+        "recall": 0.8588469184890656,
+        "f1": 0.8212927756653993,
+        "support": 503
+      },
+      "教育": {
+        "precision": 0.8840864440078585,
+        "recall": 0.8687258687258688,
+        "f1": 0.8763388510223953,
+        "support": 518
+      },
+      "社会": {
+        "precision": 0.7056530214424951,
+        "recall": 0.6642201834862386,
+        "f1": 0.6843100189035917,
+        "support": 545
+      },
+      "国际": {
+        "precision": 0.8890701468189234,
+        "recall": 0.922165820642978,
+        "f1": 0.9053156146179402,
+        "support": 591
+      }
+    },
+    "confusion_matrix": [
+      [
+        403,
+        10,
+        19,
+        11,
+        71,
+        26
+      ],
+      [
+        3,
+        445,
+        8,
+        4,
+        8,
+        19
+      ],
+      [
+        8,
+        9,
+        432,
+        11,
+        34,
+        9
+      ],
+      [
+        14,
+        7,
+        16,
+        450,
+        26,
+        5
+      ],
+      [
+        68,
+        11,
+        63,
+        32,
+        362,
+        9
+      ],
+      [
+        20,
+        2,
+        11,
+        1,
+        12,
+        545
+      ]
+    ],
+    "n_samples": 3184,
+    "loss": 0.4872246347180563
+  },
+  "model": {
+    "model_type": "bp",
+    "input_dim": 512,
+    "hidden_dim": 64,
+    "activation": "ReLU",
+    "dropout": 0.2,
+    "input_dropout": 0,
+    "output_dim": 6,
+    "n_parameters": 33222
+  },
+  "training": {
+    "params": {
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 100,
+      "patience": 10,
+      "min_delta": 0.0001,
+      "grad_clip": 5.0
+    },
+    "best_epoch": 25,
+    "epochs_run": 35,
+    "train_time": 15.593488399987109,
+    "training_wall_seconds": 16.438677900005132,
+    "cached_feature_transform_seconds": 2.3999891709536314e-06,
+    "selection_metric": "f1_macro"
+  }
+}

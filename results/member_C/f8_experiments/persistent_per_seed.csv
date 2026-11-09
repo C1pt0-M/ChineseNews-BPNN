@@ -1,0 +1,16 @@
+﻿group,seed,cohort,n,correct,wrong
+F8-0,42,F2_and_F3_all_wrong,548,14,534
+F8-0,43,F2_and_F3_all_wrong,548,16,532
+F8-0,44,F2_and_F3_all_wrong,548,13,535
+F8-0,45,F2_and_F3_all_wrong,548,13,535
+F8-0,46,F2_and_F3_all_wrong,548,22,526
+F8-1,42,F2_and_F3_all_wrong,548,235,313
+F8-1,43,F2_and_F3_all_wrong,548,230,318
+F8-1,44,F2_and_F3_all_wrong,548,229,319
+F8-1,45,F2_and_F3_all_wrong,548,236,312
+F8-1,46,F2_and_F3_all_wrong,548,234,314
+F8-2,42,F2_and_F3_all_wrong,548,173,375
+F8-2,43,F2_and_F3_all_wrong,548,175,373
+F8-2,44,F2_and_F3_all_wrong,548,172,376
+F8-2,45,F2_and_F3_all_wrong,548,173,375
+F8-2,46,F2_and_F3_all_wrong,548,173,375

@@ -1,0 +1,20 @@
+{
+  "group": "F8-2",
+  "seed": 46,
+  "accuracy": 0.8204675783,
+  "macro_f1": 0.8199914052,
+  "macro_precision": 0.8218771814,
+  "macro_recall": 0.8209459841,
+  "bp_parameters": 673222,
+  "encoder_parameters": 23953920,
+  "validation_macro_f1": 0.8370152259,
+  "validation_accuracy": 0.8369974874,
+  "test_minus_val_f1": -0.0170238207,
+  "test_minus_val_accuracy": -0.0165299091,
+  "society_to_finance": 48,
+  "society_to_entertainment": 48,
+  "finance_to_society": 47,
+  "entertainment_to_society": 18,
+  "bp_prediction_seconds": 0.0321743,
+  "checkpoint_path": "results\\member_C\\f8_experiments\\runs\\F8_2_s46"
+}

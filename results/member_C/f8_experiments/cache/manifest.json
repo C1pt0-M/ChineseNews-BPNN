@@ -1,0 +1,54 @@
+{
+  "model": "BAAI/bge-small-zh-v1.5",
+  "revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "model_source": "https://huggingface.co/BAAI/bge-small-zh-v1.5",
+  "license": "MIT",
+  "citation": "Xiao et al., C-Pack: Packaged Resources To Advance General Chinese Embedding, arXiv:2309.07597 (2023)",
+  "files_sha256": {
+    "config.json": "3853a7979202c348751b753e36f579c41d8da7d36af617d3d907e1fc9b441f2a",
+    "model.safetensors": "354763b9b1357bc9c44f62c6be2276321081ed2567773608c0d0785b61d5a026",
+    "tokenizer.json": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26",
+    "tokenizer_config.json": "e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a",
+    "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+    "vocab.txt": "45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c",
+    "README.md": "c48a4eeea77f6b1d38b48ec1c5b8d4f86d5550cc43fa345a0db1b2ca1d082369"
+  },
+  "hidden_size": 512,
+  "frozen_encoder_parameters": 23953920,
+  "encoder_trainable_parameters": 0,
+  "pooling": "last_hidden_state CLS token, row L2 normalized",
+  "instruction": null,
+  "tokenizer": {
+    "padding": true,
+    "truncation": true,
+    "max_length": 512,
+    "batch_size": 32
+  },
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "dtype": "float32",
+  "versions": {
+    "torch": "2.4.1+cu121",
+    "transformers": "4.44.2",
+    "tokenizers": "0.19.1",
+    "huggingface_hub": "0.24.7",
+    "safetensors": "0.4.5",
+    "numpy": "2.4.3"
+  },
+  "splits": {
+    "train": {
+      "rows": 7531,
+      "seconds": 6.806245800005854,
+      "titles_truncated": 0,
+      "cache_sha256": "30e153055f61fdd3659cd51b158e83dd6d2c49e152a355fe05a3196746d407b8",
+      "source_sha256": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880"
+    },
+    "val": {
+      "rows": 3184,
+      "seconds": 0.9456058000068879,
+      "titles_truncated": 0,
+      "cache_sha256": "e5070d8b705c9d3fb910d417521a79c16c4185007aa22bb11e94f4afda337c78",
+      "source_sha256": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+    }
+  }
+}

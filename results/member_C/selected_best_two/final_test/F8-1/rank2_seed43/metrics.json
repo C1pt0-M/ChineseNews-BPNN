@@ -1,0 +1,142 @@
+{
+  "run_id": "F8_1_s43",
+  "seed": 43,
+  "created_at": "2026-11-09 11:25:43",
+  "data_sha256": {
+    "train": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880",
+    "val": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+  },
+  "feature": {
+    "scheme": "bge",
+    "input_dim": 512,
+    "normalization": "BGE CLS row L2",
+    "semantic_dim": 512
+  },
+  "semantic_cache_manifest_sha256": "77016f51f896d62d29b7591203524b40238b2a780d904a6794c71a4785fc3e8e",
+  "model": {
+    "model_type": "bp",
+    "input_dim": 512,
+    "hidden_dim": 64,
+    "activation": "ReLU",
+    "dropout": 0.2,
+    "input_dropout": 0,
+    "output_dim": 6,
+    "n_parameters": 33222
+  },
+  "frozen_encoder_parameters": 23953920,
+  "training": {
+    "params": {
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 100,
+      "patience": 10,
+      "min_delta": 0.0001,
+      "grad_clip": 5.0
+    },
+    "best_epoch": 35,
+    "epochs_run": 45,
+    "train_time": 23.136748399876524,
+    "training_wall_seconds": 23.949993799993536,
+    "cached_feature_transform_seconds": 2.400018274784088e-06,
+    "selection_metric": "f1_macro"
+  },
+  "val": {
+    "accuracy": 0.823178391959799,
+    "precision_macro": 0.8225782495181289,
+    "recall_macro": 0.8240014405416621,
+    "f1_macro": 0.8227039914333293,
+    "f1_weighted": 0.8219702647552781,
+    "per_class": {
+      "财经": {
+        "precision": 0.7573529411764706,
+        "recall": 0.762962962962963,
+        "f1": 0.7601476014760148,
+        "support": 540
+      },
+      "体育": {
+        "precision": 0.9264705882352942,
+        "recall": 0.9055441478439425,
+        "f1": 0.9158878504672897,
+        "support": 487
+      },
+      "文娱": {
+        "precision": 0.7818181818181819,
+        "recall": 0.8548707753479126,
+        "f1": 0.8167141500474834,
+        "support": 503
+      },
+      "教育": {
+        "precision": 0.877431906614786,
+        "recall": 0.8706563706563707,
+        "f1": 0.874031007751938,
+        "support": 518
+      },
+      "社会": {
+        "precision": 0.6963562753036437,
+        "recall": 0.6311926605504588,
+        "f1": 0.6621751684311838,
+        "support": 545
+      },
+      "国际": {
+        "precision": 0.8960396039603961,
+        "recall": 0.9187817258883249,
+        "f1": 0.9072681704260651,
+        "support": 591
+      }
+    },
+    "confusion_matrix": [
+      [
+        412,
+        7,
+        19,
+        11,
+        67,
+        24
+      ],
+      [
+        3,
+        441,
+        9,
+        4,
+        9,
+        21
+      ],
+      [
+        9,
+        7,
+        430,
+        13,
+        36,
+        8
+      ],
+      [
+        16,
+        7,
+        14,
+        451,
+        27,
+        3
+      ],
+      [
+        84,
+        11,
+        64,
+        35,
+        344,
+        7
+      ],
+      [
+        20,
+        3,
+        14,
+        0,
+        11,
+        543
+      ]
+    ],
+    "n_samples": 3184,
+    "loss": 0.48721617160730024
+  },
+  "test": null
+}

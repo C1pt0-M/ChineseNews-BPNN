@@ -1,0 +1,7 @@
+﻿group,cohort,n,all_five_wrong,all_five_correct,at_least_one_correct,correct_predictions_mean
+F8-0,F2_and_F3_all_wrong,548,519,9,29,15.6
+F8-0,F7_0_all_wrong,607,607,0,0,0.0
+F8-1,F2_and_F3_all_wrong,548,301,220,247,232.8
+F8-1,F7_0_all_wrong,607,325,253,282,267.6
+F8-2,F2_and_F3_all_wrong,548,353,152,195,173.2
+F8-2,F7_0_all_wrong,607,379,174,228,200.4

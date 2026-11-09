@@ -1,0 +1,12 @@
+{
+  "frozen": true,
+  "encoder_parameters": 23953920,
+  "batch_per_split": 32,
+  "maximum_absolute_difference": {
+    "train": 0.0,
+    "val": 0.0
+  },
+  "device": "cuda",
+  "cache_manifest_sha256": "77016f51f896d62d29b7591203524b40238b2a780d904a6794c71a4785fc3e8e",
+  "test_access": false
+}

@@ -1,0 +1,39 @@
+{
+  "baseline_f1": 0.7911406092644685,
+  "runs": {
+    "F8_1": {
+      "macro_f1": 0.8278492800761864,
+      "accuracy": 0.8282035175879398,
+      "best_epoch": 25,
+      "epochs_run": 35,
+      "input_dim": 512,
+      "parameters": 33222,
+      "best_train_loss": 0.39355186516150203,
+      "best_val_loss": 0.4872246347180563,
+      "final_train_loss": 0.371998455093971,
+      "final_val_loss": 0.4871827230681127,
+      "society_to_finance": 68,
+      "society_to_entertainment": 63
+    },
+    "F8_2": {
+      "macro_f1": 0.8358102912232468,
+      "accuracy": 0.835427135678392,
+      "best_epoch": 16,
+      "epochs_run": 26,
+      "input_dim": 10512,
+      "parameters": 673222,
+      "best_train_loss": 0.21468126860103068,
+      "best_val_loss": 0.4644488594939361,
+      "final_train_loss": 0.13591287054923834,
+      "final_val_loss": 0.4799749421414418,
+      "society_to_finance": 82,
+      "society_to_entertainment": 67
+    }
+  },
+  "cache_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "strict_checkpoint_predictions_match": true,
+  "finite_history": true,
+  "further_validation_justified": true,
+  "decision": "Both semantic and fused exploratory Macro-F1 exceed seed-42 baseline; proceed with seeds 43–46 only if all integrity checks pass. This selection uses the validation set and is not independent evidence.",
+  "test_access": false
+}

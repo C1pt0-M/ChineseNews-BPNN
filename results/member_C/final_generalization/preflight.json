@@ -1,0 +1,254 @@
+{
+  "selection_fixed_before_test_prediction": true,
+  "selection_basis": "User fixed all three schemes and all five seeds before evaluation; no test-driven selection.",
+  "selected_data": "dataset/splits/test.csv",
+  "data_sha256": {
+    "train": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880",
+    "val": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0",
+    "test": "626cc1cd09bbdd74b7a49bb4570c2efde3c59089e31ace918665352fda694509"
+  },
+  "test_status": "Previously evaluated in historical experiments; not a strict independent blind test.",
+  "test_history_sources": [
+    "README.md:423",
+    "reports/member_A_baseline_audit.md:110"
+  ],
+  "alternative_review": {
+    "rows": 1854,
+    "class_counts": {
+      "社会": 658,
+      "财经": 609,
+      "国际": 354,
+      "文娱": 133,
+      "体育": 87,
+      "教育": 13
+    },
+    "id_overlap_with_f3a_train": 123,
+    "title_overlap_with_f3a_train": 123,
+    "unmatched_class_counts": {
+      "社会": 634,
+      "财经": 588,
+      "国际": 327,
+      "文娱": 110,
+      "体育": 70,
+      "教育": 2
+    },
+    "period": "2025-01-01 through 2025-01-07",
+    "decision": "Not a documented blind independent set: overlaps F3-A training, restricted to seven days, severe class imbalance, previously used in F3 resource review."
+  },
+  "temporal_and_class_distribution": {
+    "train": {
+      "minimum": "2025-01-01 00:10:00",
+      "maximum": "2025-12-31 20:17:00",
+      "class_counts": {
+        "文娱": 1304,
+        "财经": 1275,
+        "体育": 1273,
+        "国际": 1239,
+        "教育": 1224,
+        "社会": 1216
+      },
+      "rows": 7531
+    },
+    "val": {
+      "minimum": "2026-01-01 08:54:00",
+      "maximum": "2026-06-30 21:57:00",
+      "class_counts": {
+        "国际": 591,
+        "社会": 545,
+        "财经": 540,
+        "教育": 518,
+        "文娱": 503,
+        "体育": 487
+      },
+      "rows": 3184
+    },
+    "test": {
+      "minimum": "2026-07-01 05:44:00",
+      "maximum": "2026-10-31 23:23:00",
+      "class_counts": {
+        "教育": 418,
+        "体育": 406,
+        "社会": 398,
+        "文娱": 363,
+        "财经": 351,
+        "国际": 331
+      },
+      "rows": 2267
+    }
+  },
+  "exact_cross_split_intersections": {
+    "train_val": {
+      "id": 0,
+      "url": 0,
+      "title": 0
+    },
+    "train_test": {
+      "id": 0,
+      "url": 0,
+      "title": 0
+    },
+    "val_test": {
+      "id": 0,
+      "url": 0,
+      "title": 0
+    }
+  },
+  "near_duplicate_limit": "Exact ID/URL/title checks do not exclude paraphrases or multiple reports of the same event.",
+  "encoder_pretraining_overlap": "Unknown whether external BGE pretraining data overlap evaluation titles.",
+  "encoder_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "encoder_manifest_sha256": "77016f51f896d62d29b7591203524b40238b2a780d904a6794c71a4785fc3e8e",
+  "frozen_encoder_parameters": 23953920,
+  "locked_runs": {
+    "F8-0 seed=42": {
+      "path": "results\\member_C\\f6_experiments\\runs\\F6_B_s42",
+      "checkpoint_sha256": "d3fcfbde23ea41de498ac4f57c7b6c754853345b9e2b9a59b6c8669760da4134",
+      "metrics_sha256": "e25bf3775305cb022a1819329e463d22672c78118cc063413daf3281ff543e38",
+      "feature_processor": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\feature_builder.pkl",
+      "feature_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "input_dim": 10000,
+      "bp_parameters": 640454,
+      "validation_macro_f1": 0.7911406092644685
+    },
+    "F8-0 seed=43": {
+      "path": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s43",
+      "checkpoint_sha256": "92a7b7c5d4c38520b99e8f02cc5fdcfebc9f1c35ab3a45ec4a91962b233c03d4",
+      "metrics_sha256": "dcbd576e0e895e32a2dcab78012b8bcdbce571554f9ac1a1a1f86d1c9d5e0faf",
+      "feature_processor": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s43\\feature_builder.pkl",
+      "feature_processor_sha256": "82748effbd94126b3a800e9db830ba48b6cd0e70772b71380526bf3ca534108f",
+      "input_dim": 10000,
+      "bp_parameters": 640454,
+      "validation_macro_f1": 0.7881750745208754
+    },
+    "F8-0 seed=44": {
+      "path": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44",
+      "checkpoint_sha256": "c9048bf069ad4931da202cf43a9ee775e306d69b0b1acdb7036bde334a7bb62f",
+      "metrics_sha256": "d7c9b5e21e1cb38968f04fd3d96f8490e1144e861b0035df43edcbbb41ae7439",
+      "feature_processor": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\feature_builder.pkl",
+      "feature_processor_sha256": "0dbe39b9de4cdff2081aea99ac40aa713127bdf50b3393a37525f92eb1814108",
+      "input_dim": 10000,
+      "bp_parameters": 640454,
+      "validation_macro_f1": 0.7914469656267517
+    },
+    "F8-0 seed=45": {
+      "path": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45",
+      "checkpoint_sha256": "16c4b9c3cff9946527894c2977909dd78a230605e50c6f6493f134b65029b889",
+      "metrics_sha256": "67f3cd21a248bb074ad0bb1328e387a591e0894c84abe17d728b5b4a8f94184a",
+      "feature_processor": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\feature_builder.pkl",
+      "feature_processor_sha256": "a7c23b0a10828a7f2ee69bb2eb00f12fb23ebfc336246803e5926f4940b263b0",
+      "input_dim": 10000,
+      "bp_parameters": 640454,
+      "validation_macro_f1": 0.7921259003628728
+    },
+    "F8-0 seed=46": {
+      "path": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s46",
+      "checkpoint_sha256": "06c526524338d610ce6d4dd6cc61f592d15a3f998d17780685e73e7c6298be98",
+      "metrics_sha256": "46d23a0c26b96ecbbb97bbdef96f9bb721af93fc22efe84da0bc6b3f9162cd3d",
+      "feature_processor": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s46\\feature_builder.pkl",
+      "feature_processor_sha256": "522bf7db249d31272d26210719b3cfa1facae2085e9a3966f6c63e441addb09d",
+      "input_dim": 10000,
+      "bp_parameters": 640454,
+      "validation_macro_f1": 0.7885766686579573
+    },
+    "F8-1 seed=42": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_1_s42",
+      "checkpoint_sha256": "c668b5ed72e31257b957b96f4055d4eeda8124f009fc2dade4359c18bf698e9e",
+      "metrics_sha256": "8abcd6568d26f1b6895b88377163bbbcd6e6b4959e69e336aa86f912bf90c051",
+      "feature_processor": null,
+      "feature_processor_sha256": null,
+      "input_dim": 512,
+      "bp_parameters": 33222,
+      "validation_macro_f1": 0.8278492800761864
+    },
+    "F8-1 seed=43": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_1_s43",
+      "checkpoint_sha256": "9af0db88eaed39b7f54a37320382cb9a85c79ae15c6d69be4ba215a991b0900c",
+      "metrics_sha256": "514444bb00ddb00763194cb0fce77432b0f4251a54757a3ff086e8191fe02182",
+      "feature_processor": null,
+      "feature_processor_sha256": null,
+      "input_dim": 512,
+      "bp_parameters": 33222,
+      "validation_macro_f1": 0.8227039914333293
+    },
+    "F8-1 seed=44": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_1_s44",
+      "checkpoint_sha256": "c396580df3ab7f0f200de7a3a6786b3fa9f962447ec6d5b4ac95cc4dd6e4fa2a",
+      "metrics_sha256": "ec1a5f8cbcbf32dcc54b3bdbac72d5190dc3cc788b09ff331af89c23241ff452",
+      "feature_processor": null,
+      "feature_processor_sha256": null,
+      "input_dim": 512,
+      "bp_parameters": 33222,
+      "validation_macro_f1": 0.8257451381332802
+    },
+    "F8-1 seed=45": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_1_s45",
+      "checkpoint_sha256": "0e49719cd5238764737ccf1c9c079407e16dc38256fbbdf3717e87d2b8c486f6",
+      "metrics_sha256": "ea6cd785e2c5a5ed6afdc4f42f34603822c048649e3264082e47907e377c7c25",
+      "feature_processor": null,
+      "feature_processor_sha256": null,
+      "input_dim": 512,
+      "bp_parameters": 33222,
+      "validation_macro_f1": 0.8248343194634481
+    },
+    "F8-1 seed=46": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_1_s46",
+      "checkpoint_sha256": "7573e69b01899f808fde35ce5f7efc1ced5e58b94e62c0d18520972eb39a4beb",
+      "metrics_sha256": "8b9c407e779546d31f68af630cedcc1c9864f3e513bfe0d7fd2f94f3be09b710",
+      "feature_processor": null,
+      "feature_processor_sha256": null,
+      "input_dim": 512,
+      "bp_parameters": 33222,
+      "validation_macro_f1": 0.8246968758185381
+    },
+    "F8-2 seed=42": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_2_s42",
+      "checkpoint_sha256": "f5f20ca7015d51d127cf448795d91d13d072dd4b891fe09a170f32e4b3a6fe23",
+      "metrics_sha256": "69c0cdf0e6069230f4ba83f33cb9c43fe76cd5c97e72aed82e817f87ce78d809",
+      "feature_processor": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\feature_builder.pkl",
+      "feature_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "input_dim": 10512,
+      "bp_parameters": 673222,
+      "validation_macro_f1": 0.8358102912232468
+    },
+    "F8-2 seed=43": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_2_s43",
+      "checkpoint_sha256": "18cd65ac6be97407a06fd368bcae77f7b77baad939cef57f36c75815fdadb950",
+      "metrics_sha256": "b38e738e198050f4c58e4536d9a76780a57689ccad41e8a967dc53c9fd289342",
+      "feature_processor": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\feature_builder.pkl",
+      "feature_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "input_dim": 10512,
+      "bp_parameters": 673222,
+      "validation_macro_f1": 0.8400771583580364
+    },
+    "F8-2 seed=44": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_2_s44",
+      "checkpoint_sha256": "d1a52f726e35068c0f8372502290e7a780db0b3dcc737ec0e01a0bb1d2e9a150",
+      "metrics_sha256": "febbc8be6ad88472c5aaac843a1c5f4261d2799e32d77e4a4132fbeeb27e5b2f",
+      "feature_processor": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\feature_builder.pkl",
+      "feature_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "input_dim": 10512,
+      "bp_parameters": 673222,
+      "validation_macro_f1": 0.8363796629870538
+    },
+    "F8-2 seed=45": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_2_s45",
+      "checkpoint_sha256": "bade313a9d075c9bc2e60e4dcb0f67f9cc4954503101a9bac3858a04a18e9f17",
+      "metrics_sha256": "da464bb1786f6c40501e07b8c303d17fad5834e35d80fe5b4353170c1ce022bf",
+      "feature_processor": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\feature_builder.pkl",
+      "feature_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "input_dim": 10512,
+      "bp_parameters": 673222,
+      "validation_macro_f1": 0.8364356114388257
+    },
+    "F8-2 seed=46": {
+      "path": "results\\member_C\\f8_experiments\\runs\\F8_2_s46",
+      "checkpoint_sha256": "b97624794d6dec13f2921fed17e597790a50f782e3dc800bb3b4f4444f2a6c75",
+      "metrics_sha256": "a93ad7996416bdae75010a3802805b86fbe3e0a39ae90ab92cb21e15fc7ab508",
+      "feature_processor": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\feature_builder.pkl",
+      "feature_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+      "input_dim": 10512,
+      "bp_parameters": 673222,
+      "validation_macro_f1": 0.8370152258697203
+    }
+  },
+  "test_model_predictions_generated_in_preflight": false
+}

@@ -1,0 +1,15 @@
+﻿stage,configuration,seed,split,macro_f1,accuracy,parameters,best_epoch,source_run,rank_in_stage
+E_input_dropout,dropout_010,44,validation,0.7614236810015554,0.759108040201005,1281798,5,results\member_C\c3_multi\p010\B_chi2_5000_s44,1
+E_input_dropout,dropout_0,46,validation,0.7613261522375856,0.759108040201005,1281798,5,results\member_C\c3_multi\b1\B_chi2_5000_s46,2
+F2,F_word_char,42,validation,0.784673711697,0.783291457286,640454,9,results\member_C\f2_formal_word_char\F_word_char_s42,1
+F2,F_word_char,45,validation,0.784459951996,0.782035175879,640454,12,results\member_C\f2_formal_word_char\F_word_char_s45,2
+F3,F3_A_formal,42,validation,0.7895027144985053,0.7873743718592965,640454,9,results\member_C\f3_formal_a_reviewed\F_word_char_s42,1
+F3,F3_A_formal,43,validation,0.7880913602620935,0.7858040201005025,640454,9,results\member_C\f3_analysis\f3_a_multiseed\runs\F_word_char_s43,2
+F6,F6_B_7000_3000,45,validation,0.7921259003628728,0.7898869346733668,640454,10,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s45,1
+F6,F6_B_7000_3000,44,validation,0.7914469656267517,0.7892587939698492,640454,11,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s44,2
+F7,F7-0,45,validation,0.7921259003628728,0.7898869346733668,640454,10,results\member_C\f6_experiments\f6_b_multiseed\runs\F6_B_s45,1
+F7,F7-2,44,validation,0.7920645451609142,0.7898869346733668,640454,4,results\member_C\f7_experiments\runs\F7_2_s44,2
+F8,F8-2,43,validation,0.8400771583580364,0.8404522613065326,673222,9,results\member_C\f8_experiments\runs\F8_2_s43,1
+F8,F8-2,46,validation,0.8370152258697203,0.8369974874371859,673222,13,results\member_C\f8_experiments\runs\F8_2_s46,2
+final_test,F8-2,43,previously_viewed_test,0.8213515153892228,0.8222320247022497,673222,9,results\member_C\f8_experiments\runs\F8_2_s43,1
+final_test,F8-2,46,previously_viewed_test,0.8199914051531564,0.8204675782973092,673222,13,results\member_C\f8_experiments\runs\F8_2_s46,2

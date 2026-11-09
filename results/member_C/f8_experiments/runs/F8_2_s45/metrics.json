@@ -1,0 +1,144 @@
+{
+  "run_id": "F8_2_s45",
+  "seed": 45,
+  "created_at": "2026-11-09 11:30:10",
+  "data_sha256": {
+    "train": "7631c1433e411af51b6d01509739ec716987d028cd785392cdbd951915032880",
+    "val": "9113aca8af798ec25d7c8f0062a00603b4fcf2e9afdb42077f8ea0d7ac68d2d0"
+  },
+  "feature": {
+    "scheme": "f6b_plus_bge",
+    "input_dim": 10512,
+    "tfidf_dim": 10000,
+    "semantic_dim": 512,
+    "tfidf_processor_sha256": "ebc3f5a47a526a9f8e6719981d3e7e4702468208eb842e207718bbfcad0ee7db",
+    "normalization": "F6-B selected concatenated TF-IDF row L2; BGE CLS row L2; concatenate at unit block weights, no post-fusion normalization"
+  },
+  "semantic_cache_manifest_sha256": "77016f51f896d62d29b7591203524b40238b2a780d904a6794c71a4785fc3e8e",
+  "model": {
+    "model_type": "bp",
+    "input_dim": 10512,
+    "hidden_dim": 64,
+    "activation": "ReLU",
+    "dropout": 0.2,
+    "input_dropout": 0,
+    "output_dim": 6,
+    "n_parameters": 673222
+  },
+  "frozen_encoder_parameters": 23953920,
+  "training": {
+    "params": {
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 100,
+      "patience": 10,
+      "min_delta": 0.0001,
+      "grad_clip": 5.0
+    },
+    "best_epoch": 15,
+    "epochs_run": 25,
+    "train_time": 116.80648130003829,
+    "training_wall_seconds": 116.8500937000208,
+    "cached_feature_transform_seconds": 1.69533849999425,
+    "selection_metric": "f1_macro"
+  },
+  "val": {
+    "accuracy": 0.8360552763819096,
+    "precision_macro": 0.8374761956757171,
+    "recall_macro": 0.8367636456079085,
+    "f1_macro": 0.8364356114388257,
+    "f1_weighted": 0.8358770806534871,
+    "per_class": {
+      "财经": {
+        "precision": 0.7695099818511797,
+        "recall": 0.7851851851851852,
+        "f1": 0.7772685609532539,
+        "support": 540
+      },
+      "体育": {
+        "precision": 0.9484978540772532,
+        "recall": 0.9075975359342916,
+        "f1": 0.9275970619097587,
+        "support": 487
+      },
+      "文娱": {
+        "precision": 0.783303730017762,
+        "recall": 0.8767395626242545,
+        "f1": 0.8273921200750469,
+        "support": 503
+      },
+      "教育": {
+        "precision": 0.892,
+        "recall": 0.861003861003861,
+        "f1": 0.8762278978388998,
+        "support": 518
+      },
+      "社会": {
+        "precision": 0.7109375,
+        "recall": 0.6678899082568808,
+        "f1": 0.6887417218543046,
+        "support": 545
+      },
+      "国际": {
+        "precision": 0.9206081081081081,
+        "recall": 0.922165820642978,
+        "f1": 0.9213863060016906,
+        "support": 591
+      }
+    },
+    "confusion_matrix": [
+      [
+        424,
+        4,
+        17,
+        11,
+        68,
+        16
+      ],
+      [
+        5,
+        442,
+        11,
+        4,
+        7,
+        18
+      ],
+      [
+        9,
+        4,
+        441,
+        14,
+        32,
+        3
+      ],
+      [
+        13,
+        6,
+        16,
+        446,
+        32,
+        5
+      ],
+      [
+        76,
+        8,
+        68,
+        24,
+        364,
+        5
+      ],
+      [
+        24,
+        2,
+        10,
+        1,
+        9,
+        545
+      ]
+    ],
+    "n_samples": 3184,
+    "loss": 0.4631234089932849
+  },
+  "test": null
+}

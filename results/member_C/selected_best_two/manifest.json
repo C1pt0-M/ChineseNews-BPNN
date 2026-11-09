@@ -1,0 +1,1392 @@
+{
+  "selection": "Each configuration ranked by saved per-run Macro-F1 descending; ties use lower seed.",
+  "result_scope": "F2/F3/F6/F7/F8 and C3 Input Dropout use validation; final_test uses previously viewed test only for retrospective display.",
+  "not_model_selection": "Final test ranking is descriptive, not a basis for choosing or retraining a model.",
+  "e_label": "Screenshot calls it E; actual Input Dropout experiment is results/member_C/c3_multi.",
+  "f6_a_limit": "Only seed 42 is available; no second run is fabricated.",
+  "group_count": 23,
+  "source_run_count": 111,
+  "selected_run_count": 45,
+  "copied_originals": [
+    {
+      "file": "E_input_dropout\\dropout_0\\rank1_seed46\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s46\\metrics.json",
+      "sha256": "bf57052154cd2cd99b7bf747753c62788d278bd7525a26775f8d47090d35b1ee"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank1_seed46\\history.csv",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s46\\history.csv",
+      "sha256": "e0efed25589eb22a845c3504f1e83464538f97983bbe44f42eb75090dee66e3a"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank1_seed46\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s46\\training_curve.png",
+      "sha256": "71e638c9b3a1f116e930a61d41a85cb98b0355dde1093974700cec6fc2d3d2fe"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank1_seed46\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s46\\training_curve.svg",
+      "sha256": "b1e0ca9717657c6ee43f4322a6e57347bc58442e0fae90dbbd3b3c9a8fc84a56"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank1_seed46\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s46\\confusion_val.png",
+      "sha256": "98e3a794b94471c111270041a4b2b033321ffb707788a225ff3f77955be6a908"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank1_seed46\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s46\\confusion_val.csv",
+      "sha256": "c55f4dad798cf7228a5bd1e526a491be2d4e6a5f00c29ca4a8cd58c7b0503936"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank2_seed45\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s45\\metrics.json",
+      "sha256": "ba58210a309bab29d994e9da903a1af3fb0f7e26c3e3b66027d73345e71640cb"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank2_seed45\\history.csv",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s45\\history.csv",
+      "sha256": "724f68982f0fb1702b044d6437a24adb0bff8e3c5886124282eca921b7138c60"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank2_seed45\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s45\\training_curve.png",
+      "sha256": "5b1399bf457b266715f8c6e1186ef6e49936e7b70809229ad4535eeff5283162"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank2_seed45\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s45\\training_curve.svg",
+      "sha256": "9403394a3987fc2e8d7c051b212a4e909294105844087db9f6252ca3878f66d5"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank2_seed45\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s45\\confusion_val.png",
+      "sha256": "7e4c940f1b1346b9ea112e186056ac1796a297bde46922b0dc73d78b2f1b58d9"
+    },
+    {
+      "file": "E_input_dropout\\dropout_0\\rank2_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\b1\\B_chi2_5000_s45\\confusion_val.csv",
+      "sha256": "64053e6f94aa58761f62b1a5705a82f2aee618ca26a98a5f3a97cc4ec46a8c87"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank1_seed46\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s46\\metrics.json",
+      "sha256": "a0b26d78902434b3a1418362992757ef0259067d16504b7e20690a573f37ada4"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank1_seed46\\history.csv",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s46\\history.csv",
+      "sha256": "d16f45376cf1f441b34828acb735659b03ee7250f424452f76c5725213f2a35a"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank1_seed46\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s46\\training_curve.png",
+      "sha256": "a7a56da7b4778c838aa971948f0aaa23728b18de118620004e41f8896d2d37f8"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank1_seed46\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s46\\training_curve.svg",
+      "sha256": "c945d6ed1901f5a6a8be2111d52169c4593dd8bc955633605b55415e0b445a46"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank1_seed46\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s46\\confusion_val.png",
+      "sha256": "d1f314fce13dd8eae451cce065d7c0e90a450055210c25fcab7c893597d46149"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank1_seed46\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s46\\confusion_val.csv",
+      "sha256": "bb92af3e049ca0d4956a4884916023da75c6a5e0ef212d15e653b32d0db1d8a5"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank2_seed44\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s44\\metrics.json",
+      "sha256": "f2272690e513c6e2ab1f3f04c31e3d9b6af180ec63ebc0cc54bec7b49d419567"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank2_seed44\\history.csv",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s44\\history.csv",
+      "sha256": "82386d6281cb9b345bc01564ea5d302a295f226d547228a63cd413c38dc1dd8c"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank2_seed44\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s44\\training_curve.png",
+      "sha256": "40076f45282552f3d99e3b6deceebe2bfa70bc6757ba7db1f8da0b17315cd4c9"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank2_seed44\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s44\\training_curve.svg",
+      "sha256": "ed4a766e67dbcbea2d543ef6724f700334d6d49b5397c89c8a4f399ff6c8f0f9"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank2_seed44\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s44\\confusion_val.png",
+      "sha256": "470c29d4485b8ed7d2cdf198c57909153dff5dbe956abcc2bfd12c674b755efc"
+    },
+    {
+      "file": "E_input_dropout\\dropout_005\\rank2_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\p005\\B_chi2_5000_s44\\confusion_val.csv",
+      "sha256": "a4d90bc1e72dbf69c219d8b657e7a1d5d689dd6655cd3427f9da105d342b1077"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank1_seed44\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s44\\metrics.json",
+      "sha256": "ba4fe60117c721ed9f0d720e8d656199018e4e6a09463499517acc489307f6bc"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank1_seed44\\history.csv",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s44\\history.csv",
+      "sha256": "bcfc2f89eb4a6b283c24547112da0a97c27e48ac40401de2a07149f5f10ff404"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank1_seed44\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s44\\training_curve.png",
+      "sha256": "325e48bf1cc0e05868d384c71ee547991bf3aa2f8cb8f0c1438dbef4dc3d0e89"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank1_seed44\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s44\\training_curve.svg",
+      "sha256": "8e4bd8ec35ad5f5e5798205a5eeaa3fb62572aa7e6b3033ccb603b40a2c94f12"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank1_seed44\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s44\\confusion_val.png",
+      "sha256": "94e487e5fd69bebc9b3f52c090557d356b4772cb38e2695968de75965b8e2f3e"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank1_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s44\\confusion_val.csv",
+      "sha256": "bea89b85ba2fb80490e6bfdb25789dd664e501a141cc47ed5d8581a3f554b3f8"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank2_seed46\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s46\\metrics.json",
+      "sha256": "2913f0c2f0cb9e67cea116418ba31d8d82b690cd57c7d4a78a20f650808b7b01"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank2_seed46\\history.csv",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s46\\history.csv",
+      "sha256": "22c56a9f034eaaca36aa8f230a527e035d6dbbb991c51352d87576c01a6cb666"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank2_seed46\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s46\\training_curve.png",
+      "sha256": "d42d107ff7ae2e0d6c082bb2209a0bb929ce8c0742595837ee54ad6c43066622"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank2_seed46\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s46\\training_curve.svg",
+      "sha256": "8f2ae09dbe1488ed51ff0b0e5a1e3716f50a544526c16fb0b84b13ba34e54dd1"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank2_seed46\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s46\\confusion_val.png",
+      "sha256": "babd2d578e85752002dcff5d8ce4dcfc9c1fa1720e5adf270dc667c8ef43f3ca"
+    },
+    {
+      "file": "E_input_dropout\\dropout_010\\rank2_seed46\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\p010\\B_chi2_5000_s46\\confusion_val.csv",
+      "sha256": "ff1f5de0e4c66bced3ad0b308b4fe155d04e35bb0e8b9abde26683cd12f24e16"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s42\\metrics.json",
+      "sha256": "5687b1f31d53c2fd5c3592d4691a9ad55a97b2a67ec5bd024eeb1aa64712540f"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s42\\history.csv",
+      "sha256": "754c908704b62783713e7cfc38fd4ea52113a0baebb4df8c0dc77bc924051f8e"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s42\\training_curve.png",
+      "sha256": "9c2ef6694f946e177ddc11c1842d29bc6a5d67d549701155f7f63988a5907d54"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s42\\training_curve.svg",
+      "sha256": "69ae4592ecabff69e7c0f91700001d5857dd410c213eefe68a37db701d0707a6"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s42\\confusion_val.png",
+      "sha256": "61785f0dd4736814648e536b83345d9a047950c3be19fca97789e82955f91048"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s42\\confusion_val.csv",
+      "sha256": "92f921e3858dbb37fde78d95fb3e0b7c99f4557e57969673250f392794dca2c3"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank2_seed45\\metrics.json",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s45\\metrics.json",
+      "sha256": "daa4c05f9546287db284c3d3035249b6298b4cc45730275b46226d98f01619dd"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank2_seed45\\history.csv",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s45\\history.csv",
+      "sha256": "1c56239f3c80bdf9f948b3e93f2b7b03ce279e39f5900467405241d03f14732b"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank2_seed45\\training_curve.png",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s45\\training_curve.png",
+      "sha256": "c04415fc0554c120e99806dbf653017d99fa2dc9668a4748f0076ab4ed29b60d"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank2_seed45\\training_curve.svg",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s45\\training_curve.svg",
+      "sha256": "15f2f3318ed030b56f76d61122b4bbe88f656f948403b46500fe1cb4e6be797a"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank2_seed45\\confusion_val.png",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s45\\confusion_val.png",
+      "sha256": "40d49616aebae28361dc7d1ac6ea1e8bf3a45455f581dab59b05744d5de70363"
+    },
+    {
+      "file": "E_input_dropout\\dropout_020\\rank2_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\c3_multi\\p020\\B_chi2_5000_s45\\confusion_val.csv",
+      "sha256": "8bef21ff11e21e20066c04cd6370c979e514261123a5af3aa5971fb7a97221a7"
+    },
+    {
+      "file": "F2\\A_raw\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s42\\metrics.json",
+      "sha256": "2ddd482d198422aa04542ac2898b0e1cb73098a2683c5baa8a634aafa17a8785"
+    },
+    {
+      "file": "F2\\A_raw\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s42\\history.csv",
+      "sha256": "2f68b926c1ee9831a49b466bbfd9073b010ed3a286e9f2c81514c90968b92f18"
+    },
+    {
+      "file": "F2\\A_raw\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s42\\training_curve.png",
+      "sha256": "7dcc1c8b45b90bfaed75e984cafe7895b71946b0009b240c255979fc15b48b21"
+    },
+    {
+      "file": "F2\\A_raw\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s42\\training_curve.svg",
+      "sha256": "ffa7644f21a7de122f4a85c76a2b8b1754a38fd367177e2a0f56c5896f958698"
+    },
+    {
+      "file": "F2\\A_raw\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s42\\confusion_val.png",
+      "sha256": "2835889bbc6403093f88660ed7e8401d2639b714ba900e3537db3a4842ef1e0a"
+    },
+    {
+      "file": "F2\\A_raw\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s42\\confusion_val.csv",
+      "sha256": "ef7e7715689857194eb07c5fd2d4da247dfa0388d3e73647249ebf997923776b"
+    },
+    {
+      "file": "F2\\A_raw\\rank2_seed46\\metrics.json",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s46\\metrics.json",
+      "sha256": "8b7e28f47a0a42108e75628df4465fae81020b7778b4af98284e2cb9ddcd7ab8"
+    },
+    {
+      "file": "F2\\A_raw\\rank2_seed46\\history.csv",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s46\\history.csv",
+      "sha256": "06f9612533cc78d0e63715722165e91286725d96de455498b93430888297e07e"
+    },
+    {
+      "file": "F2\\A_raw\\rank2_seed46\\training_curve.png",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s46\\training_curve.png",
+      "sha256": "960cbf5db9d39a8e18f5fac0d9138ebaca273d6eee027f2351d3f38645e40db4"
+    },
+    {
+      "file": "F2\\A_raw\\rank2_seed46\\training_curve.svg",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s46\\training_curve.svg",
+      "sha256": "c821565aa1e3707a3f16d1e61d04fe911d062891bbf116f849b222224a7ff927"
+    },
+    {
+      "file": "F2\\A_raw\\rank2_seed46\\confusion_val.png",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s46\\confusion_val.png",
+      "sha256": "39d13559b8bd508931340eaec79431c9cc670d7c3e0688850ae5b6f3b8a0b107"
+    },
+    {
+      "file": "F2\\A_raw\\rank2_seed46\\confusion_val.csv",
+      "source": "results\\member_C\\f1_raw_multi\\A_raw_s46\\confusion_val.csv",
+      "sha256": "22e70cdc8dd8eeef93892e5c774902fff418ae1d48e8722ffd9bd9128ba4737c"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f1_chi2_10000_hidden64\\B_chi2_10000_s42\\metrics.json",
+      "sha256": "c75f6fbef9f48a465b00f4ed617902c8ab31a71e9b22febaf5f0d05b2f6b3e3e"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f1_chi2_10000_hidden64\\B_chi2_10000_s42\\history.csv",
+      "sha256": "08b9a5e09a843d91a6e7bb78addd99d67e812cb91d6208b1f8df85d4763efb93"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f1_chi2_10000_hidden64\\B_chi2_10000_s42\\training_curve.png",
+      "sha256": "b22bdb745ec1f6e50b00a91985e75ab11748291c25fc9ffb3f7923698e531478"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f1_chi2_10000_hidden64\\B_chi2_10000_s42\\training_curve.svg",
+      "sha256": "b602ddba78b9f2c5add999b9402a99de027c62b0583185b87d5207ac910d8ffd"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f1_chi2_10000_hidden64\\B_chi2_10000_s42\\confusion_val.png",
+      "sha256": "75ef691bfc64ff0f6a766625e51dc5d4ead71bee6e765db7e1e63fe2768a33e9"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f1_chi2_10000_hidden64\\B_chi2_10000_s42\\confusion_val.csv",
+      "sha256": "531cb9fc7e107ddf06e089f1bacddb6637f7a18cd43309db8da6eb17837c8b99"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank2_seed45\\metrics.json",
+      "source": "results\\member_C\\f2_formal_word10000\\B_chi2_10000_s45\\metrics.json",
+      "sha256": "94d88b764a7e0555feebf2bfbf3291dc261adb33564d3ad8a9f7ed6228edc555"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank2_seed45\\history.csv",
+      "source": "results\\member_C\\f2_formal_word10000\\B_chi2_10000_s45\\history.csv",
+      "sha256": "221e1df27a89923c9f134e2f39b26071bf43c6727846ad356fefe56c106a2b9e"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank2_seed45\\training_curve.png",
+      "source": "results\\member_C\\f2_formal_word10000\\B_chi2_10000_s45\\training_curve.png",
+      "sha256": "1f57941b6fd1c46cbe131cd8dbddce62ed8a1bc13421e607c402aed8298317ed"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank2_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f2_formal_word10000\\B_chi2_10000_s45\\training_curve.svg",
+      "sha256": "fb99af7230555054668f4435cf0549209c32180d78b83ee349ed2d330ba0615a"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank2_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f2_formal_word10000\\B_chi2_10000_s45\\confusion_val.png",
+      "sha256": "52b522d60bea35383f8d1686e798d3ca0d0b02607de12e577e3953e9b4c234d3"
+    },
+    {
+      "file": "F2\\B_chi2_10000\\rank2_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f2_formal_word10000\\B_chi2_10000_s45\\confusion_val.csv",
+      "sha256": "37febbbb1909dddd29c6fc7d15eb9171cbdedeeeee9276abb596ec8842eb7846"
+    },
+    {
+      "file": "F2\\D3\\rank1_seed44\\metrics.json",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s44\\metrics.json",
+      "sha256": "2a56a6325b5935b6e3b6bbf6da852b0b306c5f3c255821a405bfc3988055b322"
+    },
+    {
+      "file": "F2\\D3\\rank1_seed44\\history.csv",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s44\\history.csv",
+      "sha256": "543a3a69e03b9af9885e96451834a1811ae6b198cb7de305a9dcc7796b1fc3e4"
+    },
+    {
+      "file": "F2\\D3\\rank1_seed44\\training_curve.png",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s44\\training_curve.png",
+      "sha256": "d1232a1f7309e6638b2da476f9a0e49b85eab5e249e71fbe5a89f3b42cdf6b09"
+    },
+    {
+      "file": "F2\\D3\\rank1_seed44\\training_curve.svg",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s44\\training_curve.svg",
+      "sha256": "9ce4ee9d038c145ef293bb932c2904378fff2fcda19c7187ef585c92df635e9b"
+    },
+    {
+      "file": "F2\\D3\\rank1_seed44\\confusion_val.png",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s44\\confusion_val.png",
+      "sha256": "c18477feb9b156fa2c5e9e2a9effefa1967e6f16c9663495fa1ed195a05581a3"
+    },
+    {
+      "file": "F2\\D3\\rank1_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s44\\confusion_val.csv",
+      "sha256": "477555bb9085459d56ea6b96584a3ae458297b99bfd29b76ff2ec688a1531c8e"
+    },
+    {
+      "file": "F2\\D3\\rank2_seed42\\metrics.json",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s42\\metrics.json",
+      "sha256": "45fab24a3ccbcd30efe1272a5b5d1af6f632fcd640b2c5e906e70cb5b254b61c"
+    },
+    {
+      "file": "F2\\D3\\rank2_seed42\\history.csv",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s42\\history.csv",
+      "sha256": "c9eee591e5940a3749eb2b7d26386e39381fe39be24eed4a9b29693910ce76f9"
+    },
+    {
+      "file": "F2\\D3\\rank2_seed42\\training_curve.png",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s42\\training_curve.png",
+      "sha256": "01612d71ba68085978d664ba27daa0887ba7f8b48a272135f92a88c0030be74f"
+    },
+    {
+      "file": "F2\\D3\\rank2_seed42\\training_curve.svg",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s42\\training_curve.svg",
+      "sha256": "f882be4709d00ce34a757e3571e88a431c18893bf34bd59f139b8672a3367081"
+    },
+    {
+      "file": "F2\\D3\\rank2_seed42\\confusion_val.png",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s42\\confusion_val.png",
+      "sha256": "0ff924d6d44b5b971c6e5d6763f355233f6720357a6c43b5b6a74650b6736c59"
+    },
+    {
+      "file": "F2\\D3\\rank2_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\diagnostics_multi\\hidden64_lr0003\\B_chi2_5000_s42\\confusion_val.csv",
+      "sha256": "cd4f292dfd9df03de5bc21fd798adc72ed7f9bc64b511df5bbae94749bd47737"
+    },
+    {
+      "file": "F2\\F_char\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s42\\metrics.json",
+      "sha256": "a513870125df201660883256dcbc633a3bc373f8a99491bad0a6dbcdbe699821"
+    },
+    {
+      "file": "F2\\F_char\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s42\\history.csv",
+      "sha256": "f1a416cca91b797171d62c1bdea67ffe1f21696e21c5e9e57c2a2e568dfc8a8b"
+    },
+    {
+      "file": "F2\\F_char\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s42\\training_curve.png",
+      "sha256": "4eb410d51d621f0122b0516cdc38c0fa22d32fe85676567f6f85e4a8bf2ffcb9"
+    },
+    {
+      "file": "F2\\F_char\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s42\\training_curve.svg",
+      "sha256": "0732ca7c264f659dd73ad542da9179bf25cc34fa70923f1fad273eaf4ccb2150"
+    },
+    {
+      "file": "F2\\F_char\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s42\\confusion_val.png",
+      "sha256": "21740f0a9212ff05b1ce560236434add03607b15b8c57ede5e98d5100802ae3c"
+    },
+    {
+      "file": "F2\\F_char\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s42\\confusion_val.csv",
+      "sha256": "6ca29a4958000b2eee01662221626eacc55bb15b3111c2c51b63267210600634"
+    },
+    {
+      "file": "F2\\F_char\\rank2_seed45\\metrics.json",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s45\\metrics.json",
+      "sha256": "c651628768707fac74a531f33f821b4ac444a8302a53fe103ac97d73e247e04d"
+    },
+    {
+      "file": "F2\\F_char\\rank2_seed45\\history.csv",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s45\\history.csv",
+      "sha256": "f436ba4aa33d83906ce7ca8581d3e33d4450f2200ce691eb36b083b475f4479e"
+    },
+    {
+      "file": "F2\\F_char\\rank2_seed45\\training_curve.png",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s45\\training_curve.png",
+      "sha256": "7e0561f1c2b95dcdebb4c3d090c2397d015430fe30dd29e3dc60ee5b96687bd8"
+    },
+    {
+      "file": "F2\\F_char\\rank2_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s45\\training_curve.svg",
+      "sha256": "85e8c6e3ca24818e70e623928036f87fa941dae148a8a660247e62fad83a4e42"
+    },
+    {
+      "file": "F2\\F_char\\rank2_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s45\\confusion_val.png",
+      "sha256": "2dbb27f0675f212adc5b09242c1c48a04611a4739cf7841013206c06dbc91a44"
+    },
+    {
+      "file": "F2\\F_char\\rank2_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f2_formal_char\\F_char_s45\\confusion_val.csv",
+      "sha256": "ecfcf89ffbfa8d07f5b0d6e900479d9aef638b40845f4cc133a960f6f5816adb"
+    },
+    {
+      "file": "F2\\F_word_char\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\metrics.json",
+      "sha256": "dbb9ac4106611047d47250674a0f7da8b96031b37e46a3750d5bd4f5dfe204f2"
+    },
+    {
+      "file": "F2\\F_word_char\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\history.csv",
+      "sha256": "82783ff74c90cf249fa202739396fe30ad18d2a77d3bc1a582cef7aefda0af60"
+    },
+    {
+      "file": "F2\\F_word_char\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\training_curve.png",
+      "sha256": "2796cfa4a5ac7f3a6e174d0b9850c118ce43f9c33ebb1749ac5c650f1d663dbb"
+    },
+    {
+      "file": "F2\\F_word_char\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\training_curve.svg",
+      "sha256": "91470772b62e5e5f3ca5e4045ea2e17ff29b718bac17db74283d8b40b3173844"
+    },
+    {
+      "file": "F2\\F_word_char\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\confusion_val.png",
+      "sha256": "24c6c872590d092b9a136a6fd1596dbcd48d2d13a63c12f99a3291be958a4d63"
+    },
+    {
+      "file": "F2\\F_word_char\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s42\\confusion_val.csv",
+      "sha256": "a3f851a2aa92b53aa2c9928262191ec6b9820ae44f190218597288e6b2039ba4"
+    },
+    {
+      "file": "F2\\F_word_char\\rank2_seed45\\metrics.json",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\metrics.json",
+      "sha256": "f443abc5e5567b3859e65705650fdbc3412a954dcc0afbc045af5ec9178d38e5"
+    },
+    {
+      "file": "F2\\F_word_char\\rank2_seed45\\history.csv",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\history.csv",
+      "sha256": "042750bd909d16f4196f055d0fe95369db88224e16652c7b33affe23720ad840"
+    },
+    {
+      "file": "F2\\F_word_char\\rank2_seed45\\training_curve.png",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\training_curve.png",
+      "sha256": "159a06750a4b95c9f40ace3e274ce7221781335ba0b1f9891f8b192ccc63f1c8"
+    },
+    {
+      "file": "F2\\F_word_char\\rank2_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\training_curve.svg",
+      "sha256": "c5edca30e35344d11e7939e0ca74e20b9c85d2da6c953635aed8c9ab877b5e66"
+    },
+    {
+      "file": "F2\\F_word_char\\rank2_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\confusion_val.png",
+      "sha256": "35a0129ba83e48a1087cea309682a3d1d76847df71387e9c45cc546144e471c9"
+    },
+    {
+      "file": "F2\\F_word_char\\rank2_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f2_formal_word_char\\F_word_char_s45\\confusion_val.csv",
+      "sha256": "b07f835ae7598ac650f8f93d82911cdea8ddcaf4c940cf55188412d66c6d8d31"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\metrics.json",
+      "sha256": "07b116107c6d098df95e0d47eb1ed1685d4e01cbb4356779096ace6d7da57587"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\history.csv",
+      "sha256": "f25a6b97cb2df9c6b71b38d899cd593ef3ff04c7e5ff65f8ec3cc38f1734e272"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\training_curve.png",
+      "sha256": "dd5cf0683eb5cbe4336bdcf2f7b138b9f64de4a17f89187114424517638832ff"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\training_curve.svg",
+      "sha256": "83f1751213a4c79f1382c0cf6439f746c3587fbebcd725e77871ecbce5d80abd"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\confusion_val.png",
+      "sha256": "c69643d27e5287f70938b082b33e127d72b7511575497cca67cd30790861dcea"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\confusion_val.csv",
+      "sha256": "eb9bf4ab26d76fc8e3a7464d34efaa6760bf3e3b277f3fe89edffa877b47a27a"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank2_seed43\\metrics.json",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\metrics.json",
+      "sha256": "fcfe6d946049461b9e502391fbe99a586dcffe598e30ea9bdd26c9488ca9ef7d"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank2_seed43\\history.csv",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\history.csv",
+      "sha256": "38f1189c607f1a47fc869ef7f1286c72d9932ed384d55ced7b35880f000fc066"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank2_seed43\\training_curve.png",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\training_curve.png",
+      "sha256": "a7dae557da47c5024d7ae53daea49007bdc687ddce18d109907c3149c34d6b60"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank2_seed43\\training_curve.svg",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\training_curve.svg",
+      "sha256": "c3f6d9efdec9d9086e9b2d88e61834bc93181ce4685ecd411c620694ec787d2f"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank2_seed43\\confusion_val.png",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\confusion_val.png",
+      "sha256": "9016923757048e06dee615e41002fad638c314282ac7d9f01dd6f21ec8ab2c5f"
+    },
+    {
+      "file": "F3\\F3_A_formal\\rank2_seed43\\confusion_val.csv",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\confusion_val.csv",
+      "sha256": "ff200e9929cd7020e6f694930d73dd7bd52b62cc98944a2cbfc1c04dd314846f"
+    },
+    {
+      "file": "F6\\F6_A_3000_7000\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_A_s42\\metrics.json",
+      "sha256": "5cefbcc2fe8f776706fcb71292738064f351ecc0ff7633407fbe72cd19c20710"
+    },
+    {
+      "file": "F6\\F6_A_3000_7000\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_A_s42\\history.csv",
+      "sha256": "f811d2f76b18ffa5c40a1fed1ddbd7b83ed67d3caa3dc3b70c574c3f6c94b30a"
+    },
+    {
+      "file": "F6\\F6_A_3000_7000\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_A_s42\\training_curve.png",
+      "sha256": "05d38d79ef0e41f4aa1c6dd0018ea8ce7ae9e679944c9b66cf0b59557083b5dc"
+    },
+    {
+      "file": "F6\\F6_A_3000_7000\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_A_s42\\training_curve.svg",
+      "sha256": "eb4a778b206395dc2f97d5f8d0df7c4703e82085608612acf458be7b8ec32514"
+    },
+    {
+      "file": "F6\\F6_A_3000_7000\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_A_s42\\confusion_val.png",
+      "sha256": "dfec9a107f6ef59932bf910249839d15bddd61712b4ab2c83b265309aebd011b"
+    },
+    {
+      "file": "F6\\F6_A_3000_7000\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_A_s42\\confusion_val.csv",
+      "sha256": "b7880b7978838d4d77732fe301d452379d114bb5fce71102b7ac785670296b58"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank1_seed45\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\metrics.json",
+      "sha256": "67f3cd21a248bb074ad0bb1328e387a591e0894c84abe17d728b5b4a8f94184a"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank1_seed45\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\history.csv",
+      "sha256": "4b5eca5b99e6a9386109b5080f0542fcabf8fec10029a1d56b422f83540d4c92"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank1_seed45\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\training_curve.png",
+      "sha256": "2968bb2c5631fcd33d25168da6314df2ae4e0754bd751f7ceef242b72427caaf"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank1_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\training_curve.svg",
+      "sha256": "03fa632c29637c975597e1a431bcf11bc2ab1ec3e2c89391c95669b4cbdbb0b9"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank1_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\confusion_val.png",
+      "sha256": "957cea899bb5b9a265cb1c615a101acfc8934dd52a7a47a11ea6a6e632e4ec08"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank1_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\confusion_val.csv",
+      "sha256": "d51e192f113461d41a208c73eee007ed4244c50089865d0b9a038d0d6c6407e1"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank2_seed44\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\metrics.json",
+      "sha256": "d7c9b5e21e1cb38968f04fd3d96f8490e1144e861b0035df43edcbbb41ae7439"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank2_seed44\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\history.csv",
+      "sha256": "b5cd0cfe6cda1fd58ae23282eb75c306624145769e8bb4ce871bee0327b32b12"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank2_seed44\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.png",
+      "sha256": "3bc7514044b8eb3b7435db9a8a518c48a4cc8669174c47c2bd49cca941e4fde1"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank2_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.svg",
+      "sha256": "bb04ca2ba3340c8e2b38c7ecfdd26fcb5449cb5b14f3bb1040daf7771ab7503c"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank2_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.png",
+      "sha256": "79fb7e848332ccf165d93850d7f56f5c5add9be5f350716e4683e992d8f5e060"
+    },
+    {
+      "file": "F6\\F6_B_7000_3000\\rank2_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.csv",
+      "sha256": "43b41aa3e9706d00894157d0f216960fe1f46827ffd8f0d634dd70cd61044a92"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\metrics.json",
+      "sha256": "07b116107c6d098df95e0d47eb1ed1685d4e01cbb4356779096ace6d7da57587"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\history.csv",
+      "sha256": "f25a6b97cb2df9c6b71b38d899cd593ef3ff04c7e5ff65f8ec3cc38f1734e272"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\training_curve.png",
+      "sha256": "dd5cf0683eb5cbe4336bdcf2f7b138b9f64de4a17f89187114424517638832ff"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\training_curve.svg",
+      "sha256": "83f1751213a4c79f1382c0cf6439f746c3587fbebcd725e77871ecbce5d80abd"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\confusion_val.png",
+      "sha256": "c69643d27e5287f70938b082b33e127d72b7511575497cca67cd30790861dcea"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f3_formal_a_reviewed\\F_word_char_s42\\confusion_val.csv",
+      "sha256": "eb9bf4ab26d76fc8e3a7464d34efaa6760bf3e3b277f3fe89edffa877b47a27a"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank2_seed43\\metrics.json",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\metrics.json",
+      "sha256": "fcfe6d946049461b9e502391fbe99a586dcffe598e30ea9bdd26c9488ca9ef7d"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank2_seed43\\history.csv",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\history.csv",
+      "sha256": "38f1189c607f1a47fc869ef7f1286c72d9932ed384d55ced7b35880f000fc066"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank2_seed43\\training_curve.png",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\training_curve.png",
+      "sha256": "a7dae557da47c5024d7ae53daea49007bdc687ddce18d109907c3149c34d6b60"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank2_seed43\\training_curve.svg",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\training_curve.svg",
+      "sha256": "c3f6d9efdec9d9086e9b2d88e61834bc93181ce4685ecd411c620694ec787d2f"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank2_seed43\\confusion_val.png",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\confusion_val.png",
+      "sha256": "9016923757048e06dee615e41002fad638c314282ac7d9f01dd6f21ec8ab2c5f"
+    },
+    {
+      "file": "F6\\F6_baseline_5000_5000\\rank2_seed43\\confusion_val.csv",
+      "source": "results\\member_C\\f3_analysis\\f3_a_multiseed\\runs\\F_word_char_s43\\confusion_val.csv",
+      "sha256": "ff200e9929cd7020e6f694930d73dd7bd52b62cc98944a2cbfc1c04dd314846f"
+    },
+    {
+      "file": "F7\\F7-0\\rank1_seed45\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\metrics.json",
+      "sha256": "67f3cd21a248bb074ad0bb1328e387a591e0894c84abe17d728b5b4a8f94184a"
+    },
+    {
+      "file": "F7\\F7-0\\rank1_seed45\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\history.csv",
+      "sha256": "4b5eca5b99e6a9386109b5080f0542fcabf8fec10029a1d56b422f83540d4c92"
+    },
+    {
+      "file": "F7\\F7-0\\rank1_seed45\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\training_curve.png",
+      "sha256": "2968bb2c5631fcd33d25168da6314df2ae4e0754bd751f7ceef242b72427caaf"
+    },
+    {
+      "file": "F7\\F7-0\\rank1_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\training_curve.svg",
+      "sha256": "03fa632c29637c975597e1a431bcf11bc2ab1ec3e2c89391c95669b4cbdbb0b9"
+    },
+    {
+      "file": "F7\\F7-0\\rank1_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\confusion_val.png",
+      "sha256": "957cea899bb5b9a265cb1c615a101acfc8934dd52a7a47a11ea6a6e632e4ec08"
+    },
+    {
+      "file": "F7\\F7-0\\rank1_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\confusion_val.csv",
+      "sha256": "d51e192f113461d41a208c73eee007ed4244c50089865d0b9a038d0d6c6407e1"
+    },
+    {
+      "file": "F7\\F7-0\\rank2_seed44\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\metrics.json",
+      "sha256": "d7c9b5e21e1cb38968f04fd3d96f8490e1144e861b0035df43edcbbb41ae7439"
+    },
+    {
+      "file": "F7\\F7-0\\rank2_seed44\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\history.csv",
+      "sha256": "b5cd0cfe6cda1fd58ae23282eb75c306624145769e8bb4ce871bee0327b32b12"
+    },
+    {
+      "file": "F7\\F7-0\\rank2_seed44\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.png",
+      "sha256": "3bc7514044b8eb3b7435db9a8a518c48a4cc8669174c47c2bd49cca941e4fde1"
+    },
+    {
+      "file": "F7\\F7-0\\rank2_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.svg",
+      "sha256": "bb04ca2ba3340c8e2b38c7ecfdd26fcb5449cb5b14f3bb1040daf7771ab7503c"
+    },
+    {
+      "file": "F7\\F7-0\\rank2_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.png",
+      "sha256": "79fb7e848332ccf165d93850d7f56f5c5add9be5f350716e4683e992d8f5e060"
+    },
+    {
+      "file": "F7\\F7-0\\rank2_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.csv",
+      "sha256": "43b41aa3e9706d00894157d0f216960fe1f46827ffd8f0d634dd70cd61044a92"
+    },
+    {
+      "file": "F7\\F7-1\\rank1_seed45\\metrics.json",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s45\\metrics.json",
+      "sha256": "9bb1f42a85cd5fc4ef1763ac2efd9fc91b578993437bec393294f8ef64631554"
+    },
+    {
+      "file": "F7\\F7-1\\rank1_seed45\\history.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s45\\history.csv",
+      "sha256": "67ea2ca6a5641e3408fb68632c02cec665cbeec4cf7cef23f290d5b5f220bb83"
+    },
+    {
+      "file": "F7\\F7-1\\rank1_seed45\\training_curve.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s45\\training_curve.png",
+      "sha256": "9dbd3747e7c322234b81bcb4e802c2fa34a325023134a4aa03543203087df894"
+    },
+    {
+      "file": "F7\\F7-1\\rank1_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s45\\training_curve.svg",
+      "sha256": "fa27eb2ac99da2137dd4c188842961d7377fdfbcc38a960c8e1456b4a8182c3e"
+    },
+    {
+      "file": "F7\\F7-1\\rank1_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s45\\confusion_val.png",
+      "sha256": "50f56f188490f43aa9ff179a4b34a537dac886638c84fd5d87aece056f370a39"
+    },
+    {
+      "file": "F7\\F7-1\\rank1_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s45\\confusion_val.csv",
+      "sha256": "6ba9438f3d7f921dc312921a3ddd3ffc97dee37b0f7113b1684871c48ae4ca75"
+    },
+    {
+      "file": "F7\\F7-1\\rank2_seed44\\metrics.json",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s44\\metrics.json",
+      "sha256": "e9917992cf19f0d24301ed4c57953f559bbc0789900216a3d486e4c004b2818e"
+    },
+    {
+      "file": "F7\\F7-1\\rank2_seed44\\history.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s44\\history.csv",
+      "sha256": "a954412d1bd28bb47b32030184074b8edd11a7a9b8fe58ae71dc7ce667cc8699"
+    },
+    {
+      "file": "F7\\F7-1\\rank2_seed44\\training_curve.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s44\\training_curve.png",
+      "sha256": "c96fbc943c8e70f9f5eda58fc4f2119b3d7436d55100d84a97f0175ef3029506"
+    },
+    {
+      "file": "F7\\F7-1\\rank2_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s44\\training_curve.svg",
+      "sha256": "17127b27540b1ba6aa1b510101f5d4fa55a64c167b1686cc0a3667682a125970"
+    },
+    {
+      "file": "F7\\F7-1\\rank2_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s44\\confusion_val.png",
+      "sha256": "1d1bd7343d423ced9cd186ee42f99a93ee7ce7c4fbda6758344bc8fdd733cf7e"
+    },
+    {
+      "file": "F7\\F7-1\\rank2_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_1_s44\\confusion_val.csv",
+      "sha256": "07c65daf9d66130a73381039d82acd535e19554fb9b459f6aea3d0348b747cc7"
+    },
+    {
+      "file": "F7\\F7-2\\rank1_seed44\\metrics.json",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s44\\metrics.json",
+      "sha256": "4de221753522cf843f4dce68e680a9c590cc9b2cd6ae305645a880cf107343eb"
+    },
+    {
+      "file": "F7\\F7-2\\rank1_seed44\\history.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s44\\history.csv",
+      "sha256": "9385558cc3d613e90ccd34ef26a94c28006ddc34eab356073825e121e074388b"
+    },
+    {
+      "file": "F7\\F7-2\\rank1_seed44\\training_curve.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s44\\training_curve.png",
+      "sha256": "e4ac5006ee5c9a4c18ffc834f569ff297b6de0b40fd015fa109677bbf32b1054"
+    },
+    {
+      "file": "F7\\F7-2\\rank1_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s44\\training_curve.svg",
+      "sha256": "4f9dc134fe1987326dc20df9315a97f1b4fb359d4ce5c0f88a5a32f9c8404a27"
+    },
+    {
+      "file": "F7\\F7-2\\rank1_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s44\\confusion_val.png",
+      "sha256": "4fa8de100ec40e17d2e290b8f4be703d7a8d663306b5bec2a5ad9b56c5e73d83"
+    },
+    {
+      "file": "F7\\F7-2\\rank1_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s44\\confusion_val.csv",
+      "sha256": "979b8bbbdb50fd3e53c9729c7130c6cbeb5f6d74058f0c15e4bfdc2188d5edda"
+    },
+    {
+      "file": "F7\\F7-2\\rank2_seed45\\metrics.json",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s45\\metrics.json",
+      "sha256": "2c8baaf6a70801dfa509eb987aa29bf6880d05ff6ea8d92d03585c1cb501c9fe"
+    },
+    {
+      "file": "F7\\F7-2\\rank2_seed45\\history.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s45\\history.csv",
+      "sha256": "a8ba09ff2fabeaa0294836cd1cf7b80ea0601fcba1bcdef08ab9150a97a6de81"
+    },
+    {
+      "file": "F7\\F7-2\\rank2_seed45\\training_curve.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s45\\training_curve.png",
+      "sha256": "d474675406ee40bf46afa70aff88a26f18f609607fb4307651e05e6997433211"
+    },
+    {
+      "file": "F7\\F7-2\\rank2_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s45\\training_curve.svg",
+      "sha256": "695fa77443fe53edae52c2dce5313061148ae537108b6ce35c4da6d7b8a6eca4"
+    },
+    {
+      "file": "F7\\F7-2\\rank2_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s45\\confusion_val.png",
+      "sha256": "a143d9ff3eb47b6970a695c3ee33c577834826b6c0df1599540e5817ee2c3070"
+    },
+    {
+      "file": "F7\\F7-2\\rank2_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_2_s45\\confusion_val.csv",
+      "sha256": "be94d4a89801160fcd8d56677188a32689a70152b07c4d845692a1b28d915341"
+    },
+    {
+      "file": "F7\\F7-3\\rank1_seed45\\metrics.json",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s45\\metrics.json",
+      "sha256": "a9e094b3d6934296fcd78bd51c01827c954b281c3b3547fe3ca59676fec39734"
+    },
+    {
+      "file": "F7\\F7-3\\rank1_seed45\\history.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s45\\history.csv",
+      "sha256": "d8fa402d5b54495ff118eef72a1af82ce1f2183e550b30052375191b6590955e"
+    },
+    {
+      "file": "F7\\F7-3\\rank1_seed45\\training_curve.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s45\\training_curve.png",
+      "sha256": "ba6d0192259a67a64c34c29b9b1aa8be4085c9129fccf74cee29f619c59cc0f2"
+    },
+    {
+      "file": "F7\\F7-3\\rank1_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s45\\training_curve.svg",
+      "sha256": "5a5e88bc70d122aa3b32855d9a615515e92cde0ecf595de1e9e905be70f3d9ea"
+    },
+    {
+      "file": "F7\\F7-3\\rank1_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s45\\confusion_val.png",
+      "sha256": "6debe6ee91bbb6df1e0e2d9598e9f247964caa18be1740a13fc5c6f6bf40979c"
+    },
+    {
+      "file": "F7\\F7-3\\rank1_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s45\\confusion_val.csv",
+      "sha256": "4a4316dd7ca90b9bb453349dc3f662dfc13fa9345fb237acb52d3324a7298857"
+    },
+    {
+      "file": "F7\\F7-3\\rank2_seed42\\metrics.json",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s42\\metrics.json",
+      "sha256": "792aca8c63f084d1104b37901339e496fb8dc5f08acd643490d1979e9f7c7abe"
+    },
+    {
+      "file": "F7\\F7-3\\rank2_seed42\\history.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s42\\history.csv",
+      "sha256": "75d15278e36edb1e70b193146c6b7d68a1a0aeb6e2eaf6afc8b32cca4feac63b"
+    },
+    {
+      "file": "F7\\F7-3\\rank2_seed42\\training_curve.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s42\\training_curve.png",
+      "sha256": "1375a07638ccc8737943588bbd5b189bf6e04d494d5e4fcc634e7b47e4a3a8f8"
+    },
+    {
+      "file": "F7\\F7-3\\rank2_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s42\\training_curve.svg",
+      "sha256": "7b7dbf3656f4082ed1cebafd3447394b539cad17d851f07c84157ee5e06a39a5"
+    },
+    {
+      "file": "F7\\F7-3\\rank2_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s42\\confusion_val.png",
+      "sha256": "2196c99168a4cc14e420aabb630ea878ea58bf5db5985d9ed63c9ba2de30d670"
+    },
+    {
+      "file": "F7\\F7-3\\rank2_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f7_experiments\\runs\\F7_3_s42\\confusion_val.csv",
+      "sha256": "209191fe050e166d70df9916099afb3e13d2b7343ef66f25251cbed7efedf563"
+    },
+    {
+      "file": "F8\\F8-0\\rank1_seed45\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\metrics.json",
+      "sha256": "67f3cd21a248bb074ad0bb1328e387a591e0894c84abe17d728b5b4a8f94184a"
+    },
+    {
+      "file": "F8\\F8-0\\rank1_seed45\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\history.csv",
+      "sha256": "4b5eca5b99e6a9386109b5080f0542fcabf8fec10029a1d56b422f83540d4c92"
+    },
+    {
+      "file": "F8\\F8-0\\rank1_seed45\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\training_curve.png",
+      "sha256": "2968bb2c5631fcd33d25168da6314df2ae4e0754bd751f7ceef242b72427caaf"
+    },
+    {
+      "file": "F8\\F8-0\\rank1_seed45\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\training_curve.svg",
+      "sha256": "03fa632c29637c975597e1a431bcf11bc2ab1ec3e2c89391c95669b4cbdbb0b9"
+    },
+    {
+      "file": "F8\\F8-0\\rank1_seed45\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\confusion_val.png",
+      "sha256": "957cea899bb5b9a265cb1c615a101acfc8934dd52a7a47a11ea6a6e632e4ec08"
+    },
+    {
+      "file": "F8\\F8-0\\rank1_seed45\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s45\\confusion_val.csv",
+      "sha256": "d51e192f113461d41a208c73eee007ed4244c50089865d0b9a038d0d6c6407e1"
+    },
+    {
+      "file": "F8\\F8-0\\rank2_seed44\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\metrics.json",
+      "sha256": "d7c9b5e21e1cb38968f04fd3d96f8490e1144e861b0035df43edcbbb41ae7439"
+    },
+    {
+      "file": "F8\\F8-0\\rank2_seed44\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\history.csv",
+      "sha256": "b5cd0cfe6cda1fd58ae23282eb75c306624145769e8bb4ce871bee0327b32b12"
+    },
+    {
+      "file": "F8\\F8-0\\rank2_seed44\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.png",
+      "sha256": "3bc7514044b8eb3b7435db9a8a518c48a4cc8669174c47c2bd49cca941e4fde1"
+    },
+    {
+      "file": "F8\\F8-0\\rank2_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.svg",
+      "sha256": "bb04ca2ba3340c8e2b38c7ecfdd26fcb5449cb5b14f3bb1040daf7771ab7503c"
+    },
+    {
+      "file": "F8\\F8-0\\rank2_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.png",
+      "sha256": "79fb7e848332ccf165d93850d7f56f5c5add9be5f350716e4683e992d8f5e060"
+    },
+    {
+      "file": "F8\\F8-0\\rank2_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.csv",
+      "sha256": "43b41aa3e9706d00894157d0f216960fe1f46827ffd8f0d634dd70cd61044a92"
+    },
+    {
+      "file": "F8\\F8-1\\rank1_seed42\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s42\\metrics.json",
+      "sha256": "8abcd6568d26f1b6895b88377163bbbcd6e6b4959e69e336aa86f912bf90c051"
+    },
+    {
+      "file": "F8\\F8-1\\rank1_seed42\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s42\\history.csv",
+      "sha256": "eb9ff14a3c1c082b8b07607f43da841c493eb56cd54fcc4cde21cd262bf922e1"
+    },
+    {
+      "file": "F8\\F8-1\\rank1_seed42\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s42\\training_curve.png",
+      "sha256": "893bd2533ee681ccc4acd79fdb2671feb9519321395616dccef6fd7d2e99dfd8"
+    },
+    {
+      "file": "F8\\F8-1\\rank1_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s42\\training_curve.svg",
+      "sha256": "b542170bc9aea2512280bd92c57b248e5eb8a673ea59d439bb1d0049f25d0181"
+    },
+    {
+      "file": "F8\\F8-1\\rank1_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s42\\confusion_val.png",
+      "sha256": "1fc5ac751e7acb2d9d2208e074878fbb1e5ca45c11c0c04b3da9a98ac6198f30"
+    },
+    {
+      "file": "F8\\F8-1\\rank1_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s42\\confusion_val.csv",
+      "sha256": "d72c8cb47d4b90ad1fade891177eaedcc45cb8d2374d229fe453a39b6b95c27e"
+    },
+    {
+      "file": "F8\\F8-1\\rank2_seed44\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\metrics.json",
+      "sha256": "ec1a5f8cbcbf32dcc54b3bdbac72d5190dc3cc788b09ff331af89c23241ff452"
+    },
+    {
+      "file": "F8\\F8-1\\rank2_seed44\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\history.csv",
+      "sha256": "eff1f65d772928104d004c3216058dd56eb298453fa013758cbaeef6be5b74ff"
+    },
+    {
+      "file": "F8\\F8-1\\rank2_seed44\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\training_curve.png",
+      "sha256": "407ff6e1a9200613cf4440b89c995c429686cab6f2a67ef0b80e77a2b957e07b"
+    },
+    {
+      "file": "F8\\F8-1\\rank2_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\training_curve.svg",
+      "sha256": "aa554b741dc0df4b72eec3e31de27865b1b85880dbe723f3d1d2967445740fb3"
+    },
+    {
+      "file": "F8\\F8-1\\rank2_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\confusion_val.png",
+      "sha256": "5793553e4fb0895131a88a58651b55c5200cfa07bfffedc1cbd19fbb44a8fc00"
+    },
+    {
+      "file": "F8\\F8-1\\rank2_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\confusion_val.csv",
+      "sha256": "6bb684da2d2f98bbd2e1851708ee57adc63b9fcba3daf6964eca68207f1287e9"
+    },
+    {
+      "file": "F8\\F8-2\\rank1_seed43\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\metrics.json",
+      "sha256": "b38e738e198050f4c58e4536d9a76780a57689ccad41e8a967dc53c9fd289342"
+    },
+    {
+      "file": "F8\\F8-2\\rank1_seed43\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\history.csv",
+      "sha256": "20591f929f5cf0be2b8577c3291f539adca5a19d66a1e52b27726f552600e905"
+    },
+    {
+      "file": "F8\\F8-2\\rank1_seed43\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\training_curve.png",
+      "sha256": "c36116a15f94741c4f052be545da3ab34337b055594949869c4627809655933a"
+    },
+    {
+      "file": "F8\\F8-2\\rank1_seed43\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\training_curve.svg",
+      "sha256": "55ecc33dc8fceb3d427b4a5a85dcbf974fc86e4ebbae9d98f6759ebaf31cf417"
+    },
+    {
+      "file": "F8\\F8-2\\rank1_seed43\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\confusion_val.png",
+      "sha256": "bf5f362ff047f7a95bce67545dff827b1f1f83b607c7d331d711bdbe8f15617c"
+    },
+    {
+      "file": "F8\\F8-2\\rank1_seed43\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\confusion_val.csv",
+      "sha256": "1600c3a8651a0c03f46cae43ce2fd8509a90cbd260ae3ad58c8819d4f127a005"
+    },
+    {
+      "file": "F8\\F8-2\\rank2_seed46\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\metrics.json",
+      "sha256": "a93ad7996416bdae75010a3802805b86fbe3e0a39ae90ab92cb21e15fc7ab508"
+    },
+    {
+      "file": "F8\\F8-2\\rank2_seed46\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\history.csv",
+      "sha256": "f99d70c0b244603a0f98b6c3d85dfd4a862cb1b27584f3a9291f619d77e10f9f"
+    },
+    {
+      "file": "F8\\F8-2\\rank2_seed46\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\training_curve.png",
+      "sha256": "d5e45ab48cd3364b4d7fd1462306d469b8029c37679cd3fba182ace003c61d5d"
+    },
+    {
+      "file": "F8\\F8-2\\rank2_seed46\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\training_curve.svg",
+      "sha256": "4b6bf30b7bd96a1117766ef6cfb3499ae380189a5e85c30dacfa7c4a3592d519"
+    },
+    {
+      "file": "F8\\F8-2\\rank2_seed46\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\confusion_val.png",
+      "sha256": "e1072a67f075f0531631463a3a2e93970ba12f511a19c2b40b4f612ed699941d"
+    },
+    {
+      "file": "F8\\F8-2\\rank2_seed46\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\confusion_val.csv",
+      "sha256": "083623bc17845a253ab68b9a84133ad5f95fc0ef29f18cd9a00c948dfa475ed8"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\metrics.json",
+      "sha256": "d7c9b5e21e1cb38968f04fd3d96f8490e1144e861b0035df43edcbbb41ae7439"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\history.csv",
+      "sha256": "b5cd0cfe6cda1fd58ae23282eb75c306624145769e8bb4ce871bee0327b32b12"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.png",
+      "sha256": "3bc7514044b8eb3b7435db9a8a518c48a4cc8669174c47c2bd49cca941e4fde1"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\training_curve.svg",
+      "sha256": "bb04ca2ba3340c8e2b38c7ecfdd26fcb5449cb5b14f3bb1040daf7771ab7503c"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.png",
+      "sha256": "79fb7e848332ccf165d93850d7f56f5c5add9be5f350716e4683e992d8f5e060"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\f6_b_multiseed\\runs\\F6_B_s44\\confusion_val.csv",
+      "sha256": "43b41aa3e9706d00894157d0f216960fe1f46827ffd8f0d634dd70cd61044a92"
+    },
+    {
+      "file": "final_test\\F8-0\\rank1_seed44\\confusion_test.png",
+      "source": "results\\member_C\\final_generalization\\plots\\F8-0_s44.png",
+      "sha256": "fe655bd644bd2a0d42a57322791066d73c20ef28257e6e7e6114ac6975fc12b2"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\metrics.json",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\metrics.json",
+      "sha256": "e25bf3775305cb022a1819329e463d22672c78118cc063413daf3281ff543e38"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\history.csv",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\history.csv",
+      "sha256": "97aef810e5e7e8a1ab6b9fa38e5009206298fda749d210c6e0d5e94e36a33d40"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\training_curve.png",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\training_curve.png",
+      "sha256": "9935fb58a16940a1bcccef9439bd192e182195a3bcd1bb3bc212b1ab27d40791"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\training_curve.svg",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\training_curve.svg",
+      "sha256": "4dee48930c0a7a8ff9e1f0e069b1257329592f11d5fc4bb35b69c13042eb1cd5"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\confusion_val.png",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\confusion_val.png",
+      "sha256": "6b8c4b3032245483c96cbadb8a5a984b64a46343ba60c6bb67962c43b0b42965"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\confusion_val.csv",
+      "source": "results\\member_C\\f6_experiments\\runs\\F6_B_s42\\confusion_val.csv",
+      "sha256": "e43a2afadbd17fa3158399039c9713b53b639ce8f7a8e7ed6c3421cd10427942"
+    },
+    {
+      "file": "final_test\\F8-0\\rank2_seed42\\confusion_test.png",
+      "source": "results\\member_C\\final_generalization\\plots\\F8-0_s42.png",
+      "sha256": "76df8e6654dbf19555727ab7cc3b5a8b39890526d24d6c8fb92cbff593dba577"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\metrics.json",
+      "sha256": "ec1a5f8cbcbf32dcc54b3bdbac72d5190dc3cc788b09ff331af89c23241ff452"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\history.csv",
+      "sha256": "eff1f65d772928104d004c3216058dd56eb298453fa013758cbaeef6be5b74ff"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\training_curve.png",
+      "sha256": "407ff6e1a9200613cf4440b89c995c429686cab6f2a67ef0b80e77a2b957e07b"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\training_curve.svg",
+      "sha256": "aa554b741dc0df4b72eec3e31de27865b1b85880dbe723f3d1d2967445740fb3"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\confusion_val.png",
+      "sha256": "5793553e4fb0895131a88a58651b55c5200cfa07bfffedc1cbd19fbb44a8fc00"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s44\\confusion_val.csv",
+      "sha256": "6bb684da2d2f98bbd2e1851708ee57adc63b9fcba3daf6964eca68207f1287e9"
+    },
+    {
+      "file": "final_test\\F8-1\\rank1_seed44\\confusion_test.png",
+      "source": "results\\member_C\\final_generalization\\plots\\F8-1_s44.png",
+      "sha256": "50368994e96e956b722e7ae1cacef631fb9505ed6c923734d6c102a291dca2bd"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s43\\metrics.json",
+      "sha256": "514444bb00ddb00763194cb0fce77432b0f4251a54757a3ff086e8191fe02182"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s43\\history.csv",
+      "sha256": "e7e5b4b866df722575198a1326fcd2a557b8ff7b75eb145da455b415b3453a25"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s43\\training_curve.png",
+      "sha256": "e271883d308778344101af1a0cf64fcfe1b8f6d6c0402330271cb45056f6e5b7"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s43\\training_curve.svg",
+      "sha256": "01dabc38a2f888965c76dfd5bc38b72d19ac02e914db2f83762b2c0592f2ca9b"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s43\\confusion_val.png",
+      "sha256": "f24966dc76e4ed096ef0c854d1ca2f430f546a1428d7ce9e1e1453e1f5bffa20"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_1_s43\\confusion_val.csv",
+      "sha256": "97e870c8a1afa5c00a5684e03618ff9950068ab29182ab647dcf439abc98e480"
+    },
+    {
+      "file": "final_test\\F8-1\\rank2_seed43\\confusion_test.png",
+      "source": "results\\member_C\\final_generalization\\plots\\F8-1_s43.png",
+      "sha256": "fdcaf052b3ee47fc0f44f1c31f50ef4149e5b301070df554d12da359e340ed53"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\metrics.json",
+      "sha256": "b38e738e198050f4c58e4536d9a76780a57689ccad41e8a967dc53c9fd289342"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\history.csv",
+      "sha256": "20591f929f5cf0be2b8577c3291f539adca5a19d66a1e52b27726f552600e905"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\training_curve.png",
+      "sha256": "c36116a15f94741c4f052be545da3ab34337b055594949869c4627809655933a"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\training_curve.svg",
+      "sha256": "55ecc33dc8fceb3d427b4a5a85dcbf974fc86e4ebbae9d98f6759ebaf31cf417"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\confusion_val.png",
+      "sha256": "bf5f362ff047f7a95bce67545dff827b1f1f83b607c7d331d711bdbe8f15617c"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s43\\confusion_val.csv",
+      "sha256": "1600c3a8651a0c03f46cae43ce2fd8509a90cbd260ae3ad58c8819d4f127a005"
+    },
+    {
+      "file": "final_test\\F8-2\\rank1_seed43\\confusion_test.png",
+      "source": "results\\member_C\\final_generalization\\plots\\F8-2_s43.png",
+      "sha256": "b2e7a9b59d1384ac15bc9084e13adaf6d03d93b4812cb3b28bee8569ac397c1c"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\metrics.json",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\metrics.json",
+      "sha256": "a93ad7996416bdae75010a3802805b86fbe3e0a39ae90ab92cb21e15fc7ab508"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\history.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\history.csv",
+      "sha256": "f99d70c0b244603a0f98b6c3d85dfd4a862cb1b27584f3a9291f619d77e10f9f"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\training_curve.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\training_curve.png",
+      "sha256": "d5e45ab48cd3364b4d7fd1462306d469b8029c37679cd3fba182ace003c61d5d"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\training_curve.svg",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\training_curve.svg",
+      "sha256": "4b6bf30b7bd96a1117766ef6cfb3499ae380189a5e85c30dacfa7c4a3592d519"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\confusion_val.png",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\confusion_val.png",
+      "sha256": "e1072a67f075f0531631463a3a2e93970ba12f511a19c2b40b4f612ed699941d"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\confusion_val.csv",
+      "source": "results\\member_C\\f8_experiments\\runs\\F8_2_s46\\confusion_val.csv",
+      "sha256": "083623bc17845a253ab68b9a84133ad5f95fc0ef29f18cd9a00c948dfa475ed8"
+    },
+    {
+      "file": "final_test\\F8-2\\rank2_seed46\\confusion_test.png",
+      "source": "results\\member_C\\final_generalization\\plots\\F8-2_s46.png",
+      "sha256": "d8760820807dc3f60161c1050283e2737c462ae7940974d9e01031540568a341"
+    }
+  ]
+}
